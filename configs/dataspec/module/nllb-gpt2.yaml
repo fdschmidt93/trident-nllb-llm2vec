@@ -1,0 +1,11 @@
+dataloader:
+  collate_fn:
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: "facebook/nllb-200-distilled-600M"
+      src_lang: eng_Latn
+    nllb_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"

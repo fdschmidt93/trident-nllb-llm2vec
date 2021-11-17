@@ -1,0 +1,110 @@
+dataset:
+  _target_: datasets.load.load_dataset
+  _convert_: all
+  path: jbrinkma/pile-100k
+  split: train
+
+preprocessing:
+  method:
+    shuffle:
+      seed: ${run.seed}
+
+dataloader:
+  _convert_: all
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.DataCollatorForCausalLM
+    llm_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+    llm_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: "facebook/nllb-200-distilled-600M"
+      src_lang: eng_Latn
+    nllb_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+  batch_size: 8 # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 4
+
+evaluation:
+  prepare:
+    batch: null  # takes (trident_module: TridentModule, batch: dict, split: trident.utils.enums.Split)
+    outputs:     # takes (trident_module: TridentModule, outputs: dict, batch: dict, split: trident.utils.enums.Split)                             
+      _partial_: true
+      _target_: src.mt_llm.evaluation.get_num_tokens
+    step_outputs: null
+
+  step_outputs:
+    outputs:
+      - loss
+      - num_tokens
+  #
+  # metrics:
+  #   cross_entropy:
+  #     metric:
+  #       _partial_: true
+  #       _target_: src.mt_llm.evaluation.token_weighted_ce
+  #     compute_on: "epoch_end"
+  #     kwargs: 
+  #       # kwargs for the metric function
+  #       loss: "outputs.loss"
+  #       num_tokens: "outputs.num_tokens"
+  #   perplexity:
+  #     metric:
+  #       _partial_: true
+  #       _target_: src.mt_llm.evaluation.compute_perplexity
+  #     compute_on: "epoch_end"
+  #     kwargs: 
+  #       # kwargs for the metric function
+  #       loss: "outputs.loss"
+  #       num_tokens: "outputs.num_tokens"
+  #   bits_per_byte:
+  #     metric:
+  #       _partial_: true
+  #       _target_: src.mt_llm.evaluation.bits_per_token
+  #       bits_per_byte:
+  #         _target_: src.mt_llm.evaluation.bits_per_byte
+  #         dataset:
+  #           _target_: src.mt_llm.processing.preprocess_fn
+  #           text_column: text
+  #           tokenizer:
+  #             _target_: transformers.AutoTokenizer.from_pretrained
+  #             pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+  #           num_proc: null
+  #           dataset:
+  #             _target_: datasets.dataset_dict.DatasetDict.__getitem__
+  #             self:
+  #               _target_: datasets.arrow_dataset.Dataset.train_test_split
+  #               self: ${.........dataset}
+  #               test_size: ${run.test_size}
+  #               seed: ${run.seed}
+  #             k: "test"
+  #         byte_dataset:
+  #           _target_: src.mt_llm.processing.preprocess_bytes
+  #           tokenizer:
+  #             _target_: transformers.AutoTokenizer.from_pretrained
+  #             pretrained_model_name_or_path: "google/byt5-large"
+  #           column: text
+  #           num_proc: 1
+  #           dataset:
+  #             _target_: datasets.dataset_dict.DatasetDict.__getitem__
+  #             self:
+  #               _target_: datasets.arrow_dataset.Dataset.train_test_split
+  #               self: ${.........dataset}
+  #               test_size: ${run.test_size}
+  #               seed: ${run.seed}
+  #             k: "test"
+  #     kwargs: 
+  #       # kwargs for the metric function
+  #       loss: "outputs.loss"
+  #       num_tokens: "outputs.num_tokens"

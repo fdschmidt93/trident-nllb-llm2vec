@@ -1,0 +1,27 @@
+defaults:
+ - default
+
+misc:
+  remove_unused_columns: true
+
+dataloader:
+  collate_fn:
+    _target_: src.tasks.multiple_choice.processing.DataCollatorForMultipleChoice
+    tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+    padding: true
+
+preprocessing:
+  method: # get methods of _target_ object
+    map: # dataset.map -> tokenization
+      # kwargs for dataset.map
+      function:
+        _partial_: true
+        _target_: src.tasks.multiple_choice.processing.preprocess_fn
+        column_names:
+          context: premise
+          question: question
+          choices:
+            - "choice1"
+            - "choice2"

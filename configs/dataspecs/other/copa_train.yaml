@@ -1,0 +1,19 @@
+defaults:
+  - /dataspec/multiple_choice@copa
+  - override /dataspec/dataloader@copa.dataloader: train
+
+copa:
+  dataset:
+    path: supe_glue
+    name: copa
+    split: train
+  preprocessing:
+    method: # get methods of _target_ object
+      map:
+        function:
+          column_names:
+            context: context
+            question: question
+            choices:
+              - "choice1"
+              - "choice2"

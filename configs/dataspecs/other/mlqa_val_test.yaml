@@ -1,0 +1,72 @@
+defaults:
+  - /dataspec/nli@validation_mlqa_en
+  - /dataspec/nli@validation_mlqa_ar
+  - /dataspec/nli@validation_mlqa_de
+  - /dataspec/nli@validation_mlqa_es
+  - /dataspec/nli@validation_mlqa_hi
+  - /dataspec/nli@validation_mlqa_vi
+  - /dataspec/nli@validation_mlqa_zh
+  - /dataspec/nli@test_mlqa_en
+  - /dataspec/nli@test_mlqa_ar
+  - /dataspec/nli@test_mlqa_de
+  - /dataspec/nli@test_mlqa_es
+  - /dataspec/nli@test_mlqa_hi
+  - /dataspec/nli@test_mlqa_vi
+  - /dataspec/nli@test_mlqa_zh
+
+validation_mlqa_en:
+  path: mlqa
+  name: mlqa.en.en
+  split: validation
+validation_mlqa_ar:
+  path: mlqa
+  name: mlqa.ar.ar
+  split: validation
+validation_mlqa_de:
+  path: mlqa
+  name: mlqa.de.de
+  split: validation
+validation_mlqa_es:
+  path: mlqa
+  name: mlqa.es.es
+  split: validation
+validation_mlqa_hi:
+  path: mlqa
+  name: mlqa.hi.hi
+  split: validation
+validation_mlqa_vi:
+  path: mlqa
+  name: mlqa.vi.vi
+  split: validation
+validation_mlqa_zh:
+  path: mlqa
+  name: mlqa.zh.zh
+  split: validation
+test_mlqa_en:
+  path: mlqa
+  name: mlqa.en.en
+  split: test
+test_mlqa_ar:
+  path: mlqa
+  name: mlqa.ar.ar
+  split: test
+test_mlqa_de:
+  path: mlqa
+  name: mlqa.de.de
+  split: test
+test_mlqa_es:
+  path: mlqa
+  name: mlqa.es.es
+  split: test
+test_mlqa_hi:
+  path: mlqa
+  name: mlqa.hi.hi
+  split: test
+test_mlqa_vi:
+  path: mlqa
+  name: mlqa.vi.vi
+  split: test
+test_mlqa_zh:
+  path: mlqa
+  name: mlqa.zh.zh
+  split: test

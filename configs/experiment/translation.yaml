@@ -1,0 +1,97 @@
+# @package _global_
+
+defaults:
+  - default
+
+run:
+  task: translation
+  dataset: americas_nli
+  dataset_name: quy
+  dir: ${run.dataset}
+  split: validation
+  flores_lang: quy_Latn
+  tgt: eng_Latn
+  model: nllb-200-distilled-600M
+  tokenizer:
+    _target_: transformers.AutoTokenizer.from_pretrained
+    pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+    src_lang: ${run.flores_lang}
+  text: 
+    - premise
+    - hypothesis
+  others: 
+    - label
+  batch_size: 32
+  max_length: 512
+
+trainer:
+  limit_train_batches: 0
+  devices: [0]
+  precision: "bf16-mixed"
+
+module:
+  _target_: src.mt_llm.translation.TranslationModule
+  generate_kwargs:
+    _convert_: all
+    max_length: ${run.max_length}
+    forced_bos_token_id: 
+      _target_: src.mt_llm.translation.get_lang_to_id_code
+      tokenizer: ${run.tokenizer}
+      lang_code: ${run.tgt}
+  model:
+    _target_: transformers.AutoModelForSeq2SeqLM.from_pretrained
+    pretrained_model_name_or_path: facebook/${run.model}
+
+datamodule:
+  test:
+    translation_dataset:
+      dataset:
+        _target_: datasets.load_dataset
+        path: ${run.dataset}
+        name: ${run.dataset_name}
+        split: ${run.split}
+      dataloader:
+        _target_: torch.utils.data.dataloader.DataLoader
+        collate_fn:
+          _target_: src.mt_llm.translation.CollatorForTranslation
+          tokenizer: ${run.tokenizer}
+          tokenize_kwargs:
+            return_tensors: "pt"
+            padding: true
+          columns:
+            text: ${run.text}
+            others: ${run.others}
+        batch_size: ${run.batch_size}
+        pin_memory: true
+        shuffle: false
+        num_workers: 0
+
+      evaluation:
+        prepare:
+          batch: null
+          outputs: 
+            _partial_: true
+            _target_: src.mt_llm.translation.decode
+            tokenizer: ${run.tokenizer}
+            text: ${run.text}
+          step_outputs: null 
+        step_outputs:
+          batch: ${run.others}
+          outputs: 
+            _target_: src.mt_llm.translation.add_source
+            texts: ${run.text}
+        metrics:
+          output_translation:
+            metric:
+              _partial_: true
+              _target_: src.mt_llm.translation.store_translations
+              text: ${run.text}
+              others: ${run.others}
+              dir_: ${hydra:runtime.cwd}/data/translations/${run.model}/${run.dir}/
+              filename: ${run.dataset_name}_${run.split}.parquet
+            compute_on: "epoch_end"
+            kwargs: 
+              outputs: "outputs"
+
+logger: null
+callbacks: null

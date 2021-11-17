@@ -1,0 +1,9 @@
+defaults:
+  - /dataspec/nli_llm2vec@kardesnlu_az_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@kardesnlu_kk_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@kardesnlu_ky_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@kardesnlu_uz_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@kardesnlu_az_translate_test_3B/test
+  - /dataspec/nli_llm2vec@kardesnlu_kk_translate_test_3B/test
+  - /dataspec/nli_llm2vec@kardesnlu_ky_translate_test_3B/test
+  - /dataspec/nli_llm2vec@kardesnlu_uz_translate_test_3B/test

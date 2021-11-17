@@ -1,0 +1,100 @@
+amnli_aym/validation:
+  dataset:
+    path: americas_nli
+    name: aym
+    split: validation
+amnli_bzd/validation:
+  dataset:
+    path: americas_nli
+    name: bzd
+    split: validation
+amnli_cni/validation:
+  dataset:
+    path: americas_nli
+    name: cni
+    split: validation
+amnli_gn/validation:
+  dataset:
+    path: americas_nli
+    name: gn
+    split: validation
+amnli_hch/validation:
+  dataset:
+    path: americas_nli
+    name: hch
+    split: validation
+amnli_nah/validation:
+  dataset:
+    path: americas_nli
+    name: nah
+    split: validation
+amnli_oto/validation:
+  dataset:
+    path: americas_nli
+    name: oto
+    split: validation
+amnli_quy/validation:
+  dataset:
+    path: americas_nli
+    name: quy
+    split: validation
+amnli_shp/validation:
+  dataset:
+    path: americas_nli
+    name: shp
+    split: validation
+amnli_tar/validation:
+  dataset:
+    path: americas_nli
+    name: tar
+    split: validation
+amnli_aym/test:
+  dataset:
+    path: americas_nli
+    name: aym
+    split: test
+amnli_bzd/test:
+  dataset:
+    path: americas_nli
+    name: bzd
+    split: test
+amnli_cni/test:
+  dataset:
+    path: americas_nli
+    name: cni
+    split: test
+amnli_gn/test:
+  dataset:
+    path: americas_nli
+    name: gn
+    split: test
+amnli_hch/test:
+  dataset:
+    path: americas_nli
+    name: hch
+    split: test
+amnli_nah/test:
+  dataset:
+    path: americas_nli
+    name: nah
+    split: test
+amnli_oto/test:
+  dataset:
+    path: americas_nli
+    name: oto
+    split: test
+amnli_quy/test:
+  dataset:
+    path: americas_nli
+    name: quy
+    split: test
+amnli_shp/test:
+  dataset:
+    path: americas_nli
+    name: shp
+    split: test
+amnli_tar/test:
+  dataset:
+    path: americas_nli
+    name: tar
+    split: test

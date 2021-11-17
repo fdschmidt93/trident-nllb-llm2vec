@@ -1,0 +1,168 @@
+xnli_es_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/es_validation.parquet
+    split: train
+xnli_de_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/de_validation.parquet
+    split: train
+xnli_fr_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/fr_validation.parquet
+    split: train
+xnli_el_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/el_validation.parquet
+    split: train
+xnli_bg_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/bg_validation.parquet
+    split: train
+xnli_ru_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ru_validation.parquet
+    split: train
+xnli_tr_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/tr_validation.parquet
+    split: train
+xnli_ar_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ar_validation.parquet
+    split: train
+xnli_vi_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/vi_validation.parquet
+    split: train
+xnli_th_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/th_validation.parquet
+    split: train
+xnli_zh_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/zh_validation.parquet
+    split: train
+xnli_hi_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/hi_validation.parquet
+    split: train
+xnli_sw_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/sw_validation.parquet
+    split: train
+xnli_ur_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ur_validation.parquet
+    split: train
+xnli_es_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/es_test.parquet
+    split: train
+xnli_de_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/de_test.parquet
+    split: train
+xnli_fr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/fr_test.parquet
+    split: train
+xnli_el_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/el_test.parquet
+    split: train
+xnli_bg_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/bg_test.parquet
+    split: train
+xnli_ru_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ru_test.parquet
+    split: train
+xnli_tr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/tr_test.parquet
+    split: train
+xnli_ar_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ar_test.parquet
+    split: train
+xnli_vi_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/vi_test.parquet
+    split: train
+xnli_th_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/th_test.parquet
+    split: train
+xnli_zh_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/zh_test.parquet
+    split: train
+xnli_hi_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/hi_test.parquet
+    split: train
+xnli_sw_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/sw_test.parquet
+    split: train
+xnli_ur_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/xnli/ur_test.parquet
+    split: train

@@ -1,0 +1,134 @@
+defaults:
+  - /dataspec/nli@validation_indicxnli_as
+  - /dataspec/nli@validation_indicxnli_bn
+  - /dataspec/nli@validation_indicxnli_gu
+  - /dataspec/nli@validation_indicxnli_hi
+  - /dataspec/nli@validation_indicxnli_kn
+  - /dataspec/nli@validation_indicxnli_ml
+  - /dataspec/nli@validation_indicxnli_mr
+  - /dataspec/nli@validation_indicxnli_or
+  - /dataspec/nli@validation_indicxnli_pa
+  - /dataspec/nli@validation_indicxnli_ta
+  - /dataspec/nli@validation_indicxnli_te
+  - /dataspec/nli@test_indicxnli_as
+  - /dataspec/nli@test_indicxnli_bn
+  - /dataspec/nli@test_indicxnli_gu
+  - /dataspec/nli@test_indicxnli_hi
+  - /dataspec/nli@test_indicxnli_kn
+  - /dataspec/nli@test_indicxnli_ml
+  - /dataspec/nli@test_indicxnli_mr
+  - /dataspec/nli@test_indicxnli_or
+  - /dataspec/nli@test_indicxnli_pa
+  - /dataspec/nli@test_indicxnli_ta
+  - /dataspec/nli@test_indicxnli_te
+
+validation_indicxnli_as:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: as
+    split: validation
+validation_indicxnli_bn:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: bn
+    split: validation
+validation_indicxnli_gu:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: gu
+    split: validation
+validation_indicxnli_hi:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: hi
+    split: validation
+validation_indicxnli_kn:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: kn
+    split: validation
+validation_indicxnli_ml:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: ml
+    split: validation
+validation_indicxnli_mr:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: mr
+    split: validation
+validation_indicxnli_or:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: or
+    split: validation
+validation_indicxnli_pa:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: pa
+    split: validation
+validation_indicxnli_ta:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: ta
+    split: validation
+validation_indicxnli_te:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: te
+    split: validation
+test_indicxnli_as:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: as
+    split: test
+test_indicxnli_bn:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: bn
+    split: test
+test_indicxnli_gu:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: gu
+    split: test
+test_indicxnli_hi:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: hi
+    split: test
+test_indicxnli_kn:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: kn
+    split: test
+test_indicxnli_ml:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: ml
+    split: test
+test_indicxnli_mr:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: mr
+    split: test
+test_indicxnli_or:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: or
+    split: test
+test_indicxnli_pa:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: pa
+    split: test
+test_indicxnli_ta:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: ta
+    split: test
+test_indicxnli_te:
+  dataset:
+    path: Divyanshu/indicxnli
+    name: te
+    split: test

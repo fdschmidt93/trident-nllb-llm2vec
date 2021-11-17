@@ -1,0 +1,24 @@
+
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train:
+    - copa_train
+  - /dataspecs@datamodule.val:
+    - copa_train
+    - copa_val_test
+    - xcopa_val_test
+  - /dataspecs@datamodule.test:
+    - copa_train
+    - copa_val_test
+    - xcopa_val_test
+  - override /module: multiple_choice
+
+run:
+  task: siqa
+
+module:
+  model:
+    pretrained_model_name_or_path: "xlm-roberta-base"
+    num_labels: 3

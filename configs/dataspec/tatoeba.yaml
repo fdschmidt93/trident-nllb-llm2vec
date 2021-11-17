@@ -1,0 +1,30 @@
+defaults:
+  - default
+
+preprocessing:
+  apply:
+    concatenate:
+      _partial_: true
+      _target_: src.tasks.retrieval.processing.concatenate_tatoeba
+  method: # get methods of _target_ object
+    map: # dataset.map -> tokenization
+      # kwargs for dataset.map
+      function:
+        _partial_: true
+        _target_: src.tasks.text_classification.processing.preprocess_fn
+        tokenizer:
+          _partial_: true
+          _target_: transformers.tokenization_utils_base.PreTrainedTokenizerBase.__call__
+          self:
+              _target_: transformers.AutoTokenizer.from_pretrained
+              pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+          padding: false
+          truncation: true
+          max_length: 510
+        column_names:
+          text: sentences
+    # unify output format of MNLI and XNLI
+    set_format:
+      columns:
+        - "input_ids"
+        - "attention_mask"

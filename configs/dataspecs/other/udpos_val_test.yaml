@@ -1,0 +1,374 @@
+defaults:
+  - /dataspec/udpos@validation_udpos_Afrikaans
+  - /dataspec/udpos@validation_udpos_Arabic
+  - /dataspec/udpos@validation_udpos_Basque
+  - /dataspec/udpos@validation_udpos_Bulgarian
+  - /dataspec/udpos@validation_udpos_Dutch
+  - /dataspec/udpos@validation_udpos_English
+  - /dataspec/udpos@validation_udpos_Estonian
+  - /dataspec/udpos@validation_udpos_Finnish
+  - /dataspec/udpos@validation_udpos_French
+  - /dataspec/udpos@validation_udpos_German
+  - /dataspec/udpos@validation_udpos_Greek
+  - /dataspec/udpos@validation_udpos_Hebrew
+  - /dataspec/udpos@validation_udpos_Hindi
+  - /dataspec/udpos@validation_udpos_Hungarian
+  - /dataspec/udpos@validation_udpos_Indonesian
+  - /dataspec/udpos@validation_udpos_Italian
+  - /dataspec/udpos@validation_udpos_Japanese
+  - /dataspec/udpos@validation_udpos_Korean
+  - /dataspec/udpos@validation_udpos_Chinese
+  - /dataspec/udpos@validation_udpos_Marathi
+  - /dataspec/udpos@validation_udpos_Persian
+  - /dataspec/udpos@validation_udpos_Portuguese
+  - /dataspec/udpos@validation_udpos_Russian
+  - /dataspec/udpos@validation_udpos_Spanish
+  - /dataspec/udpos@validation_udpos_Tamil
+  - /dataspec/udpos@validation_udpos_Telugu
+  - /dataspec/udpos@validation_udpos_Turkish
+  - /dataspec/udpos@validation_udpos_Urdu
+  - /dataspec/udpos@validation_udpos_Vietnamese
+  - /dataspec/udpos@test_udpos_Afrikaans
+  - /dataspec/udpos@test_udpos_Arabic
+  - /dataspec/udpos@test_udpos_Basque
+  - /dataspec/udpos@test_udpos_Bulgarian
+  - /dataspec/udpos@test_udpos_Dutch
+  - /dataspec/udpos@test_udpos_English
+  - /dataspec/udpos@test_udpos_Estonian
+  - /dataspec/udpos@test_udpos_Finnish
+  - /dataspec/udpos@test_udpos_French
+  - /dataspec/udpos@test_udpos_German
+  - /dataspec/udpos@test_udpos_Greek
+  - /dataspec/udpos@test_udpos_Hebrew
+  - /dataspec/udpos@test_udpos_Hindi
+  - /dataspec/udpos@test_udpos_Hungarian
+  - /dataspec/udpos@test_udpos_Indonesian
+  - /dataspec/udpos@test_udpos_Italian
+  - /dataspec/udpos@test_udpos_Japanese
+  - /dataspec/udpos@test_udpos_Kazakh
+  - /dataspec/udpos@test_udpos_Korean
+  - /dataspec/udpos@test_udpos_Chinese
+  - /dataspec/udpos@test_udpos_Marathi
+  - /dataspec/udpos@test_udpos_Persian
+  - /dataspec/udpos@test_udpos_Portuguese
+  - /dataspec/udpos@test_udpos_Russian
+  - /dataspec/udpos@test_udpos_Spanish
+  - /dataspec/udpos@test_udpos_Tagalog
+  - /dataspec/udpos@test_udpos_Tamil
+  - /dataspec/udpos@test_udpos_Telugu
+  - /dataspec/udpos@test_udpos_Thai
+  - /dataspec/udpos@test_udpos_Turkish
+  - /dataspec/udpos@test_udpos_Urdu
+  - /dataspec/udpos@test_udpos_Vietnamese
+  - /dataspec/udpos@test_udpos_Yoruba
+
+validation_udpos_Afrikaans:
+  dataset:
+    path: xtreme
+    name: udpos.Afrikaans
+    split: validation
+validation_udpos_Arabic:
+  dataset:
+    path: xtreme
+    name: udpos.Arabic
+    split: validation
+validation_udpos_Basque:
+  dataset:
+    path: xtreme
+    name: udpos.Basque
+    split: validation
+validation_udpos_Bulgarian:
+  dataset:
+    path: xtreme
+    name: udpos.Bulgarian
+    split: validation
+validation_udpos_Dutch:
+  dataset:
+    path: xtreme
+    name: udpos.Dutch
+    split: validation
+validation_udpos_English:
+  dataset:
+    path: xtreme
+    name: udpos.English
+    split: validation
+validation_udpos_Estonian:
+  dataset:
+    path: xtreme
+    name: udpos.Estonian
+    split: validation
+validation_udpos_Finnish:
+  dataset:
+    path: xtreme
+    name: udpos.Finnish
+    split: validation
+validation_udpos_French:
+  dataset:
+    path: xtreme
+    name: udpos.French
+    split: validation
+validation_udpos_German:
+  dataset:
+    path: xtreme
+    name: udpos.German
+    split: validation
+validation_udpos_Greek:
+  dataset:
+    path: xtreme
+    name: udpos.Greek
+    split: validation
+validation_udpos_Hebrew:
+  dataset:
+    path: xtreme
+    name: udpos.Hebrew
+    split: validation
+validation_udpos_Hindi:
+  dataset:
+    path: xtreme
+    name: udpos.Hindi
+    split: validation
+validation_udpos_Hungarian:
+  dataset:
+    path: xtreme
+    name: udpos.Hungarian
+    split: validation
+validation_udpos_Indonesian:
+  dataset:
+    path: xtreme
+    name: udpos.Indonesian
+    split: validation
+validation_udpos_Italian:
+  dataset:
+    path: xtreme
+    name: udpos.Italian
+    split: validation
+validation_udpos_Japanese:
+  dataset:
+    path: xtreme
+    name: udpos.Japanese
+    split: validation
+validation_udpos_Korean:
+  dataset:
+    path: xtreme
+    name: udpos.Korean
+    split: validation
+validation_udpos_Chinese:
+  dataset:
+    path: xtreme
+    name: udpos.Chinese
+    split: validation
+validation_udpos_Marathi:
+  dataset:
+    path: xtreme
+    name: udpos.Marathi
+    split: validation
+validation_udpos_Persian:
+  dataset:
+    path: xtreme
+    name: udpos.Persian
+    split: validation
+validation_udpos_Portuguese:
+  dataset:
+    path: xtreme
+    name: udpos.Portuguese
+    split: validation
+validation_udpos_Russian:
+  dataset:
+    path: xtreme
+    name: udpos.Russian
+    split: validation
+validation_udpos_Spanish:
+  dataset:
+    path: xtreme
+    name: udpos.Spanish
+    split: validation
+validation_udpos_Tamil:
+  dataset:
+    path: xtreme
+    name: udpos.Tamil
+    split: validation
+validation_udpos_Telugu:
+  dataset:
+    path: xtreme
+    name: udpos.Telugu
+    split: validation
+validation_udpos_Turkish:
+  dataset:
+    path: xtreme
+    name: udpos.Turkish
+    split: validation
+validation_udpos_Urdu:
+  dataset:
+    path: xtreme
+    name: udpos.Urdu
+    split: validation
+validation_udpos_Vietnamese:
+  dataset:
+    path: xtreme
+    name: udpos.Vietnamese
+    split: validation
+test_udpos_Afrikaans:
+  dataset:
+    path: xtreme
+    name: udpos.Afrikaans
+    split: test
+test_udpos_Arabic:
+  dataset:
+    path: xtreme
+    name: udpos.Arabic
+    split: test
+test_udpos_Basque:
+  dataset:
+    path: xtreme
+    name: udpos.Basque
+    split: test
+test_udpos_Bulgarian:
+  dataset:
+    path: xtreme
+    name: udpos.Bulgarian
+    split: test
+test_udpos_Dutch:
+  dataset:
+    path: xtreme
+    name: udpos.Dutch
+    split: test
+test_udpos_English:
+  dataset:
+    path: xtreme
+    name: udpos.English
+    split: test
+test_udpos_Estonian:
+  dataset:
+    path: xtreme
+    name: udpos.Estonian
+    split: test
+test_udpos_Finnish:
+  dataset:
+    path: xtreme
+    name: udpos.Finnish
+    split: test
+test_udpos_French:
+  dataset:
+    path: xtreme
+    name: udpos.French
+    split: test
+test_udpos_German:
+  dataset:
+    path: xtreme
+    name: udpos.German
+    split: test
+test_udpos_Greek:
+  dataset:
+    path: xtreme
+    name: udpos.Greek
+    split: test
+test_udpos_Hebrew:
+  dataset:
+    path: xtreme
+    name: udpos.Hebrew
+    split: test
+test_udpos_Hindi:
+  dataset:
+    path: xtreme
+    name: udpos.Hindi
+    split: test
+test_udpos_Hungarian:
+  dataset:
+    path: xtreme
+    name: udpos.Hungarian
+    split: test
+test_udpos_Indonesian:
+  dataset:
+    path: xtreme
+    name: udpos.Indonesian
+    split: test
+test_udpos_Italian:
+  dataset:
+    path: xtreme
+    name: udpos.Italian
+    split: test
+test_udpos_Japanese:
+  dataset:
+    path: xtreme
+    name: udpos.Japanese
+    split: test
+test_udpos_Kazakh:
+  dataset:
+    path: xtreme
+    name: udpos.Kazakh
+    split: test
+test_udpos_Korean:
+  dataset:
+    path: xtreme
+    name: udpos.Korean
+    split: test
+test_udpos_Chinese:
+  dataset:
+    path: xtreme
+    name: udpos.Chinese
+    split: test
+test_udpos_Marathi:
+  dataset:
+    path: xtreme
+    name: udpos.Marathi
+    split: test
+test_udpos_Persian:
+  dataset:
+    path: xtreme
+    name: udpos.Persian
+    split: test
+test_udpos_Portuguese:
+  dataset:
+    path: xtreme
+    name: udpos.Portuguese
+    split: test
+test_udpos_Russian:
+  dataset:
+    path: xtreme
+    name: udpos.Russian
+    split: test
+test_udpos_Spanish:
+  dataset:
+    path: xtreme
+    name: udpos.Spanish
+    split: test
+test_udpos_Tagalog:
+  dataset:
+    path: xtreme
+    name: udpos.Tagalog
+    split: test
+test_udpos_Tamil:
+  dataset:
+    path: xtreme
+    name: udpos.Tamil
+    split: test
+test_udpos_Telugu:
+  dataset:
+    path: xtreme
+    name: udpos.Telugu
+    split: test
+test_udpos_Thai:
+  dataset:
+    path: xtreme
+    name: udpos.Thai
+    split: test
+test_udpos_Turkish:
+  dataset:
+    path: xtreme
+    name: udpos.Turkish
+    split: test
+test_udpos_Urdu:
+  dataset:
+    path: xtreme
+    name: udpos.Urdu
+    split: test
+test_udpos_Vietnamese:
+  dataset:
+    path: xtreme
+    name: udpos.Vietnamese
+    split: test
+test_udpos_Yoruba:
+  dataset:
+    path: xtreme
+    name: udpos.Yoruba
+    split: test

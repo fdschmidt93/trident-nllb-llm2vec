@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+shuffle: true
+batch_size: ${run.train_batch_size}

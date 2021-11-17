@@ -1,0 +1,17 @@
+defaults:
+  - default
+
+model:
+  _target_: transformers.AutoModelForSeq2SeqLM.from_pretrained
+  pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+  torch_dtype:
+    _target_: src.mt_llm.utils.get_torch_dtype
+    type_: bfloat16
+peft_config:
+  _target_: peft.LoraConfig
+  r: 16
+  lora_alpha: 32
+  target_modules: all-linear
+  lora_dropout: 0.05 
+  bias: "none" 
+  task_type: "FEATURE_EXTRACTION"

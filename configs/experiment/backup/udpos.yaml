@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train:
+      - udpos_train
+  - /dataspecs@datamodule.val:
+      - udpos_val_test
+  - /dataspecs@datamodule.test:
+      - udpos_val_test
+  - override /module: token_classification
+  - override /module/evaluation: udpos
+  - override /datamodule: udpos
+
+run:
+  lang: English # determines on which wikiann-train-$lang split the model to train
+  task: udpos
+
+module:
+  model:
+    # ['ADJ', 'ADP', 'ADV', 'AUX', 'CCONJ', 'DET', 'INTJ', 'NOUN', 'NUM', 'PART', 'PRON', 'PROPN', 'PUNCT', 'SCONJ', 'SYM', 'VERB', 'X']
+    pretrained_model_name_or_path: xlm-roberta-base
+    num_labels: 17

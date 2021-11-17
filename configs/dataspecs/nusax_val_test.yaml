@@ -1,0 +1,120 @@
+nusax_eng/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: eng
+    split: validation
+nusax_ace/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ace
+    split: validation
+nusax_ban/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ban
+    split: validation
+nusax_bug/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bug
+    split: validation
+nusax_ind/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ind
+    split: validation
+nusax_jav/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: jav
+    split: validation
+nusax_mad/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: mad
+    split: validation
+nusax_min/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: min
+    split: validation
+nusax_bjn/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bjn
+    split: validation
+nusax_nij/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: nij
+    split: validation
+nusax_sun/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: sun
+    split: validation
+nusax_bbc/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bbc
+    split: validation
+nusax_eng/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: eng
+    split: test
+nusax_ace/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ace
+    split: test
+nusax_ban/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ban
+    split: test
+nusax_bug/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bug
+    split: test
+nusax_ind/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ind
+    split: test
+nusax_jav/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: jav
+    split: test
+nusax_mad/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: mad
+    split: test
+nusax_min/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: min
+    split: test
+nusax_bjn/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bjn
+    split: test
+nusax_nij/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: nij
+    split: test
+nusax_sun/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: sun
+    split: test
+nusax_bbc/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: bbc
+    split: test

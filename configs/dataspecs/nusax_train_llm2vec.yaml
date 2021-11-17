@@ -1,0 +1,11 @@
+defaults:
+  - /dataspec@nusax: nusax_llm2vec
+
+nusax:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: ${oc.select:run.lang,eng}
+    split: train
+  dataloader:
+    shuffle: true
+    batch_size: ${run.train_batch_size}

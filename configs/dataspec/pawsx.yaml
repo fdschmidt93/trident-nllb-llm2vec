@@ -1,0 +1,14 @@
+defaults:
+ - text_classification
+
+preprocessing:
+  method:
+    map:
+      function:
+        column_names:
+          text: sentence1
+          text_pair: sentence2
+      remove_columns:
+        - "id"
+        - "sentence1"
+        - "sentence2"

@@ -1,0 +1,19 @@
+defaults:
+  - /dataspec/question_answering@siqa
+  - override /dataspec/dataloader@siqa.dataloader: train
+
+siqa:
+  preprocessing:
+    method: # get methods of _target_ object
+      map:
+        function:
+          column_names:
+            context: context
+            question: question
+            choices:
+              - "answerA"
+              - "answerB"
+              - "answerC"
+  dataset:
+    path: social_i_qa
+    split: train

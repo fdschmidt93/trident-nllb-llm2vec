@@ -1,0 +1,20 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main   # or whatever your default branch is named
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: python
+          package-name: trident-xtreme
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,19 @@
+dataset:
+  _target_: datasets.load.load_dataset
+
+dataloader:
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.DataCollatorForSequenceClassification
+    llm_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${oc.select:run.base_model,${run.pretrained_model_name_or_path}}
+    llm_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+  batch_size: ${run.val_test_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: false # will be copied in to val and test
+  num_workers: 4

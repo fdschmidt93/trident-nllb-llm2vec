@@ -1,0 +1,17 @@
+defaults:
+  - /dataspec/question_answering@squad
+  - override /dataspec/dataloader@squad.dataloader: train
+
+squad:
+  dataset:
+    path: squad
+    split: train
+  preprocessing:
+    method:
+      map:
+        remove_columns:
+          - "id"
+          - "context"
+          - "question"
+          - "answers"
+          - "title"

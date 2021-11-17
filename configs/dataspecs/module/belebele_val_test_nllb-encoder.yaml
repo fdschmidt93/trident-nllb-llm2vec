@@ -1,0 +1,1350 @@
+defaults:
+  - belebele_val_test_llm2vec.yaml
+
+eng_Latn/validation:
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: eng_Latn
+acm_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: acm_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: acm_Arab
+afr_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: afr_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: afr_Latn
+als_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: als_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: als_Latn
+amh_Ethi/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: amh_Ethi
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: amh_Ethi
+apc_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: apc_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: apc_Arab
+arb_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: arb_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: arb_Arab
+arb_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: arb_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: arb_Latn
+ars_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ars_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ars_Arab
+ary_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ary_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ary_Arab
+arz_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: arz_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: arz_Arab
+asm_Beng/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: asm_Beng
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: asm_Beng
+azj_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: azj_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: azj_Latn
+bam_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: bam_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: bam_Latn
+ben_Beng/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ben_Beng
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ben_Beng
+ben_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ben_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ben_Latn
+bod_Tibt/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: bod_Tibt
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: bod_Tibt
+bul_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: bul_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: bul_Cyrl
+cat_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: cat_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: cat_Latn
+ceb_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ceb_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ceb_Latn
+ces_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ces_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ces_Latn
+ckb_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ckb_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ckb_Arab
+dan_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: dan_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: dan_Latn
+deu_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: deu_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: deu_Latn
+ell_Grek/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ell_Grek
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ell_Grek
+eng_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: eng_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: eng_Latn
+est_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: est_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: est_Latn
+eus_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: eus_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: eus_Latn
+fin_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: fin_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: fin_Latn
+fra_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: fra_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: fra_Latn
+fuv_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: fuv_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: fuv_Latn
+gaz_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: gaz_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: gaz_Latn
+grn_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: grn_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: grn_Latn
+guj_Gujr/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: guj_Gujr
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: guj_Gujr
+hat_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hat_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hat_Latn
+hau_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hau_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hau_Latn
+heb_Hebr/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: heb_Hebr
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: heb_Hebr
+hin_Deva/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hin_Deva
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hin_Deva
+hin_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hin_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hin_Latn
+hrv_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hrv_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hrv_Latn
+hun_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hun_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hun_Latn
+hye_Armn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: hye_Armn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: hye_Armn
+ibo_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ibo_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ibo_Latn
+ilo_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ilo_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ilo_Latn
+ind_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ind_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ind_Latn
+isl_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: isl_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: isl_Latn
+ita_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ita_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ita_Latn
+jav_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: jav_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: jav_Latn
+jpn_Jpan/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: jpn_Jpan
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: jpn_Jpan
+kac_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kac_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kac_Latn
+kan_Knda/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kan_Knda
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kan_Knda
+kat_Geor/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kat_Geor
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kat_Geor
+kaz_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kaz_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kaz_Cyrl
+kea_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kea_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kea_Latn
+khk_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: khk_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: khk_Cyrl
+khm_Khmr/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: khm_Khmr
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: khm_Khmr
+kin_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kin_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kin_Latn
+kir_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kir_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kir_Cyrl
+kor_Hang/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: kor_Hang
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: kor_Hang
+lao_Laoo/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: lao_Laoo
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: lao_Laoo
+lin_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: lin_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: lin_Latn
+lit_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: lit_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: lit_Latn
+lug_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: lug_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: lug_Latn
+luo_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: luo_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: luo_Latn
+lvs_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: lvs_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: lvs_Latn
+mal_Mlym/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mal_Mlym
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mal_Mlym
+mar_Deva/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mar_Deva
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mar_Deva
+mkd_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mkd_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mkd_Cyrl
+mlt_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mlt_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mlt_Latn
+mri_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mri_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mri_Latn
+mya_Mymr/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: mya_Mymr
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: mya_Mymr
+nld_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: nld_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: nld_Latn
+nob_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: nob_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: nob_Latn
+npi_Deva/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: npi_Deva
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: npi_Deva
+npi_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: npi_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: npi_Latn
+nso_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: nso_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: nso_Latn
+nya_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: nya_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: nya_Latn
+ory_Orya/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ory_Orya
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ory_Orya
+pan_Guru/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: pan_Guru
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: pan_Guru
+pbt_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: pbt_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: pbt_Arab
+pes_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: pes_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: pes_Arab
+plt_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: plt_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: plt_Latn
+pol_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: pol_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: pol_Latn
+por_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: por_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: por_Latn
+ron_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ron_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ron_Latn
+rus_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: rus_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: rus_Cyrl
+shn_Mymr/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: shn_Mymr
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: shn_Mymr
+sin_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: sin_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: sin_Latn
+sin_Sinh/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: sin_Sinh
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: sin_Sinh
+slk_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: slk_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: slk_Latn
+slv_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: slv_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: slv_Latn
+sna_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: sna_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: sna_Latn
+snd_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: snd_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: snd_Arab
+som_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: som_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: som_Latn
+sot_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: sot_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: sot_Latn
+spa_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: spa_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: spa_Latn
+srp_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: srp_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: srp_Cyrl
+ssw_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ssw_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ssw_Latn
+sun_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: sun_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: sun_Latn
+swe_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: swe_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: swe_Latn
+swh_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: swh_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: swh_Latn
+tam_Taml/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tam_Taml
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tam_Taml
+tel_Telu/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tel_Telu
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tel_Telu
+tgk_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tgk_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tgk_Cyrl
+tgl_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tgl_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tgl_Latn
+tha_Thai/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tha_Thai
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tha_Thai
+tir_Ethi/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tir_Ethi
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tir_Ethi
+tsn_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tsn_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tsn_Latn
+tso_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tso_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tso_Latn
+tur_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: tur_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: tur_Latn
+ukr_Cyrl/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: ukr_Cyrl
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: ukr_Cyrl
+urd_Arab/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: urd_Arab
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: urd_Arab
+urd_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: urd_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: urd_Latn
+uzn_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: uzn_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: uzn_Latn
+vie_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: vie_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: vie_Latn
+war_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: war_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: war_Latn
+wol_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: wol_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: wol_Latn
+xho_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: xho_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: xho_Latn
+yor_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: yor_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: yor_Latn
+zho_Hans/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: zho_Hans
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: zho_Hans
+zho_Hant/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: zho_Hant
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: zho_Hant
+zsm_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: zsm_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: zsm_Latn
+zul_Latn/test:
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          tokenizer:
+            src_lang: zul_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: zul_Latn

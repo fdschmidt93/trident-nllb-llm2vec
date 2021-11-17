@@ -1,0 +1,5 @@
+_target_: datasets.load.load_dataset
+_convert_: all
+path: parquet
+split: train
+streaming: true

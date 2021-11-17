@@ -1,0 +1,61 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: belebele_train_llm2vec
+  - /dataspecs@datamodule.test:
+      - belebele_val_test
+  - /dataspecs/module@datamodule.test:
+      - belebele_val_test_nllb-llm2vec
+  - default_llm2vec
+  - override /module: nllb-llm2vec
+
+run:
+  task: belebele_llm2vec_test
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/nllb-llm2vec/
+  base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
+  epoch: 8
+  # checkpoint: ${hydra:runtime.cwd}/logs/mt-llm/nllb-llm2vec/belebele/seed-${run.seed}/checkpoints/validation-epoch=${run.epoch}.ckpt
+  # checkpoint: /gpfs/bwfor/work/ws/ma_fabiasch-tx/trident-mt-llm/logs/mt-llm/nllb-llm2vec/belebele-clf/seed-42/checkpoints/validation-epoch=8.ckpt
+  checkpoint: /gpfs/bwfor/work/ws/ma_fabiasch-tx/trident-mt-llm/logs/runs/2024-06-04/01-38-04/checkpoints/validation-epoch=2.ckpt
+  seed: 42
+  train_batch_size: 2
+  val_test_batch_size: 8
+  max_length: 1024
+
+trainer:
+  num_sanity_val_steps: 0
+  max_epochs: 5
+  accumulate_grad_batches: 16
+  val_check_interval: 0.5
+  limit_train_batches: 0
+  limit_test_batches: 1.0
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForMultipleChoice.load_from_checkpoint
+  # _target_: src.mt_llm.module.AutoModuleForSequenceClassification.load_from_checkpoint
+  # num_labels: 4
+  save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+  checkpoint_path: ${run.checkpoint}
+
+logger:
+  csv:
+    _target_: lightning.pytorch.loggers.CSVLogger
+    save_dir: ${hydra:runtime.output_dir}
+  wandb:
+    name: "model=distill-NLLB-${run.base_model}_epochs=${trainer.max_epochs}_batch-size=${_log_vars.train_batch_size}_accumulate-grad-batches=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}_ckpt-epoch=${run.epoch}"
+    tags:
+      - "${run.base_model}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+      - "accumulate-grad-batches=${trainer.accumulate_grad_batches}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

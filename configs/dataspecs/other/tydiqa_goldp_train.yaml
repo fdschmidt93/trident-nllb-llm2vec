@@ -1,0 +1,14 @@
+defaults:
+  - /dataspec/question_answering@tydiqa_goldp
+  - override /dataspec/dataloader@tydiqa_goldp.dataloader: train
+
+tydiqa_goldp:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: en
+    split: train
+  preprocessing:
+    method:
+      map:
+        function:
+          _target_: src.tasks.question_answering.processing.preprocess_fn_train

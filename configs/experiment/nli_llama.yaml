@@ -1,0 +1,80 @@
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train: mnli_train_llama
+  - /dataspecs@datamodule.val:
+      - xnli_val_test_llama
+      - amnli_val_test_llama
+
+run:
+  task: nli_llama
+  pretrained_model_name_or_path: meta-llama/Meta-Llama-3-8B
+  seed: 42
+  train_batch_size: 8
+  val_test_batch_size: 8
+  max_length: 256
+
+trainer:
+  precision: "bf16-mixed"
+  max_epochs: 3
+  limit_test_batches: 0
+  accumulate_grad_batches: 4
+  check_val_every_n_epoch: 1
+
+module:
+  model:
+    _target_: peft.get_peft_model
+    model:
+      _target_: transformers.AutoModelForSequenceClassification.from_pretrained
+      pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+      num_labels: 3
+      pad_token_id: 128001
+      device_map: "auto"
+      quantization_config: 
+        _target_: transformers.BitsAndBytesConfig
+        load_in_4bit: True
+        bnb_4bit_quant_type: "nf4"
+        bnb_4bit_use_double_quant: True
+        bnb_4bit_compute_dtype:
+          _target_: src.mt_llm.utils.get_torch_dtype
+          type_: bfloat16
+    peft_config:
+      _target_: peft.LoraConfig
+      r: 16
+      lora_alpha: 16
+      target_modules: all-linear
+      lora_dropout: 0.05 
+      bias: "none" 
+      task_type: "SEQ_CLS"
+  optimizer:
+    _target_: bitsandbytes.optim.AdamW8bit
+    lr: 1e-5
+  scheduler:
+    num_warmup_steps: 0.1
+
+logger:
+  wandb:
+    name: "model=${run.pretrained_model_name_or_path}_epochs=${trainer.max_epochs}_bs=${_log_vars.train_batch_size}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.pretrained_model_name_or_path}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor
+  model_checkpoint_on_epoch:
+    _target_: lightning.pytorch.callbacks.ModelCheckpoint
+    monitor: null # name of the logged metric which determines when model is improving
+    every_n_epochs: ${trainer.check_val_every_n_epoch}
+    verbose: false
+    save_top_k: -1 # -1 -> all models are saved
+    filename: "epoch={epoch}"
+    save_last: false # additionaly always save model from last epoch
+    dirpath: "${hydra:runtime.output_dir}/checkpoints/"
+    save_weights_only: true
+    auto_insert_metric_name: false

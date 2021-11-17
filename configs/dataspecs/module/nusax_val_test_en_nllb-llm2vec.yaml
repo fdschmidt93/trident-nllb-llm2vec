@@ -1,0 +1,14 @@
+defaults:
+  - /dataspec/nusax_llm2vec@nusax_eng/validation
+  - /dataspec/nusax_llm2vec@nusax_eng/test
+
+nusax_eng/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn 
+nusax_eng/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn 

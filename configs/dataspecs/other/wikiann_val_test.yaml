@@ -1,0 +1,314 @@
+defaults:
+  - /dataspec/wikiann@validation_wikiann_en
+  - /dataspec/wikiann@validation_wikiann_ar
+  - /dataspec/wikiann@validation_wikiann_de
+  - /dataspec/wikiann@validation_wikiann_ru
+  - /dataspec/wikiann@validation_wikiann_zh
+  - /dataspec/wikiann@validation_wikiann_ja
+  - /dataspec/wikiann@validation_wikiann_ur
+  - /dataspec/wikiann@validation_wikiann_ay
+  - /dataspec/wikiann@validation_wikiann_qu
+  - /dataspec/wikiann@validation_wikiann_ta
+  - /dataspec/wikiann@validation_wikiann_sw
+  - /dataspec/wikiann@validation_wikiann_yo
+  - /dataspec/wikiann@validation_wikiann_rw
+  - /dataspec/wikiann@validation_wikiann_am
+  - /dataspec/wikiann@validation_wikiann_ig
+  - /dataspec/wikiann@validation_wikiann_hi
+  - /dataspec/wikiann@validation_wikiann_fr
+  - /dataspec/wikiann@validation_wikiann_es
+  - /dataspec/wikiann@validation_wikiann_vi
+  - /dataspec/wikiann@validation_wikiann_tr
+  - /dataspec/wikiann@validation_wikiann_bg
+  - /dataspec/wikiann@validation_wikiann_te
+  - /dataspec/wikiann@validation_wikiann_el
+  - /dataspec/wikiann@validation_wikiann_he
+  - /dataspec/wikiann@validation_wikiann_fi
+  - /dataspec/wikiann@validation_wikiann_hu
+  - /dataspec/wikiann@test_wikiann_en
+  - /dataspec/wikiann@test_wikiann_ar
+  - /dataspec/wikiann@test_wikiann_de
+  - /dataspec/wikiann@test_wikiann_ru
+  - /dataspec/wikiann@test_wikiann_zh
+  - /dataspec/wikiann@test_wikiann_ja
+  - /dataspec/wikiann@test_wikiann_ur
+  - /dataspec/wikiann@test_wikiann_ay
+  - /dataspec/wikiann@test_wikiann_qu
+  - /dataspec/wikiann@test_wikiann_ta
+  - /dataspec/wikiann@test_wikiann_sw
+  - /dataspec/wikiann@test_wikiann_yo
+  - /dataspec/wikiann@test_wikiann_rw
+  - /dataspec/wikiann@test_wikiann_am
+  - /dataspec/wikiann@test_wikiann_ig
+  - /dataspec/wikiann@test_wikiann_hi
+  - /dataspec/wikiann@test_wikiann_fr
+  - /dataspec/wikiann@test_wikiann_es
+  - /dataspec/wikiann@test_wikiann_vi
+  - /dataspec/wikiann@test_wikiann_tr
+  - /dataspec/wikiann@test_wikiann_bg
+  - /dataspec/wikiann@test_wikiann_te
+  - /dataspec/wikiann@test_wikiann_el
+  - /dataspec/wikiann@test_wikiann_he
+  - /dataspec/wikiann@test_wikiann_fi
+  - /dataspec/wikiann@test_wikiann_hu
+
+validation_wikiann_en:
+  dataset:
+    path: wikiann
+    name: en
+    split: validation
+validation_wikiann_ar:
+  dataset:
+    path: wikiann
+    name: ar
+    split: validation
+validation_wikiann_de:
+  dataset:
+    path: wikiann
+    name: de
+    split: validation
+validation_wikiann_ru:
+  dataset:
+    path: wikiann
+    name: ru
+    split: validation
+validation_wikiann_zh:
+  dataset:
+    path: wikiann
+    name: zh
+    split: validation
+validation_wikiann_ja:
+  dataset:
+    path: wikiann
+    name: ja
+    split: validation
+validation_wikiann_ur:
+  dataset:
+    path: wikiann
+    name: ur
+    split: validation
+validation_wikiann_ay:
+  dataset:
+    path: wikiann
+    name: ay
+    split: validation
+validation_wikiann_qu:
+  dataset:
+    path: wikiann
+    name: qu
+    split: validation
+validation_wikiann_ta:
+  dataset:
+    path: wikiann
+    name: ta
+    split: validation
+validation_wikiann_sw:
+  dataset:
+    path: wikiann
+    name: sw
+    split: validation
+validation_wikiann_yo:
+  dataset:
+    path: wikiann
+    name: yo
+    split: validation
+validation_wikiann_rw:
+  dataset:
+    path: wikiann
+    name: rw
+    split: validation
+validation_wikiann_am:
+  dataset:
+    path: wikiann
+    name: am
+    split: validation
+validation_wikiann_ig:
+  dataset:
+    path: wikiann
+    name: ig
+    split: validation
+validation_wikiann_hi:
+  dataset:
+    path: wikiann
+    name: hi
+    split: validation
+validation_wikiann_fr:
+  dataset:
+    path: wikiann
+    name: fr
+    split: validation
+validation_wikiann_es:
+  dataset:
+    path: wikiann
+    name: es
+    split: validation
+validation_wikiann_vi:
+  dataset:
+    path: wikiann
+    name: vi
+    split: validation
+validation_wikiann_tr:
+  dataset:
+    path: wikiann
+    name: tr
+    split: validation
+validation_wikiann_bg:
+  dataset:
+    path: wikiann
+    name: bg
+    split: validation
+validation_wikiann_te:
+  dataset:
+    path: wikiann
+    name: te
+    split: validation
+validation_wikiann_el:
+  dataset:
+    path: wikiann
+    name: el
+    split: validation
+validation_wikiann_he:
+  dataset:
+    path: wikiann
+    name: he
+    split: validation
+validation_wikiann_fi:
+  dataset:
+    path: wikiann
+    name: fi
+    split: validation
+validation_wikiann_hu:
+  dataset:
+    path: wikiann
+    name: hu
+    split: validation
+test_wikiann_en:
+  dataset:
+    path: wikiann
+    name: en
+    split: test
+test_wikiann_ar:
+  dataset:
+    path: wikiann
+    name: ar
+    split: test
+test_wikiann_de:
+  dataset:
+    path: wikiann
+    name: de
+    split: test
+test_wikiann_ru:
+  dataset:
+    path: wikiann
+    name: ru
+    split: test
+test_wikiann_zh:
+  dataset:
+    path: wikiann
+    name: zh
+    split: test
+test_wikiann_ja:
+  dataset:
+    path: wikiann
+    name: ja
+    split: test
+test_wikiann_ur:
+  dataset:
+    path: wikiann
+    name: ur
+    split: test
+test_wikiann_ay:
+  dataset:
+    path: wikiann
+    name: ay
+    split: test
+test_wikiann_qu:
+  dataset:
+    path: wikiann
+    name: qu
+    split: test
+test_wikiann_ta:
+  dataset:
+    path: wikiann
+    name: ta
+    split: test
+test_wikiann_sw:
+  dataset:
+    path: wikiann
+    name: sw
+    split: test
+test_wikiann_yo:
+  dataset:
+    path: wikiann
+    name: yo
+    split: test
+test_wikiann_rw:
+  dataset:
+    path: wikiann
+    name: rw
+    split: test
+test_wikiann_am:
+  dataset:
+    path: wikiann
+    name: am
+    split: test
+test_wikiann_ig:
+  dataset:
+    path: wikiann
+    name: ig
+    split: test
+test_wikiann_hi:
+  dataset:
+    path: wikiann
+    name: hi
+    split: test
+test_wikiann_fr:
+  dataset:
+    path: wikiann
+    name: fr
+    split: test
+test_wikiann_es:
+  dataset:
+    path: wikiann
+    name: es
+    split: test
+test_wikiann_vi:
+  dataset:
+    path: wikiann
+    name: vi
+    split: test
+test_wikiann_tr:
+  dataset:
+    path: wikiann
+    name: tr
+    split: test
+test_wikiann_bg:
+  dataset:
+    path: wikiann
+    name: bg
+    split: test
+test_wikiann_te:
+  dataset:
+    path: wikiann
+    name: te
+    split: test
+test_wikiann_el:
+  dataset:
+    path: wikiann
+    name: el
+    split: test
+test_wikiann_he:
+  dataset:
+    path: wikiann
+    name: he
+    split: test
+test_wikiann_fi:
+  dataset:
+    path: wikiann
+    name: fi
+    split: test
+test_wikiann_hu:
+  dataset:
+    path: wikiann
+    name: hu
+    split: test

@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train:
+    - pawsx_train
+  - /dataspecs@datamodule.val:
+    - pawsx_val_test
+  - override /trainer: default # choose trainer from 'configs/trainer/'
+  - override /module: text_classification
+
+run:
+  lang: en # determines on which pawsx-train-$lang split the model to train
+  seed: 42
+
+module:
+  model:
+    pretrained_model_name_or_path: "xlm-roberta-base"
+    num_labels: 2

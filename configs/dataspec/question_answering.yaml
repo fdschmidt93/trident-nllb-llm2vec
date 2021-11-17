@@ -1,0 +1,41 @@
+defaults:
+  - default
+  - evaluation: question_answering
+
+misc:
+  remove_unused_columns: true
+
+dataloader:
+  collate_fn:
+    max_length: 384
+
+preprocessing:
+  method:
+    map:
+      batched: true
+      function:
+        _target_: src.tasks.question_answering.processing.preprocess_fn_val_test
+        _partial_: true
+        tokenizer:
+          _partial_: true
+          _target_: transformers.tokenization_utils_base.PreTrainedTokenizerBase.__call__
+          self:
+            _target_: transformers.AutoTokenizer.from_pretrained
+            pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+            padding_side: right
+          # "When splitting up a long document into chunks, how much stride to take between chunks."
+          stride: 128
+          padding: "max_length"
+          max_length: 384
+          return_overflowing_tokens: true  # do not change
+          return_offsets_mapping: true  # do not change
+          truncation: true
+        column_names:
+          context: context
+          question: question
+          answers: answers
+      remove_columns:
+        - "id"
+        - "context"
+        - "question"
+        - "answers"

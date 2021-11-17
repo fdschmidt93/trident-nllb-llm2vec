@@ -1,0 +1,13 @@
+dataset:
+  _target_: datasets.load.load_dataset
+  path: "Muennighoff/flores200"
+  name: "eng_Latn-deu_Latn"
+  split: dev+devtest
+dataloader:
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.CollatorForFlores
+  batch_size: ${run.train_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 0

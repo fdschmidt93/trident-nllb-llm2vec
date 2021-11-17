@@ -1,0 +1,36 @@
+# _target_ functions in prepare should always take named arguments and pass *args and **kwargs
+# see src.tasks.text_classification.evaluation.get_preds as an example
+prepare:
+  batch: null  # takes (trident_module: TridentModule, batch: dict, split: trident.utils.enums.Split)
+  outputs:     # takes (trident_module: TridentModule, outputs: dict, batch: dict, split: trident.utils.enums.Split)                             
+    _partial_: true
+    _target_: src.tasks.text_classification.evaluation.get_preds
+    # takes (module: TridentModule, flattened_step_outputs: dict, stage: str)
+    # where list of step_outputs are flattened
+  step_outputs: null 
+
+# Which keys/attributes are supposed to be collected from `outputs` and `batch`
+step_outputs:
+  outputs:
+    - "preds" # can be a str
+  batch: # or a list[str]
+    - labels
+
+# either metrics or val_metrics and test_metrics
+# where the latter
+# metrics should be copied for each dataset by default unless _datasets_ is specified
+metrics:
+  # name of the metric used eg for logging
+  acc:
+    # instructions to instantiate metric, preferrably torchmetrics.Metric
+    metric:
+      _partial_: true
+      _target_: torchmetrics.functional.accuracy
+      task: "multiclass"
+      num_classes: 3
+    # either "eval_step" or "epoch_end"
+    compute_on: "epoch_end"
+    kwargs: 
+      # kwargs for the metric function
+      preds: "outputs.preds"
+      target: "outputs.labels"

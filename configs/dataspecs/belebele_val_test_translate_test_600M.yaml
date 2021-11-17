@@ -1,0 +1,732 @@
+acm_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/acm_Arab_test.parquet
+    split: train
+afr_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/afr_Latn_test.parquet
+    split: train
+als_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/als_Latn_test.parquet
+    split: train
+amh_Ethi_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/amh_Ethi_test.parquet
+    split: train
+apc_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/apc_Arab_test.parquet
+    split: train
+arb_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/arb_Arab_test.parquet
+    split: train
+arb_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/arb_Latn_test.parquet
+    split: train
+ars_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ars_Arab_test.parquet
+    split: train
+ary_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ary_Arab_test.parquet
+    split: train
+arz_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/arz_Arab_test.parquet
+    split: train
+asm_Beng_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/asm_Beng_test.parquet
+    split: train
+azj_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/azj_Latn_test.parquet
+    split: train
+bam_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/bam_Latn_test.parquet
+    split: train
+ben_Beng_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ben_Beng_test.parquet
+    split: train
+ben_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ben_Latn_test.parquet
+    split: train
+bod_Tibt_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/bod_Tibt_test.parquet
+    split: train
+bul_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/bul_Cyrl_test.parquet
+    split: train
+cat_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/cat_Latn_test.parquet
+    split: train
+ceb_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ceb_Latn_test.parquet
+    split: train
+ces_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ces_Latn_test.parquet
+    split: train
+ckb_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ckb_Arab_test.parquet
+    split: train
+dan_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/dan_Latn_test.parquet
+    split: train
+deu_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/deu_Latn_test.parquet
+    split: train
+ell_Grek_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ell_Grek_test.parquet
+    split: train
+eng_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/eng_Latn_test.parquet
+    split: train
+est_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/est_Latn_test.parquet
+    split: train
+eus_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/eus_Latn_test.parquet
+    split: train
+fin_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/fin_Latn_test.parquet
+    split: train
+fra_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/fra_Latn_test.parquet
+    split: train
+fuv_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/fuv_Latn_test.parquet
+    split: train
+gaz_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/gaz_Latn_test.parquet
+    split: train
+grn_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/grn_Latn_test.parquet
+    split: train
+guj_Gujr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/guj_Gujr_test.parquet
+    split: train
+hat_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hat_Latn_test.parquet
+    split: train
+hau_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hau_Latn_test.parquet
+    split: train
+heb_Hebr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/heb_Hebr_test.parquet
+    split: train
+hin_Deva_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hin_Deva_test.parquet
+    split: train
+hin_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hin_Latn_test.parquet
+    split: train
+hrv_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hrv_Latn_test.parquet
+    split: train
+hun_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hun_Latn_test.parquet
+    split: train
+hye_Armn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/hye_Armn_test.parquet
+    split: train
+ibo_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ibo_Latn_test.parquet
+    split: train
+ilo_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ilo_Latn_test.parquet
+    split: train
+ind_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ind_Latn_test.parquet
+    split: train
+isl_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/isl_Latn_test.parquet
+    split: train
+ita_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ita_Latn_test.parquet
+    split: train
+jav_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/jav_Latn_test.parquet
+    split: train
+jpn_Jpan_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/jpn_Jpan_test.parquet
+    split: train
+kac_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kac_Latn_test.parquet
+    split: train
+kan_Knda_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kan_Knda_test.parquet
+    split: train
+kat_Geor_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kat_Geor_test.parquet
+    split: train
+kaz_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kaz_Cyrl_test.parquet
+    split: train
+kea_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kea_Latn_test.parquet
+    split: train
+khk_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/khk_Cyrl_test.parquet
+    split: train
+khm_Khmr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/khm_Khmr_test.parquet
+    split: train
+kin_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kin_Latn_test.parquet
+    split: train
+kir_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kir_Cyrl_test.parquet
+    split: train
+kor_Hang_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/kor_Hang_test.parquet
+    split: train
+lao_Laoo_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/lao_Laoo_test.parquet
+    split: train
+lin_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/lin_Latn_test.parquet
+    split: train
+lit_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/lit_Latn_test.parquet
+    split: train
+lug_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/lug_Latn_test.parquet
+    split: train
+luo_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/luo_Latn_test.parquet
+    split: train
+lvs_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/lvs_Latn_test.parquet
+    split: train
+mal_Mlym_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mal_Mlym_test.parquet
+    split: train
+mar_Deva_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mar_Deva_test.parquet
+    split: train
+mkd_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mkd_Cyrl_test.parquet
+    split: train
+mlt_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mlt_Latn_test.parquet
+    split: train
+mri_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mri_Latn_test.parquet
+    split: train
+mya_Mymr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/mya_Mymr_test.parquet
+    split: train
+nld_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/nld_Latn_test.parquet
+    split: train
+nob_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/nob_Latn_test.parquet
+    split: train
+npi_Deva_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/npi_Deva_test.parquet
+    split: train
+npi_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/npi_Latn_test.parquet
+    split: train
+nso_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/nso_Latn_test.parquet
+    split: train
+nya_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/nya_Latn_test.parquet
+    split: train
+ory_Orya_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ory_Orya_test.parquet
+    split: train
+pan_Guru_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/pan_Guru_test.parquet
+    split: train
+pbt_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/pbt_Arab_test.parquet
+    split: train
+pes_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/pes_Arab_test.parquet
+    split: train
+plt_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/plt_Latn_test.parquet
+    split: train
+pol_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/pol_Latn_test.parquet
+    split: train
+por_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/por_Latn_test.parquet
+    split: train
+ron_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ron_Latn_test.parquet
+    split: train
+rus_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/rus_Cyrl_test.parquet
+    split: train
+shn_Mymr_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/shn_Mymr_test.parquet
+    split: train
+sin_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/sin_Latn_test.parquet
+    split: train
+sin_Sinh_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/sin_Sinh_test.parquet
+    split: train
+slk_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/slk_Latn_test.parquet
+    split: train
+slv_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/slv_Latn_test.parquet
+    split: train
+sna_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/sna_Latn_test.parquet
+    split: train
+snd_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/snd_Arab_test.parquet
+    split: train
+som_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/som_Latn_test.parquet
+    split: train
+sot_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/sot_Latn_test.parquet
+    split: train
+spa_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/spa_Latn_test.parquet
+    split: train
+srp_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/srp_Cyrl_test.parquet
+    split: train
+ssw_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ssw_Latn_test.parquet
+    split: train
+sun_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/sun_Latn_test.parquet
+    split: train
+swe_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/swe_Latn_test.parquet
+    split: train
+swh_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/swh_Latn_test.parquet
+    split: train
+tam_Taml_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tam_Taml_test.parquet
+    split: train
+tel_Telu_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tel_Telu_test.parquet
+    split: train
+tgk_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tgk_Cyrl_test.parquet
+    split: train
+tgl_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tgl_Latn_test.parquet
+    split: train
+tha_Thai_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tha_Thai_test.parquet
+    split: train
+tir_Ethi_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tir_Ethi_test.parquet
+    split: train
+tsn_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tsn_Latn_test.parquet
+    split: train
+tso_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tso_Latn_test.parquet
+    split: train
+tur_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/tur_Latn_test.parquet
+    split: train
+ukr_Cyrl_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/ukr_Cyrl_test.parquet
+    split: train
+urd_Arab_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/urd_Arab_test.parquet
+    split: train
+urd_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/urd_Latn_test.parquet
+    split: train
+uzn_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/uzn_Latn_test.parquet
+    split: train
+vie_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/vie_Latn_test.parquet
+    split: train
+war_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/war_Latn_test.parquet
+    split: train
+wol_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/wol_Latn_test.parquet
+    split: train
+xho_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/xho_Latn_test.parquet
+    split: train
+yor_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/yor_Latn_test.parquet
+    split: train
+zho_Hans_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/zho_Hans_test.parquet
+    split: train
+zho_Hant_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/zho_Hant_test.parquet
+    split: train
+zsm_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/zsm_Latn_test.parquet
+    split: train
+zul_Latn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/belebele/zul_Latn_test.parquet
+    split: train

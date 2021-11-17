@@ -1,0 +1,6 @@
+defaults:
+  - dataset: null
+  - dataloader: default
+
+dataset:
+  _target_: datasets.load.load_dataset

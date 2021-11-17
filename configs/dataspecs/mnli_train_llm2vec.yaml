@@ -1,0 +1,11 @@
+defaults:
+  - /dataspec@mnli: nli_llm2vec
+
+mnli:
+  dataset:
+    path: glue
+    name: mnli
+    split: train
+  dataloader:
+    shuffle: true
+    batch_size: ${run.train_batch_size}

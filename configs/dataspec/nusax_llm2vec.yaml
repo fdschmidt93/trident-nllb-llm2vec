@@ -1,0 +1,29 @@
+defaults:
+  - llm2vec
+  - evaluation: text_classification
+  - optional module@_here_: ${module}
+
+dataset:
+  _target_: datasets.load.load_dataset
+
+dataloader:
+  collate_fn:
+    columns:
+      text: text
+      label: label
+
+evaluation:
+  metrics:
+    macro_f1:
+      metric:
+        _partial_: true
+        _target_: torchmetrics.functional.f1_score
+        task: "multiclass"
+        average: "macro"
+        num_classes: 3
+      # either "eval_step" or "epoch_end"
+      compute_on: "epoch_end"
+      kwargs: 
+        # kwargs for the metric function
+        preds: "outputs.preds"
+        target: "outputs.labels"

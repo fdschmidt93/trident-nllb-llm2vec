@@ -1,0 +1,25 @@
+defaults:
+  - /dataspec/nusax_llm2vec@nusax_eng/validation
+  - /dataspec/nusax_llm2vec@nusax_ace/validation
+  - /dataspec/nusax_llm2vec@nusax_ban/validation
+  - /dataspec/nusax_llm2vec@nusax_bug/validation
+  - /dataspec/nusax_llm2vec@nusax_ind/validation
+  - /dataspec/nusax_llm2vec@nusax_jav/validation
+  - /dataspec/nusax_llm2vec@nusax_mad/validation
+  - /dataspec/nusax_llm2vec@nusax_min/validation
+  - /dataspec/nusax_llm2vec@nusax_bjn/validation
+  - /dataspec/nusax_llm2vec@nusax_nij/validation
+  - /dataspec/nusax_llm2vec@nusax_sun/validation
+  - /dataspec/nusax_llm2vec@nusax_bbc/validation
+  - /dataspec/nusax_llm2vec@nusax_eng/test
+  - /dataspec/nusax_llm2vec@nusax_ace/test
+  - /dataspec/nusax_llm2vec@nusax_ban/test
+  - /dataspec/nusax_llm2vec@nusax_bug/test
+  - /dataspec/nusax_llm2vec@nusax_ind/test
+  - /dataspec/nusax_llm2vec@nusax_jav/test
+  - /dataspec/nusax_llm2vec@nusax_mad/test
+  - /dataspec/nusax_llm2vec@nusax_min/test
+  - /dataspec/nusax_llm2vec@nusax_bjn/test
+  - /dataspec/nusax_llm2vec@nusax_nij/test
+  - /dataspec/nusax_llm2vec@nusax_sun/test
+  - /dataspec/nusax_llm2vec@nusax_bbc/test

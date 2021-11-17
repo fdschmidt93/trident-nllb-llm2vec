@@ -1,0 +1,48 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: mnli_train_llm2vec
+  - /dataspecs@datamodule.val:
+      - xnli_val_test_en
+  - /dataspecs/module@datamodule.val:
+      - xnli_val_test_en_llm2vec
+  - default_llm2vec
+
+run:
+  task: nli_llm2vec_train
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  seed: 42
+  train_batch_size: 8
+  val_test_batch_size: 16
+  max_length: 256
+
+trainer:
+  num_sanity_val_steps: 0
+  max_epochs: 3
+  accumulate_grad_batches: 4
+  val_check_interval: 0.333
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForSequenceClassification
+  save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  num_labels: 3
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+
+logger:
+  wandb:
+    name: "model=${run.base_model}_epochs=${trainer.max_epochs}_batch-size=${_log_vars.train_batch_size}_accumulate-grad-batches=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.base_model}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+      - "accumulate-grad-batches=${trainer.accumulate_grad_batches}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

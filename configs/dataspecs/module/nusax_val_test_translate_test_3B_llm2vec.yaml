@@ -1,0 +1,17 @@
+defaults:
+  - /dataspec/nusax_llm2vec@nusax_ace_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_ban_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_bjn_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_bug_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_ind_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_jav_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_min_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_sun_translate_test_3B/validation
+  - /dataspec/nusax_llm2vec@nusax_ace_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_ban_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_bjn_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_bug_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_ind_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_jav_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_min_translate_test_3B/test
+  - /dataspec/nusax_llm2vec@nusax_sun_translate_test_3B/test

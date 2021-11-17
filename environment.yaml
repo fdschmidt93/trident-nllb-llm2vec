@@ -1,0 +1,33 @@
+name: nllb-llm2vec # or your name
+channels:
+  # pytorch and nvidia need to superseed
+  # conda-forge for cuda pytorch
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.2
+  - pytorch-cuda=12.1
+  - cudatoolkit-dev
+  - transformers
+  - lightning=2.2
+  - wandb
+  - hydra-core
+  - hydra-colorlog
+
+  # development dependencies
+  - ipython
+  - pytest
+  - debugpy
+  - pudb
+  - pyright
+  - pip
+  - ruff
+
+  - pip:
+    - peft
+    - seqeval
+    - ruff-lsp
+    # path to trident
+    - -e ../trident/

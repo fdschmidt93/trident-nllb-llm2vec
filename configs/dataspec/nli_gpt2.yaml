@@ -1,0 +1,35 @@
+defaults:
+  - evaluation: text_classification
+
+dataset:
+  _target_: datasets.load.load_dataset
+
+dataloader:
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.DataCollatorForSequenceClassification
+    llm_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+    llm_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: "facebook/nllb-200-distilled-600M"
+      src_lang: eng_Latn
+    nllb_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+    columns:
+      text: premise
+      text_pair: hypothesis
+      label: label
+  batch_size: 32 # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: false # will be copied in to val and test
+  num_workers: 4

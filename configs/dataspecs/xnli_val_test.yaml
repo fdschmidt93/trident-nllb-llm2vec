@@ -1,0 +1,150 @@
+xnli_en/validation:
+  dataset:
+    path: xnli
+    name: en
+    split: validation
+xnli_es/validation:
+  dataset:
+    path: xnli
+    name: es
+    split: validation
+xnli_de/validation:
+  dataset:
+    path: xnli
+    name: de
+    split: validation
+xnli_fr/validation:
+  dataset:
+    path: xnli
+    name: fr
+    split: validation
+xnli_el/validation:
+  dataset:
+    path: xnli
+    name: el
+    split: validation
+xnli_bg/validation:
+  dataset:
+    path: xnli
+    name: bg
+    split: validation
+xnli_ru/validation:
+  dataset:
+    path: xnli
+    name: ru
+    split: validation
+xnli_tr/validation:
+  dataset:
+    path: xnli
+    name: tr
+    split: validation
+xnli_ar/validation:
+  dataset:
+    path: xnli
+    name: ar
+    split: validation
+xnli_vi/validation:
+  dataset:
+    path: xnli
+    name: vi
+    split: validation
+xnli_th/validation:
+  dataset:
+    path: xnli
+    name: th
+    split: validation
+xnli_zh/validation:
+  dataset:
+    path: xnli
+    name: zh
+    split: validation
+xnli_hi/validation:
+  dataset:
+    path: xnli
+    name: hi
+    split: validation
+xnli_sw/validation:
+  dataset:
+    path: xnli
+    name: sw
+    split: validation
+xnli_ur/validation:
+  dataset:
+    path: xnli
+    name: ur
+    split: validation
+xnli_en/test:
+  dataset:
+    path: xnli
+    name: en
+    split: test
+xnli_es/test:
+  dataset:
+    path: xnli
+    name: es
+    split: test
+xnli_de/test:
+  dataset:
+    path: xnli
+    name: de
+    split: test
+xnli_fr/test:
+  dataset:
+    path: xnli
+    name: fr
+    split: test
+xnli_el/test:
+  dataset:
+    path: xnli
+    name: el
+    split: test
+xnli_bg/test:
+  dataset:
+    path: xnli
+    name: bg
+    split: test
+xnli_ru/test:
+  dataset:
+    path: xnli
+    name: ru
+    split: test
+xnli_tr/test:
+  dataset:
+    path: xnli
+    name: tr
+    split: test
+xnli_ar/test:
+  dataset:
+    path: xnli
+    name: ar
+    split: test
+xnli_vi/test:
+  dataset:
+    path: xnli
+    name: vi
+    split: test
+xnli_th/test:
+  dataset:
+    path: xnli
+    name: th
+    split: test
+xnli_zh/test:
+  dataset:
+    path: xnli
+    name: zh
+    split: test
+xnli_hi/test:
+  dataset:
+    path: xnli
+    name: hi
+    split: test
+xnli_sw/test:
+  dataset:
+    path: xnli
+    name: sw
+    split: test
+xnli_ur/test:
+  dataset:
+    path: xnli
+    name: ur
+    split: test

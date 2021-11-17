@@ -1,0 +1,25 @@
+eng_Latn/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/datasets/belebele_train_validation/eng_Latn_val.parquet
+    split: train
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          columns:
+            context: passage
+            question: question
+            label: correct_answer_num
+            choices: 
+              - answer1
+              - answer2
+              - answer3
+              - answer4
+eng_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: eng_Latn
+    split: test

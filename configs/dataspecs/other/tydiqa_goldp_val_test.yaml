@@ -1,0 +1,104 @@
+defaults:
+  - /dataspec/question_answering@test_tydiqa_en
+  - /dataspec/question_answering@validation_tydiqa_ar
+  - /dataspec/question_answering@validation_tydiqa_bn
+  - /dataspec/question_answering@validation_tydiqa_fi
+  - /dataspec/question_answering@validation_tydiqa_id
+  - /dataspec/question_answering@validation_tydiqa_ko
+  - /dataspec/question_answering@validation_tydiqa_ru
+  - /dataspec/question_answering@validation_tydiqa_sw
+  - /dataspec/question_answering@validation_tydiqa_te
+  - /dataspec/question_answering@test_tydiqa_ar
+  - /dataspec/question_answering@test_tydiqa_bn
+  - /dataspec/question_answering@test_tydiqa_fi
+  - /dataspec/question_answering@test_tydiqa_id
+  - /dataspec/question_answering@test_tydiqa_ko
+  - /dataspec/question_answering@test_tydiqa_ru
+  - /dataspec/question_answering@test_tydiqa_sw
+  - /dataspec/question_answering@test_tydiqa_te
+
+test_tydiqa_en:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: en
+    split: dev
+validation_tydiqa_ar:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ar
+    split: train
+validation_tydiqa_bn:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: bn
+    split: train
+validation_tydiqa_fi:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: fi
+    split: train
+validation_tydiqa_id:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: id
+    split: train
+validation_tydiqa_ko:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ko
+    split: train
+validation_tydiqa_ru:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ru
+    split: train
+validation_tydiqa_sw:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: sw
+    split: train
+validation_tydiqa_te:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: te
+    split: train
+test_tydiqa_ar:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ar
+    split: dev
+test_tydiqa_bn:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: bn
+    split: dev
+test_tydiqa_fi:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: fi
+    split: dev
+test_tydiqa_id:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: id
+    split: dev
+test_tydiqa_ko:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ko
+    split: dev
+test_tydiqa_ru:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: ru
+    split: dev
+test_tydiqa_sw:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: sw
+    split: dev
+test_tydiqa_te:
+  dataset:
+    path: ${hydra:runtime.cwd}/src/tasks/question_answering/tydiqa_goldp_dataset.py
+    name: te
+    split: dev

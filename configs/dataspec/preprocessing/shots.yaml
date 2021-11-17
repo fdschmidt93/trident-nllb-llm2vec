@@ -1,0 +1,13 @@
+# You can pull in this config into your dataspec to do few-shot learning.
+# run.shots in the top-level config of the experiment config.
+# You most likely will want to add run.shots to your logger!
+
+method:
+  shuffle:
+    seed: ${run.seed}
+  select:
+    indices:
+      _target_: builtins.range
+      _args_:
+        - 0
+        - ${run.shots}

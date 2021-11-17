@@ -1,0 +1,10 @@
+defaults:
+  - /dataspec/wikiann@wikiann
+  - override /dataspec/dataloader@wikiann.dataloader: train
+
+wikiann:
+  dataset:
+    path: wikiann
+    # oc.select falls back to default default if interpolation key is not found
+    name: ${oc.select:run.lang,en}
+    split: train

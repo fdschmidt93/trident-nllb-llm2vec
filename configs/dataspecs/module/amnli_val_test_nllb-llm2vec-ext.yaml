@@ -1,0 +1,130 @@
+defaults:
+  - amnli_val_test_llm2vec
+
+amnli_aym/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: ayr_Latn
+amnli_bzd/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        # src_lang: spa_Latn
+        src_lang: bzd_Latn
+amnli_cni/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        # src_lang: spa_Latn
+        src_lang: cni_Latn
+amnli_gn/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: grn_Latn
+amnli_hch/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        # src_lang: spa_Latn
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: hch_Latn
+amnli_nah/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        # src_lang: spa_Latn
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: nah_Latn
+amnli_oto/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        # src_lang: spa_Latn
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: oto_Latn
+amnli_quy/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: quy_Latn
+amnli_shp/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        # src_lang: spa_Latn
+        src_lang: shp_Latn
+amnli_tar/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        # src_lang: spa_Latn
+        src_lang: tar_Latn
+amnli_aym/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: ayr_Latn
+amnli_bzd/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: bzd_Latn
+amnli_cni/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: spa_Latn
+amnli_gn/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: grn_Latn
+amnli_hch/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: hch_Latn
+amnli_nah/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: nah_Latn
+amnli_oto/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: oto_Latn
+amnli_quy/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: quy_Latn
+amnli_shp/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: shp_Latn
+amnli_tar/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        _target_: src.mt_llm.translation.get_translation_training_tokenizer
+        src_lang: tar_Latn

@@ -1,0 +1,36 @@
+amnli_aym_translate_test_3B/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/aym_validation.parquet
+    split: train
+amnli_gn_translate_test_3B/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/gn_validation.parquet
+    split: train
+amnli_quy_translate_test_3B/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/quy_validation.parquet
+    split: train
+amnli_aym_translate_test_3B/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/aym_test.parquet
+    split: train
+amnli_gn_translate_test_3B/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/gn_test.parquet
+    split: train
+amnli_quy_translate_test_3B/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/translations/nllb-200-3.3B/americas_nli/quy_test.parquet
+    split: train

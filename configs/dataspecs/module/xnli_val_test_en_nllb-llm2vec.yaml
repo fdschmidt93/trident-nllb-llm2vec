@@ -1,0 +1,13 @@
+defaults:
+  - xnli_val_test_en_llm2vec.yaml 
+
+xnli_en/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn
+xnli_en/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn

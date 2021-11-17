@@ -1,0 +1,112 @@
+nusax_ace_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ace_validation.parquet
+    split: train
+nusax_ban_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ban_validation.parquet
+    split: train
+nusax_bjn_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/bjn_validation.parquet
+    split: train
+nusax_bug_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/bug_validation.parquet
+    split: train
+nusax_ind_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ind_validation.parquet
+    split: train
+nusax_jav_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/jav_validation.parquet
+    split: train
+nusax_min_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/min_validation.parquet
+    split: train
+nusax_sun_translate_test_600M/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/sun_validation.parquet
+    split: train
+nusax_ace_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ace_test.parquet
+    split: train
+nusax_ban_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ban_test.parquet
+    split: train
+nusax_bjn_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/bjn_test.parquet
+    split: train
+nusax_bug_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/bug_test.parquet
+    split: train
+nusax_ind_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/ind_test.parquet
+    split: train
+nusax_jav_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/jav_test.parquet
+    split: train
+nusax_min_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/min_test.parquet
+    split: train
+nusax_sun_translate_test_600M/test:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: 
+      train: ${hydra:runtime.cwd}/data/translations/nllb-200-distilled-600M/NusaX-senti/sun_test.parquet
+    split: train

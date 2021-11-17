@@ -1,0 +1,752 @@
+eng_Latn/validation:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/datasets/belebele_train_validation/eng_Latn_val.parquet
+    split: train
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          columns:
+            # train/val
+            context: passage
+            question: question
+            label: correct_answer_num
+            choices: 
+              - answer1
+              - answer2
+              - answer3
+              - answer4
+acm_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: acm_Arab
+    split: test
+afr_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: afr_Latn
+    split: test
+als_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: als_Latn
+    split: test
+amh_Ethi/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: amh_Ethi
+    split: test
+apc_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: apc_Arab
+    split: test
+arb_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: arb_Arab
+    split: test
+arb_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: arb_Latn
+    split: test
+ars_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ars_Arab
+    split: test
+ary_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ary_Arab
+    split: test
+arz_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: arz_Arab
+    split: test
+asm_Beng/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: asm_Beng
+    split: test
+azj_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: azj_Latn
+    split: test
+bam_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: bam_Latn
+    split: test
+ben_Beng/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ben_Beng
+    split: test
+ben_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ben_Latn
+    split: test
+bod_Tibt/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: bod_Tibt
+    split: test
+bul_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: bul_Cyrl
+    split: test
+cat_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: cat_Latn
+    split: test
+ceb_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ceb_Latn
+    split: test
+ces_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ces_Latn
+    split: test
+ckb_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ckb_Arab
+    split: test
+dan_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: dan_Latn
+    split: test
+deu_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: deu_Latn
+    split: test
+ell_Grek/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ell_Grek
+    split: test
+eng_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: eng_Latn
+    split: test
+est_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: est_Latn
+    split: test
+eus_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: eus_Latn
+    split: test
+fin_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: fin_Latn
+    split: test
+fra_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: fra_Latn
+    split: test
+fuv_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: fuv_Latn
+    split: test
+gaz_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: gaz_Latn
+    split: test
+grn_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: grn_Latn
+    split: test
+guj_Gujr/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: guj_Gujr
+    split: test
+hat_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hat_Latn
+    split: test
+hau_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hau_Latn
+    split: test
+heb_Hebr/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: heb_Hebr
+    split: test
+hin_Deva/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hin_Deva
+    split: test
+hin_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hin_Latn
+    split: test
+hrv_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hrv_Latn
+    split: test
+hun_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hun_Latn
+    split: test
+hye_Armn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: hye_Armn
+    split: test
+ibo_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ibo_Latn
+    split: test
+ilo_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ilo_Latn
+    split: test
+ind_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ind_Latn
+    split: test
+isl_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: isl_Latn
+    split: test
+ita_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ita_Latn
+    split: test
+jav_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: jav_Latn
+    split: test
+jpn_Jpan/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: jpn_Jpan
+    split: test
+kac_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kac_Latn
+    split: test
+kan_Knda/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kan_Knda
+    split: test
+kat_Geor/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kat_Geor
+    split: test
+kaz_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kaz_Cyrl
+    split: test
+kea_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kea_Latn
+    split: test
+khk_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: khk_Cyrl
+    split: test
+khm_Khmr/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: khm_Khmr
+    split: test
+kin_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kin_Latn
+    split: test
+kir_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kir_Cyrl
+    split: test
+kor_Hang/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: kor_Hang
+    split: test
+lao_Laoo/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: lao_Laoo
+    split: test
+lin_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: lin_Latn
+    split: test
+lit_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: lit_Latn
+    split: test
+lug_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: lug_Latn
+    split: test
+luo_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: luo_Latn
+    split: test
+lvs_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: lvs_Latn
+    split: test
+mal_Mlym/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mal_Mlym
+    split: test
+mar_Deva/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mar_Deva
+    split: test
+mkd_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mkd_Cyrl
+    split: test
+mlt_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mlt_Latn
+    split: test
+mri_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mri_Latn
+    split: test
+mya_Mymr/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: mya_Mymr
+    split: test
+nld_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: nld_Latn
+    split: test
+nob_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: nob_Latn
+    split: test
+npi_Deva/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: npi_Deva
+    split: test
+npi_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: npi_Latn
+    split: test
+nso_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: nso_Latn
+    split: test
+nya_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: nya_Latn
+    split: test
+ory_Orya/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ory_Orya
+    split: test
+pan_Guru/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: pan_Guru
+    split: test
+pbt_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: pbt_Arab
+    split: test
+pes_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: pes_Arab
+    split: test
+plt_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: plt_Latn
+    split: test
+pol_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: pol_Latn
+    split: test
+por_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: por_Latn
+    split: test
+ron_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ron_Latn
+    split: test
+rus_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: rus_Cyrl
+    split: test
+shn_Mymr/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: shn_Mymr
+    split: test
+sin_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: sin_Latn
+    split: test
+sin_Sinh/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: sin_Sinh
+    split: test
+slk_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: slk_Latn
+    split: test
+slv_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: slv_Latn
+    split: test
+sna_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: sna_Latn
+    split: test
+snd_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: snd_Arab
+    split: test
+som_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: som_Latn
+    split: test
+sot_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: sot_Latn
+    split: test
+spa_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: spa_Latn
+    split: test
+srp_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: srp_Cyrl
+    split: test
+ssw_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ssw_Latn
+    split: test
+sun_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: sun_Latn
+    split: test
+swe_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: swe_Latn
+    split: test
+swh_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: swh_Latn
+    split: test
+tam_Taml/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tam_Taml
+    split: test
+tel_Telu/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tel_Telu
+    split: test
+tgk_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tgk_Cyrl
+    split: test
+tgl_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tgl_Latn
+    split: test
+tha_Thai/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tha_Thai
+    split: test
+tir_Ethi/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tir_Ethi
+    split: test
+tsn_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tsn_Latn
+    split: test
+tso_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tso_Latn
+    split: test
+tur_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: tur_Latn
+    split: test
+ukr_Cyrl/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: ukr_Cyrl
+    split: test
+urd_Arab/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: urd_Arab
+    split: test
+urd_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: urd_Latn
+    split: test
+uzn_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: uzn_Latn
+    split: test
+vie_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: vie_Latn
+    split: test
+war_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: war_Latn
+    split: test
+wol_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: wol_Latn
+    split: test
+xho_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: xho_Latn
+    split: test
+yor_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: yor_Latn
+    split: test
+zho_Hans/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: zho_Hans
+    split: test
+zho_Hant/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: zho_Hant
+    split: test
+zsm_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: zsm_Latn
+    split: test
+zul_Latn/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/belebele.py
+    name: zul_Latn
+    split: test

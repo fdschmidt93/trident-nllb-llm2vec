@@ -1,0 +1,12 @@
+dataloader:
+  collate_fn:
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      # hack here so XLM-R can also easily be run
+      pretrained_model_name_or_path: ${run.pretrained_model_name_or_path}
+      src_lang: eng_Latn
+    nllb_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"

@@ -1,0 +1,3 @@
+defaults:
+  - /dataspec/nusax_llm2vec@nusax_eng/validation
+  - /dataspec/nusax_llm2vec@nusax_eng/test

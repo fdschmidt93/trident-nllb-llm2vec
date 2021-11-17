@@ -1,0 +1,52 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: mnli_train_llm2vec
+  - /dataspecs@datamodule.val:
+      - amnli_val_test
+      - xnli_val_test
+      - kardesnlu_val_test
+      - amnli_val_test_translate_test_600M
+      - amnli_val_test_translate_test_3B
+      - kardesnlu_val_test_translate_test_600M
+      - kardesnlu_val_test_translate_test_3B
+  # empty config files to be able to toggle in NLLB configuration
+  - default_llm2vec
+  # - override /module: nllb-llm2vec
+
+run:
+  task: nli_llm2vec
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  seed: 42
+  train_batch_size: 4
+  val_test_batch_size: 16
+  max_length: 256
+
+trainer:
+  num_sanity_val_steps: 2
+  max_epochs: 3
+  accumulate_grad_batches: 8
+  val_check_interval: 0.33
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForSequenceClassification
+  num_labels: 3
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+
+logger:
+  wandb:
+    name: "model=${run.base_model}_epochs=${trainer.max_epochs}_bs=${_log_vars.train_batch_size}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.base_model}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

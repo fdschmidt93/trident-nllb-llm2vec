@@ -1,0 +1,10 @@
+_recursive_: false
+_target_: trident.TridentModule
+
+defaults:
+# interleaved with setup so instantiated later (recursive false)
+- default
+
+model:
+  _target_: transformers.AutoModelForQuestionAnswering.from_pretrained
+  pretrained_model_name_or_path: ???

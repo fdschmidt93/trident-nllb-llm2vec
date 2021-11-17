@@ -1,0 +1,7 @@
+defaults:
+  - /dataspec/nli_llm2vec@amnli_aym_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@amnli_gn_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@amnli_quy_translate_test_3B/validation
+  - /dataspec/nli_llm2vec@amnli_aym_translate_test_3B/test
+  - /dataspec/nli_llm2vec@amnli_gn_translate_test_3B/test
+  - /dataspec/nli_llm2vec@amnli_quy_translate_test_3B/test

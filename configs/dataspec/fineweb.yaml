@@ -1,0 +1,60 @@
+dataset:
+  _target_: datasets.load.load_dataset
+
+  _convert_: all
+  # path: HuggingFaceFW/fineweb
+  # name: sample-10BT
+  path: parquet
+  split: train
+  data_files: /gpfs/bwfor/work/ws/ma_fabiasch-tx/trident-mt-llm/data/datasets/fineweb/sample/10BT/*.parquet
+  # path: text
+  # data_files: ${hydra:runtime.cwd}/data/wiki1m_for_simcse.txt
+  # split: train
+  # num_proc: 16
+
+preprocessing:
+  apply:
+    # preprocessing:
+    #   _target_: src.mt_llm.processing.preprocess_adaptation
+    #   llama_tokenizer:
+    #     _target_: transformers.AutoTokenizer.from_pretrained
+    #     pretrained_model_name_or_path: ${run.base_model}
+    #   nllb_tokenizer:
+    #     _target_: transformers.AutoTokenizer.from_pretrained
+    #     pretrained_model_name_or_path: ${module.model.nllb.pretrained_model_name_or_path}
+    #     src_lang: eng_Latn
+    #   tokenize_kwargs:
+    #     truncation: True
+    #     max_length: 512
+    #     return_attention_mask: True
+    split_if_multi_gpu:
+      _target_: src.mt_llm.utils.split_by_node_if_multi_gpu
+      world_size: ${trainer.devices}
+  method:
+    shuffle:
+      seed: ${run.seed}
+
+dataloader:
+  _convert_: all
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.DataCollatorForAdaptationGPT
+    llm_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${oc.select:run.base_model,${run.pretrained_model_name_or_path}}
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${module.model.nllb.pretrained_model_name_or_path}
+      src_lang: eng_Latn
+    tokenize_kwargs:
+      padding: True
+      truncation: True
+      max_length: 512
+      return_attention_mask: True
+      return_tensors: pt
+    columns:
+      text: text
+  batch_size: ${run.train_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 4

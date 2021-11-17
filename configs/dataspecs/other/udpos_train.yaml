@@ -1,0 +1,9 @@
+defaults:
+  - /dataspec/udpos@udpos
+  - override /dataspec/dataloader@udpos.dataloader: train
+
+udpos:
+  dataset:
+    path: xtreme
+    name: udpos.${oc.select:run.lang,English}
+    split: train

@@ -1,0 +1,36 @@
+defaults:
+  - default
+  - evaluation: token_classification
+
+dataloader:
+  collate_fn:
+    _target_: transformers.data.data_collator.DataCollatorForTokenClassification
+
+preprocessing:
+  method:
+    map:
+      batched: True
+      num_proc: 1
+      function:
+        _target_: src.tasks.token_classification.processing.preprocess_fn
+        _partial_: true
+        tokenizer:
+          _partial_: true
+          _target_: transformers.tokenization_utils_base.PreTrainedTokenizerBase.__call__
+          self:
+              _target_: transformers.AutoTokenizer.from_pretrained
+              pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+              add_prefix_space: true # required for roberta
+          padding: "max_length"
+          truncation: true
+          max_length: 128
+          is_split_into_words: true
+        column_names: ???
+        label2id: ???
+        label_all_tokens: true
+        ignore_idx: -100
+    set_format:
+      columns:
+        - "input_ids"
+        - "attention_mask"
+        - "labels"

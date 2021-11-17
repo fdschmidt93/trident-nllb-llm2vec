@@ -1,0 +1,67 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: nusax_train_llm2vec
+  - /dataspecs@datamodule.val:
+      - nusax_val_test
+  - /dataspecs/module@datamodule.val:
+      - nusax_val_test_nllb-llm2vec
+  # empty config files to be able to toggle in NLLB configuration
+  - default_llm2vec
+  - override /module: nllb-gpt2
+
+run:
+  task: nusax_gpt2
+  pretrained_model_name_or_path: openai-community/gpt2-medium
+  base_model: openai-community/gpt2-medium
+  seed: 42
+  epoch: 9
+  train_batch_size: 32
+  val_test_batch_size: 128
+  max_length: 256
+
+trainer:
+  num_sanity_val_steps: 0
+  max_epochs: 20
+  check_val_every_n_epoch: 2
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForSequenceClassification
+  save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  nllb_ckpt: ${hydra:runtime.cwd}/logs/mt-llm/gpt2-medium/adaptation-simcse/checkpoints/step=10000.ckpt
+  num_labels: 3
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+
+datamodule:
+  train:
+    nusax:
+      preprocessing:
+        apply:
+          convert:
+            _target_: src.mt_llm.processing.EmbeddedDataset
+            key: "sequence_embeds"
+            tensors:
+              _target_: torch.load
+              _args_:
+                - ${hydra:runtime.cwd}/logs/mt-llm/gpt2-medium/preembed/nusax/embeds_seed-${run.seed}_epoch-${run.epoch}.pth
+
+logger:
+  csv:
+    _target_: lightning.pytorch.loggers.CSVLogger
+    save_dir: ${hydra:runtime.output_dir}
+  wandb:
+    name: "model=${run.base_model}_epochs=${trainer.max_epochs}_bs=${_log_vars.train_batch_size}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.base_model}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

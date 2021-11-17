@@ -1,0 +1,63 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: belebele_train_llm2vec
+  - /dataspecs@datamodule.val:
+      - belebele_val_test_en
+  - /dataspecs/module@datamodule.val:
+      - belebele_val_test_en_nllb-llm2vec
+  - default_llm2vec
+  - override /module: nllb-llm2vec
+
+
+run:
+  task: belebele_llm2vec_train
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  seed: 42
+  epoch: 9
+  train_batch_size: 2
+  val_test_batch_size: 8
+  max_length: 1024
+
+trainer:
+  num_sanity_val_steps: 0
+  max_epochs: 5
+  accumulate_grad_batches: 16
+  val_check_interval: 0.5
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForMultipleChoiceDistillation
+  save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  ckpt: ${hydra:runtime.cwd}/logs/mt-llm/llm2vec/belebele/seed-${run.seed}/checkpoints/validation-epoch=${run.epoch}.ckpt
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+
+datamodule:
+  train:
+    belebele:
+      preprocessing:
+        apply:
+          convert:
+            _target_: src.mt_llm.processing.EmbeddedDataset
+            tensors:
+              _target_: torch.load
+              _args_:
+                - "/gpfs/bwfor/work/ws/ma_fabiasch-tx/trident-mt-llm/belebele/choice_embeds_seed-${run.seed}_epoch-${run.epoch}.pth"
+
+logger:
+  wandb:
+    name: "steps=${oc.select:run.steps,10000}_model=distill-${run.base_model}_epochs=${trainer.max_epochs}_batch-size=${_log_vars.train_batch_size}_accumulate-grad-batches=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.base_model}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+      - "accumulate-grad-batches=${trainer.accumulate_grad_batches}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

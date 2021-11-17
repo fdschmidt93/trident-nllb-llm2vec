@@ -1,0 +1,69 @@
+# @package _global_
+
+defaults:
+  - /dataspecs@datamodule.train: belebele_train_llm2vec
+  - /dataspecs@datamodule.test: belebele_train_llm2vec
+  - default_llm2vec
+
+run:
+  task: belebele_llm2vec_train
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  epoch: 9
+  checkpoint: ${hydra:runtime.cwd}/logs/mt-llm/llm2vec/belebele/seed-${run.seed}/checkpoints/validation-epoch=${run.epoch}.ckpt
+  seed: 42
+  train_batch_size: 4
+  max_length: 1024
+
+trainer:
+  num_sanity_val_steps: 0
+  max_epochs: 5
+  accumulate_grad_batches: 16
+  val_check_interval: 0.5
+  limit_train_batches: 0
+  limit_test_batches: 1.0
+
+
+datamodule:
+  test:
+    belebele:
+      dataloader:
+        shuffle: false
+        batch_size: ${run.train_batch_size}
+      evaluation:
+        prepare:
+          outputs: 
+            _partial_: true
+            _target_: src.mt_llm.evaluation.to_cpu
+          step_outputs: null 
+        step_outputs:
+          outputs:
+            - "preds" # can be a str
+            - "choice_embeds" # can be a str
+          batch: # or a list[str]
+            - labels
+        metrics:
+          store:
+            metric:
+              _partial_: true
+              _target_: src.mt_llm.evaluation.store_embeds
+              seed: ${run.seed}
+              epoch: ${run.epoch}
+              task: "multiclass"
+            compute_on: "epoch_end"
+            kwargs: 
+              embeds: "outputs.choice_embeds"
+
+module:
+  _target_: src.mt_llm.module.AutoModuleForMultipleChoice.load_from_checkpoint
+  save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  optimizer:
+    lr: 1e-4
+  scheduler:
+    num_warmup_steps: 0.1
+  checkpoint_path: ${run.checkpoint}
+
+logger: null
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor

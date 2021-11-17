@@ -1,0 +1,50 @@
+# apply 
+prepare:
+  # a function that takes (batch)
+  batch: # null
+    _partial_: true
+    _target_: src.tasks.retrieval.utils.get_hidden_states
+  outputs: #null
+    _partial_: true
+    _target_: src.tasks.retrieval.utils.get_embeds
+    # n_layers: [8]
+    pool_type: null
+  # a function that takes (outputs, batch)
+  step_outputs:
+      _partial_: true
+      # _target_: src.tasks.retrieval.utils.cosine_sim
+      _target_: src.tasks.retrieval.utils.pair_wise_loop
+      pair_wise_metric:
+        _partial_: true
+        _target_: src.modules.functional.metrics.bert_score
+
+# str or list of non-conflicting keys
+step_outputs:
+  outputs:
+    - "embeds"
+  batch:
+    - "attention_mask"
+
+
+# either metrics or val_metrics and test_metrics
+# where the latter
+metrics:
+  # name of the metric used eg for logging
+  mrr:
+    # instructions to instantiate metric, preferrably torchmetrics.Metric
+    metric:
+      _partial_: true
+      _target_: src.modules.functional.metrics.mrr
+    # either on_step: true or on_epoch: true
+    compute_on: "epoch_end"
+    kwargs: 
+      scores: "outputs.scores"
+  acc:
+    # instructions to instantiate metric, preferrably torchmetrics.Metric
+    metric:
+      _partial_: true
+      _target_: src.modules.functional.metrics.retrieval_acc
+    # either on_step: true or on_epoch: true
+    compute_on: "epoch_end"
+    kwargs: 
+      scores: "outputs.scores"

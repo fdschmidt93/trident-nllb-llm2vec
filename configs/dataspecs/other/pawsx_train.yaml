@@ -1,0 +1,9 @@
+defaults:
+  - /dataspec/pawsx@pawsx
+  - override /dataspec/dataloader@pawsx.dataloader: train
+
+pawsx:
+  dataset:
+    path: paws-x
+    name: ${oc.select:run.lang,en}
+    split: train

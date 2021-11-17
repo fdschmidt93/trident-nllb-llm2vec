@@ -1,0 +1,118 @@
+defaults:
+  - /dataspec/multiple_choice@validation_xcopa_et
+  - /dataspec/multiple_choice@validation_xcopa_ht
+  - /dataspec/multiple_choice@validation_xcopa_id
+  - /dataspec/multiple_choice@validation_xcopa_it
+  - /dataspec/multiple_choice@validation_xcopa_qu
+  - /dataspec/multiple_choice@validation_xcopa_sw
+  - /dataspec/multiple_choice@validation_xcopa_ta
+  - /dataspec/multiple_choice@validation_xcopa_th
+  - /dataspec/multiple_choice@validation_xcopa_tr
+  - /dataspec/multiple_choice@validation_xcopa_vi
+  - /dataspec/multiple_choice@validation_xcopa_zh
+  - /dataspec/multiple_choice@test_copa_en
+  - /dataspec/multiple_choice@test_xcopa_et
+  - /dataspec/multiple_choice@test_xcopa_ht
+  - /dataspec/multiple_choice@test_xcopa_id
+  - /dataspec/multiple_choice@test_xcopa_it
+  - /dataspec/multiple_choice@test_xcopa_qu
+  - /dataspec/multiple_choice@test_xcopa_sw
+  - /dataspec/multiple_choice@test_xcopa_ta
+  - /dataspec/multiple_choice@test_xcopa_th
+  - /dataspec/multiple_choice@test_xcopa_tr
+  - /dataspec/multiple_choice@test_xcopa_vi
+  - /dataspec/multiple_choice@test_xcopa_zh
+
+validation_xcopa_et:
+  path: xcopa
+  name: et
+  split: validation
+validation_xcopa_ht:
+  path: xcopa
+  name: ht
+  split: validation
+validation_xcopa_id:
+  path: xcopa
+  name: id
+  split: validation
+validation_xcopa_it:
+  path: xcopa
+  name: it
+  split: validation
+validation_xcopa_qu:
+  path: xcopa
+  name: qu
+  split: validation
+validation_xcopa_sw:
+  path: xcopa
+  name: sw
+  split: validation
+validation_xcopa_ta:
+  path: xcopa
+  name: ta
+  split: validation
+validation_xcopa_th:
+  path: xcopa
+  name: th
+  split: validation
+validation_xcopa_tr:
+  path: xcopa
+  name: tr
+  split: validation
+validation_xcopa_vi:
+  path: xcopa
+  name: vi
+  split: validation
+validation_xcopa_zh:
+  path: xcopa
+  name: zh
+  split: validation
+test_copa_en:
+  path: csv
+  data_files: ${data_dir}/copa/en_test.csv
+  split: train
+test_xcopa_et:
+  path: xcopa
+  name: et
+  split: test
+test_xcopa_ht:
+  path: xcopa
+  name: ht
+  split: test
+test_xcopa_id:
+  path: xcopa
+  name: id
+  split: test
+test_xcopa_it:
+  path: xcopa
+  name: it
+  split: test
+test_xcopa_qu:
+  path: xcopa
+  name: qu
+  split: test
+test_xcopa_sw:
+  path: xcopa
+  name: sw
+  split: test
+test_xcopa_ta:
+  path: xcopa
+  name: ta
+  split: test
+test_xcopa_th:
+  path: xcopa
+  name: th
+  split: test
+test_xcopa_tr:
+  path: xcopa
+  name: tr
+  split: test
+test_xcopa_vi:
+  path: xcopa
+  name: vi
+  split: test
+test_xcopa_zh:
+  path: xcopa
+  name: zh
+  split: test
+

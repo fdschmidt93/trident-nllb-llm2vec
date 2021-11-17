@@ -1,0 +1,21 @@
+defaults:
+  # - /dataspec/nli_llm2vec@amnli_aym/validation
+  # - /dataspec/nli_llm2vec@amnli_bzd/validation
+  # - /dataspec/nli_llm2vec@amnli_cni/validation
+  # - /dataspec/nli_llm2vec@amnli_gn/validation
+  # - /dataspec/nli_llm2vec@amnli_hch/validation
+  # - /dataspec/nli_llm2vec@amnli_nah/validation
+  # - /dataspec/nli_llm2vec@amnli_oto/validation
+  # - /dataspec/nli_llm2vec@amnli_quy/validation
+  # - /dataspec/nli_llm2vec@amnli_shp/validation
+  # - /dataspec/nli_llm2vec@amnli_tar/validation
+  - /dataspec/nli_llm2vec@amnli_aym/test
+  # - /dataspec/nli_llm2vec@amnli_bzd/test
+  # - /dataspec/nli_llm2vec@amnli_cni/test
+  - /dataspec/nli_llm2vec@amnli_gn/test
+  # - /dataspec/nli_llm2vec@amnli_hch/test
+  # - /dataspec/nli_llm2vec@amnli_nah/test
+  # - /dataspec/nli_llm2vec@amnli_oto/test
+  - /dataspec/nli_llm2vec@amnli_quy/test
+  # - /dataspec/nli_llm2vec@amnli_shp/test
+  # - /dataspec/nli_llm2vec@amnli_tar/test

@@ -1,0 +1,3 @@
+defaults:
+  - /dataspec/nli_llm2vec@xnli_en/validation
+  - /dataspec/nli_llm2vec@xnli_en/test

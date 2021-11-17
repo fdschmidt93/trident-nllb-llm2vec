@@ -1,0 +1,52 @@
+dataset:
+  _convert_: all
+  _target_: src.mt_llm.processing.load_aym
+  lang_: ${run.lang}
+  # path: aiana94/polynews-parallel
+  # name: ayr_Latn-eng_Latn
+  # split: train
+  # _target_: src.mt_llm.processing.read_shp
+preprocessing:
+  method:
+    # rename_columns:
+    #   column_mapping:
+    #     src: source_sentence
+    #     tgt: target_sentence
+    map:
+      batched: true
+      function:
+        _target_: src.mt_llm.processing.preprocess_for_translation
+        _partial_: true
+        tokenizer:
+          _target_: src.mt_llm.translation.get_translation_training_tokenizer
+          src_lang: eng_Latn
+        tokenize_kwargs:
+          max_length: ${run.max_length}
+          truncation: true
+        add_columns:
+          source_lang: ayr_Latn
+          target_lang: eng_Latn
+      # fn_kwargs:
+dataloader:
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.CollatorForNLLBTranslation
+    tokenizer:
+      _target_: src.mt_llm.translation.get_translation_training_tokenizer
+      src_lang: eng_Latn
+    max_length: ${run.max_length}
+  batch_size: ${run.train_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 0
+# dataloader:
+#   _target_: torch.utils.data.dataloader.DataLoader
+#   collate_fn:
+#     _target_: src.mt_llm.processing.CollatorForNLLBTranslation
+#     tokenizer:
+#       _target_: src.mt_llm.translation.get_translation_training_tokenizer
+#     max_length: ${run.max_length}
+#   batch_size: ${run.train_batch_size} # copied into all train, val, test
+#   pin_memory: true # copied into all train, val, test
+#   shuffle: true # will be copied in to val and test
+#   num_workers: 0

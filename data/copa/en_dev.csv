@@ -1,0 +1,101 @@
+premise,question,choice1,choice2,label
+The man turned on the faucet.,effect,The toilet filled with water.,Water flowed from the spout.,1
+The girl found a bug in her cereal.,effect,She poured milk in the bowl.,She lost her appetite.,1
+The woman retired.,effect,She received her pension.,She paid off her mortgage.,0
+I wanted to conserve energy.,effect,I swept the floor in the unoccupied room.,I shut off the light in the unoccupied room.,1
+The hamburger meat browned.,cause,The cook froze it.,The cook grilled it.,1
+I doubted the salesman's pitch.,effect,I turned his offer down.,He persuaded me to buy the product.,0
+I decided to stay home for the night.,cause,The forecast called for storms.,My friends urged me to go out.,0
+My eyes became red and puffy.,cause,I was sobbing.,I was laughing.,0
+The flame on the candle went out.,cause,I blew on the wick.,I put a match to the wick.,0
+The man drank heavily at the party.,effect,He had a headache the next day.,He had a runny nose the next day.,0
+The bowling ball knocked over the bowling pins.,cause,The man rolled the bowling ball down the alley.,The man dropped the bowling ball on his foot.,0
+The community learned of the man's death.,cause,His family buried him in the cemetery.,His obituary appeared in the newspaper.,1
+My computer crashed.,effect,I installed new speakers.,I lost all my data.,1
+The woman resigned from her job.,cause,She aspired to hold an executive position in the firm.,She believed her superiors were acting unethically.,1
+The player caught the ball.,cause,Her teammate threw it to her.,Her opponent tried to intercept it.,0
+The judge pounded the gavel.,cause,The courtroom broke into uproar.,The jury announced its verdict.,0
+The woman banished the children from her property.,cause,The children hit a ball into her yard.,The children trampled through her garden.,1
+The kidnappers released the hostage.,cause,They accepted ransom money.,They escaped from jail.,0
+The cook's eyes watered.,cause,He ran out of onions.,He cut an onion.,1
+The woman ran her finger under cold water.,cause,She burned her finger on the toaster.,She put a diamond ring on her finger.,0
+The student misspelled the word.,effect,The teacher corrected her.,The teacher dismissed her.,0
+I regained composure from my fit of anger.,cause,My heart pounded.,I took deep breaths.,1
+I put my hands under the running faucet.,effect,The soap rinsed off my hands.,The water splashed in my face.,0
+The man dressed in his best suit.,cause,He scheduled a meeting with an important client.,His wife bought him a new tie.,0
+The man confessed his love for the woman.,effect,The woman rejected him.,The woman envied him.,0
+The driver got a flat tire.,cause,He went over the speed limit.,He ran over a nail.,1
+My view of the movie screen was blocked.,cause,The couple behind me was whispering.,A tall person was sitting in front of me.,1
+The driver turned on the car's headlights.,cause,He heard thunder.,The sun went down.,1
+The girl refused to eat her vegetables.,effect,Her father told her to drink her milk.,Her father took away her dessert.,1
+The woman covered her mouth with her hand.,cause,She exhaled.,She sneezed.,1
+The secretary put the caller on hold.,effect,The caller's phone lost reception.,The caller waited on the line.,1
+The woman walked with crutches.,cause,She shaved her legs.,She broke her leg.,1
+I coughed.,cause,I inhaled smoke.,I lowered my voice.,0
+The clock chimed.,cause,It was the top of the hour.,The hour seemed to drag on.,0
+The chef hit the egg on the side of the bowl.,effect,The egg cracked.,The egg rotted.,0
+The police searched the offender's car.,cause,They were trying to elicit a confession.,They were looking for illegal drugs.,1
+The couple travelled south for the winter.,cause,They were retired.,They were separated.,0
+The man felt obligated to attend the event.,cause,He turned down his friend's invitation to go.,He promised his friend that he would go.,1
+The bride got cold feet before the wedding.,effect,The wedding guests brought gifts.,She called the wedding off.,1
+The man grew old.,effect,His hair turned gray.,He sold his belongings.,0
+The friends decided to share the hamburger.,effect,They cut the hamburger in half.,They ordered fries with the hamburger.,0
+I twisted the cap off the soda bottle.,effect,The soda fizzed.,The soda leaked out.,0
+The pair of students came under scrutiny by the teacher.,cause,The students both received excellent grades.,Their responses on the assignment were identical.,1
+The student was in a rush to get to school on time.,effect,He left his assignment at home.,He brought his lunch to school.,0
+The journalist wrote a biography about the humanitarian's life.,cause,The humanitarian was difficult for the journalist to interview.,The journalist was intrigued by the humanitarian's work.,1
+The man defied the authorities of the church.,effect,He donated money to the church.,He was excommunicated from the church.,1
+The woman's hair fell in her face.,effect,She pulled her hair back with a clip.,She lathered shampoo into her hair.,0
+The ring on my finger got stuck.,cause,My finger swelled.,I chipped my fingernail.,0
+I pulled the rubber band.,effect,It flung across the room.,It stretched.,1
+I pressed my hand into the wet cement.,effect,My handprint dried in the cement.,Cracks emerged in the cement.,0
+My skin broke out into a rash.,cause,I brushed against poison ivy in my yard.,I eradicated the poison ivy from my yard.,0
+My subscription to the magazine expired.,effect,I discarded the new issue.,I stopped receiving new issues.,1
+The detective revealed an anomaly in the case.,effect,He finalized his theory.,He scrapped his theory.,1
+The boy threw a temper tantrum.,cause,His brother took his toys from him.,He shared his toys with his brother.,0
+The child learned how to read.,cause,He began attending school.,He skipped a grade in school.,0
+The boy skipped dinner.,cause,His mother cooked his favorite meal.,He ate a big lunch.,1
+The woman lavished her friend with flattery.,cause,She wanted to ask her friend for a favor.,She was irritated with her friend's whining.,0
+The key was missing from my pants pocket.,cause,The pocket had a hole.,The pants were new.,0
+The man fainted.,cause,He took a nap.,He ran a marathon.,1
+The man lost the competition.,cause,The competition was sabotaged.,He intimidated his competitors.,0
+The mother called an ambulance.,cause,Her son lost his cat.,Her son fell out of his bed.,1
+The driver slammed on his brakes.,cause,A deer appeared on the road.,The car radio shut off.,0
+The lock opened.,cause,I turned the key in the lock.,I made a duplicate of the key.,0
+I put rubber gloves on.,cause,I was preparing to wash my hands.,I was preparing to clean the bathroom.,1
+The animal species became endangered.,cause,Their habitat was destroyed.,Their predators went extinct.,0
+The man perceived that the woman looked different.,cause,The woman got her hair cut.,The woman wore a bracelet.,0
+The student forgot to do her assignment.,effect,She made up an excuse to tell the teacher.,The teacher promoted her to the next grade.,0
+The dog barked.,cause,The cat lounged on the couch.,A knock sounded at the door.,1
+Plans were announced to replace a local park with a shopping mall.,effect,Environmentalists started a petition.,Environmentalists produced a documentary.,0
+The couple was happy to see each other.,effect,They kissed.,They rested.,0
+The woman asked the man to leave.,cause,He insulted her.,He thanked her.,0
+The tree branch landed in the river.,effect,The branch moved downstream.,The river's current became stronger.,0
+The teacher assigned homework to the students.,effect,The students passed notes.,The students groaned.,1
+The seasons changed from summer to autumn.,effect,People evacuated their homes.,Leaves fell from the trees.,1
+The politician was convicted of fraud.,effect,He campaigned for re-election.,He was removed from office.,1
+I pushed the wagon.,effect,The objects in the wagon fell out.,The wagon wheels spun forward.,1
+The lobbyist persuaded the legislature to support the bill.,effect,The president vetoed the bill.,The legislature passed the bill.,1
+My closet was messy.,effect,I organized it.,I decorated it.,0
+I stayed up late.,effect,I had vivid dreams that night.,I was tired in the morning.,1
+The man's pocket jingled as he walked.,cause,His pocket was filled with coins.,He sewed the hole in his pocket.,0
+Everyone in the class turned to stare at the student.,cause,The student's phone rang.,The student took notes.,0
+The horse bucked.,cause,A fly bit the horse.,The rider stroked the horse.,0
+The jewelry thieves were caught.,effect,The stolen jewelry was returned to its owners.,The cost of the stolen jewelry was calculated.,0
+Political violence broke out in the nation.,effect,Many citizens relocated to the capitol.,Many citizens took refuge in other territories.,1
+The woman was arrested.,cause,She checked into rehab.,She committed assault.,1
+The woman read the newspaper.,effect,She discovered the outcome of the election.,She casted a vote in the election.,0
+The sick child coughed on his friend.,effect,His friend got sick.,His friend sneezed.,0
+The couple got engaged.,effect,They planned a wedding.,They took some time apart.,0
+The woman contacted the real estate agent.,cause,The woman planned to buy a condo.,The woman needed to clean her house.,0
+The man won the lottery.,effect,He became rich.,He owed money.,0
+I lit the candle.,effect,Wax dripped off the candle.,The wax on the candle hardened.,0
+I spent the day at the pool.,effect,I sprained my ankle.,My face got sunburned.,1
+The man received a parking ticket.,cause,He parallel parked on the street.,The parking meter expired.,1
+The woman became famous.,effect,Photographers followed her.,Her family avoided her.,0
+The girl wanted to wear earrings.,effect,She got her ears pierced.,She got a tattoo.,0
+My ears were ringing.,cause,I went to a museum.,I went to a concert.,1
+I tidied up my house.,cause,I was swamped with work.,I was expecting company.,1
+The airline mishandled my luggage.,effect,They offered me compensation.,They cancelled my flight.,0
+The computer was expensive to fix.,effect,I got it repaired.,I bought a new one.,1
+The woman was in a bad mood.,effect,She engaged in small talk with her friend.,She told her friend to leave her alone.,1

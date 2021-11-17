@@ -1,0 +1,33 @@
+# @package _global_
+
+defaults:
+  - /trainer: default.yaml
+  - /module: default.yaml
+  - override /logger: wandb
+
+run:
+  seed: 42
+  task: ???
+
+trainer:
+  max_epochs: 10
+  devices: 1
+  precision: "bf16-mixed"
+  deterministic: true
+  inference_mode: false
+
+_log_vars:
+  # needed because hydra cannot index list in interpolation
+  train_datasets: ${oc.dict.keys:datamodule.train}
+  train_dataset: ${_log_vars.train_datasets[0]}
+  train_batch_size: ${datamodule.train.${_log_vars.train_dataset}.dataloader.batch_size}
+  
+logger:
+  wandb:
+    name: "model=${module.model.pretrained_model_name_or_path}_epochs=${trainer.max_epochs}_bs=${_log_vars.train_batch_size}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${module.model.pretrained_model_name_or_path}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    project: ${run.task}

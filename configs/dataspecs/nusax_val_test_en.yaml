@@ -1,0 +1,10 @@
+nusax_eng/validation:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: eng
+    split: validation
+nusax_eng/test:
+  dataset:
+    path: indonlp/NusaX-senti
+    name: eng
+    split: test

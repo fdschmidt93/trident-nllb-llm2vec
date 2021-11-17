@@ -1,0 +1,10 @@
+xnli_en/validation:
+  dataset:
+    path: xnli
+    name: en
+    split: validation
+xnli_en/test:
+  dataset:
+    path: xnli
+    name: en
+    split: test

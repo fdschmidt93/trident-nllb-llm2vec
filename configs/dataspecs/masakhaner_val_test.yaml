@@ -1,0 +1,408 @@
+defaults:
+  - /dataspec/wikiann@validation_masakhaner_amh
+  - /dataspec/wikiann@validation_masakhaner_hau
+  - /dataspec/wikiann@validation_masakhaner_ibo
+  - /dataspec/wikiann@validation_masakhaner_kin
+  - /dataspec/wikiann@validation_masakhaner_lug
+  - /dataspec/wikiann@validation_masakhaner_luo
+  - /dataspec/wikiann@validation_masakhaner_pcm
+  - /dataspec/wikiann@validation_masakhaner_swa
+  - /dataspec/wikiann@validation_masakhaner_wol
+  - /dataspec/wikiann@validation_masakhaner_yor
+  - /dataspec/wikiann@validation_masakhaner2_bam
+  - /dataspec/wikiann@validation_masakhaner2_bbj
+  - /dataspec/wikiann@validation_masakhaner2_ewe
+  - /dataspec/wikiann@validation_masakhaner2_fon
+  - /dataspec/wikiann@validation_masakhaner2_hau
+  - /dataspec/wikiann@validation_masakhaner2_ibo
+  - /dataspec/wikiann@validation_masakhaner2_kin
+  - /dataspec/wikiann@validation_masakhaner2_lug
+  - /dataspec/wikiann@validation_masakhaner2_mos
+  - /dataspec/wikiann@validation_masakhaner2_nya
+  - /dataspec/wikiann@validation_masakhaner2_pcm
+  - /dataspec/wikiann@validation_masakhaner2_sna
+  - /dataspec/wikiann@validation_masakhaner2_swa
+  - /dataspec/wikiann@validation_masakhaner2_tsn
+  - /dataspec/wikiann@validation_masakhaner2_twi
+  - /dataspec/wikiann@validation_masakhaner2_wol
+  - /dataspec/wikiann@validation_masakhaner2_xho
+  - /dataspec/wikiann@validation_masakhaner2_yor
+  - /dataspec/wikiann@validation_masakhaner2_zul
+  - /dataspec/wikiann@test_masakhaner_amh
+  - /dataspec/wikiann@test_masakhaner_hau
+  - /dataspec/wikiann@test_masakhaner_ibo
+  - /dataspec/wikiann@test_masakhaner_kin
+  - /dataspec/wikiann@test_masakhaner_lug
+  - /dataspec/wikiann@test_masakhaner_luo
+  - /dataspec/wikiann@test_masakhaner_pcm
+  - /dataspec/wikiann@test_masakhaner_swa
+  - /dataspec/wikiann@test_masakhaner_wol
+  - /dataspec/wikiann@test_masakhaner_yor
+  - /dataspec/wikiann@test_masakhaner2_bam
+  - /dataspec/wikiann@test_masakhaner2_bbj
+  - /dataspec/wikiann@test_masakhaner2_ewe
+  - /dataspec/wikiann@test_masakhaner2_fon
+  - /dataspec/wikiann@test_masakhaner2_hau
+  - /dataspec/wikiann@test_masakhaner2_ibo
+  - /dataspec/wikiann@test_masakhaner2_kin
+  - /dataspec/wikiann@test_masakhaner2_lug
+  - /dataspec/wikiann@test_masakhaner2_mos
+  - /dataspec/wikiann@test_masakhaner2_nya
+  - /dataspec/wikiann@test_masakhaner2_pcm
+  - /dataspec/wikiann@test_masakhaner2_sna
+  - /dataspec/wikiann@test_masakhaner2_swa
+  - /dataspec/wikiann@test_masakhaner2_tsn
+  - /dataspec/wikiann@test_masakhaner2_twi
+  - /dataspec/wikiann@test_masakhaner2_wol
+  - /dataspec/wikiann@test_masakhaner2_xho
+  - /dataspec/wikiann@test_masakhaner2_yor
+  - /dataspec/wikiann@test_masakhaner2_zul
+
+validation_masakhaner_amh:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: amh
+    split: validation
+validation_masakhaner_hau:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: hau
+    split: validation
+validation_masakhaner_ibo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: ibo
+    split: validation
+validation_masakhaner_kin:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: kin
+    split: validation
+validation_masakhaner_lug:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: lug
+    split: validation
+validation_masakhaner_luo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: luo
+    split: validation
+validation_masakhaner_pcm:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: pcm
+    split: validation
+validation_masakhaner_swa:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: swa
+    split: validation
+validation_masakhaner_wol:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: wol
+    split: validation
+validation_masakhaner_yor:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: yor
+    split: validation
+validation_masakhaner2_bam:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: bam
+    split: validation
+validation_masakhaner2_bbj:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: bbj
+    split: validation
+validation_masakhaner2_ewe:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: ewe
+    split: validation
+validation_masakhaner2_fon:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: fon
+    split: validation
+validation_masakhaner2_hau:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: hau
+    split: validation
+validation_masakhaner2_ibo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: ibo
+    split: validation
+validation_masakhaner2_kin:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: kin
+    split: validation
+validation_masakhaner2_lug:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: lug
+    split: validation
+validation_masakhaner2_mos:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: mos
+    split: validation
+validation_masakhaner2_nya:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: nya
+    split: validation
+validation_masakhaner2_pcm:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: pcm
+    split: validation
+validation_masakhaner2_sna:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: sna
+    split: validation
+validation_masakhaner2_swa:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: swa
+    split: validation
+validation_masakhaner2_tsn:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: tsn
+    split: validation
+validation_masakhaner2_twi:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: twi
+    split: validation
+validation_masakhaner2_wol:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: wol
+    split: validation
+validation_masakhaner2_xho:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: xho
+    split: validation
+validation_masakhaner2_yor:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: yor
+    split: validation
+validation_masakhaner2_zul:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: zul
+    split: validation
+test_masakhaner_amh:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: amh
+    split: test
+test_masakhaner_hau:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: hau
+    split: test
+test_masakhaner_ibo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: ibo
+    split: test
+test_masakhaner_kin:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: kin
+    split: test
+test_masakhaner_lug:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: lug
+    split: test
+test_masakhaner_luo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: luo
+    split: test
+test_masakhaner_pcm:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: pcm
+    split: test
+test_masakhaner_swa:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: swa
+    split: test
+test_masakhaner_wol:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: wol
+    split: test
+test_masakhaner_yor:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhaner
+    name: yor
+    split: test
+test_masakhaner2_bam:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: bam
+    split: test
+test_masakhaner2_bbj:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: bbj
+    split: test
+test_masakhaner2_ewe:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: ewe
+    split: test
+test_masakhaner2_fon:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: fon
+    split: test
+test_masakhaner2_hau:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: hau
+    split: test
+test_masakhaner2_ibo:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: ibo
+    split: test
+test_masakhaner2_kin:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: kin
+    split: test
+test_masakhaner2_lug:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: lug
+    split: test
+test_masakhaner2_mos:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: mos
+    split: test
+test_masakhaner2_nya:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: nya
+    split: test
+test_masakhaner2_pcm:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: pcm
+    split: test
+test_masakhaner2_sna:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: sna
+    split: test
+test_masakhaner2_swa:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: swa
+    split: test
+test_masakhaner2_tsn:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: tsn
+    split: test
+test_masakhaner2_twi:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: twi
+    split: test
+test_masakhaner2_wol:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: wol
+    split: test
+test_masakhaner2_xho:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: xho
+    split: test
+test_masakhaner2_yor:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: yor
+    split: test
+test_masakhaner2_zul:
+  dataset:
+    _target_: src.tasks.token_classification.processing.load_masakhaner
+    path: masakhane/masakhaner2
+    name: zul
+    split: test

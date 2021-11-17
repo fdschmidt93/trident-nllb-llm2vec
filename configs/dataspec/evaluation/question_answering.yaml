@@ -1,0 +1,23 @@
+prepare:
+  step_outputs:
+    _partial_: true
+    _target_: src.tasks.question_answering.processing.postprocess_qa_predictions
+    examples: ${....dataset}
+
+step_outputs:
+  outputs: 
+    - "start_logits"
+    - "end_logits"
+
+metrics:
+    hf:
+      metric: 
+        _partial_: true
+        _target_: datasets.metric.Metric.compute
+        self:
+          _target_: datasets.load_metric
+          path: "squad"
+      compute_on: "epoch_end"
+      kwargs:
+        predictions: "outputs.predictions"
+        references: "outputs.label_ids"

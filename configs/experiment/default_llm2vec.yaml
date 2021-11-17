@@ -1,0 +1,44 @@
+# @package _global_
+
+defaults:
+  - /module: llm2vec
+  - /trainer: default
+  - override /logger: wandb
+
+run:
+  seed: 42
+  task: ???
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
+  max_length: ???
+  train_batch_size: ???
+  val_test_batch_size: ???
+
+trainer:
+  deterministic: true
+  devices: 1
+  inference_mode: false
+  limit_test_batches: 0
+  num_sanity_val_steps: 0
+  precision: "bf16-mixed"
+
+logger:
+  wandb:
+    name: "model=${run.pretrained_model_name_or_path}_epochs=${trainer.max_epochs}_bs=${_log_vars.train_batch_size}_grad_accum=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "${run.pretrained_model_name_or_path}"
+      - "bs=${_log_vars.train_batch_size}"
+      - "grad_accum=${trainer.accumulate_grad_batches}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    entity: wuenlp
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor
+
+_log_vars:
+  # needed because hydra cannot index list in interpolation
+  train_datasets: ${oc.dict.keys:datamodule.train}
+  train_dataset: ${_log_vars.train_datasets[0]}
+  train_batch_size: ${datamodule.train.${_log_vars.train_dataset}.dataloader.batch_size}

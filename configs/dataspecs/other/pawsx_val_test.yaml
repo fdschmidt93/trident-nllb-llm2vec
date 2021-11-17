@@ -1,0 +1,86 @@
+defaults:
+  - /dataspec/pawsx@validation_pawsx_en
+  - /dataspec/pawsx@validation_pawsx_de
+  - /dataspec/pawsx@validation_pawsx_es
+  - /dataspec/pawsx@validation_pawsx_fr
+  - /dataspec/pawsx@validation_pawsx_ja
+  - /dataspec/pawsx@validation_pawsx_ko
+  - /dataspec/pawsx@validation_pawsx_zh
+  - /dataspec/pawsx@test_pawsx_en
+  - /dataspec/pawsx@test_pawsx_de
+  - /dataspec/pawsx@test_pawsx_es
+  - /dataspec/pawsx@test_pawsx_fr
+  - /dataspec/pawsx@test_pawsx_ja
+  - /dataspec/pawsx@test_pawsx_ko
+  - /dataspec/pawsx@test_pawsx_zh
+
+validation_pawsx_en:
+  dataset:
+    path: paws-x
+    name: en
+    split: validation
+validation_pawsx_de:
+  dataset:
+    path: paws-x
+    name: de
+    split: validation
+validation_pawsx_es:
+  dataset:
+    path: paws-x
+    name: es
+    split: validation
+validation_pawsx_fr:
+  dataset:
+    path: paws-x
+    name: fr
+    split: validation
+validation_pawsx_ja:
+  dataset:
+    path: paws-x
+    name: ja
+    split: validation
+validation_pawsx_ko:
+  dataset:
+    path: paws-x
+    name: ko
+    split: validation
+validation_pawsx_zh:
+  dataset:
+    path: paws-x
+    name: zh
+    split: validation
+test_pawsx_en:
+  dataset:
+    path: paws-x
+    name: en
+    split: test
+test_pawsx_de:
+  dataset:
+    path: paws-x
+    name: de
+    split: test
+test_pawsx_es:
+  dataset:
+    path: paws-x
+    name: es
+    split: test
+test_pawsx_fr:
+  dataset:
+    path: paws-x
+    name: fr
+    split: test
+test_pawsx_ja:
+  dataset:
+    path: paws-x
+    name: ja
+    split: test
+test_pawsx_ko:
+  dataset:
+    path: paws-x
+    name: ko
+    split: test
+test_pawsx_zh:
+  dataset:
+    path: paws-x
+    name: zh
+    split: test

@@ -1,0 +1,60 @@
+kardesnlu_az/validation:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.az
+    split: validation
+kardesnlu_kk/validation:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.kk
+    split: validation
+kardesnlu_ky/validation:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.ky
+    split: validation
+kardesnlu_ug/validation:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.ug
+    split: validation
+kardesnlu_uz/validation:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.uz
+    split: validation
+kardesnlu_az/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.az
+    split: test
+kardesnlu_kk/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.kk
+    split: test
+kardesnlu_ky/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.ky
+    split: test
+kardesnlu_ug/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.ug
+    split: test
+kardesnlu_uz/test:
+  dataset:
+    _convert_: all
+    path: ${hydra:runtime.cwd}/datasets/kardes_nlu.py
+    name: xnli.uz
+    split: test

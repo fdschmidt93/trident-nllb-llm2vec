@@ -1,0 +1,45 @@
+dataset:
+  _target_: datasets.load.load_dataset
+  _convert_: all
+  path: text
+  data_files:
+    train: ./data/wiki1m_for_simcse.txt
+  split: train
+
+preprocessing:
+  apply:
+    split_if_multi_gpu:
+      _target_: src.mt_llm.utils.split_by_node_if_multi_gpu
+      world_size: ${trainer.devices}
+  method:
+    shuffle:
+      seed: ${run.seed}
+
+dataloader:
+  _convert_: all
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.DataCollatorForSequenceClassification
+    llm_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: ${oc.select:run.base_model,${run.pretrained_model_name_or_path}}
+    llm_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+    nllb_tokenizer:
+      _target_: transformers.AutoTokenizer.from_pretrained
+      pretrained_model_name_or_path: "facebook/nllb-200-distilled-600M"
+      src_lang: eng_Latn
+    nllb_tokenizer_kwargs:
+      truncation: true
+      padding: true
+      max_length: ${run.max_length}
+      return_tensors: "pt"
+    columns:
+      text: text
+  batch_size: ${run.train_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 4

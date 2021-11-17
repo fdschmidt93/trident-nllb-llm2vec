@@ -1,0 +1,27 @@
+defaults:
+  - /dataspec@belebele: belebele_llm2vec
+
+belebele:
+  dataset:
+    _convert_: all
+    path: parquet
+    data_files: ${hydra:runtime.cwd}/data/datasets/belebele_train_validation/eng_Latn_train.parquet
+    split: train
+  preprocessing:
+    method:
+      map:
+        fn_kwargs:
+          columns:
+            # train/val
+            context: passage
+            question: question
+            label: correct_answer_num
+            choices: 
+              - answer1
+              - answer2
+              - answer3
+              - answer4
+
+  dataloader:
+    shuffle: true
+    batch_size: ${run.train_batch_size} # copied into all train, val, test

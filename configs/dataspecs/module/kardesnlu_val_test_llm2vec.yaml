@@ -1,0 +1,11 @@
+defaults:
+  - /dataspec/nli_llm2vec@kardesnlu_az/validation
+  - /dataspec/nli_llm2vec@kardesnlu_kk/validation
+  - /dataspec/nli_llm2vec@kardesnlu_ky/validation
+  - /dataspec/nli_llm2vec@kardesnlu_ug/validation
+  - /dataspec/nli_llm2vec@kardesnlu_uz/validation
+  - /dataspec/nli_llm2vec@kardesnlu_az/test
+  - /dataspec/nli_llm2vec@kardesnlu_kk/test
+  - /dataspec/nli_llm2vec@kardesnlu_ky/test
+  - /dataspec/nli_llm2vec@kardesnlu_ug/test
+  - /dataspec/nli_llm2vec@kardesnlu_uz/test

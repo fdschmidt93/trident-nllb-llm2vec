@@ -1,0 +1,153 @@
+defaults:
+  - xnli_val_test_llm2vec
+
+xnli_en/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn
+xnli_es/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: spa_Latn
+xnli_de/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: deu_Latn
+xnli_fr/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: fra_Latn
+xnli_el/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ell_Latn
+xnli_bg/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bul_Cyrl
+xnli_ru/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: rus_Cyrl
+xnli_tr/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: tur_Latn
+xnli_ar/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: arb_Arab
+xnli_vi/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: vie_Latn
+xnli_th/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: tha_Thai
+xnli_zh/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: zho_Hans
+xnli_hi/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: hin_Deva
+xnli_sw/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: swh_Latn
+xnli_ur/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: urd_Arab
+xnli_en/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn
+xnli_es/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: spa_Latn
+xnli_de/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: deu_Latn
+xnli_fr/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: fra_Latn
+xnli_el/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ell_Latn
+xnli_bg/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bul_Cyrl
+xnli_ru/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: rus_Cyrl
+xnli_tr/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: tur_Latn
+xnli_ar/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: arb_Arab
+xnli_vi/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: vie_Latn
+xnli_th/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: tha_Thai
+xnli_zh/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: zho_Hans
+xnli_hi/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: hin_Deva
+xnli_sw/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: swh_Latn
+xnli_ur/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: urd_Arab

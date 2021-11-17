@@ -1,0 +1,24 @@
+defaults:
+  - /dataspec/multiple_choice@validation_copa_en
+  - /dataspec/multiple_choice@test_copa_en
+
+validation_copa_en:
+  dataset:
+    path: super_glue
+    name: copa
+    split: validation
+test_copa_en:
+  dataset:
+    path: csv
+    data_files: ${hydra:runtime.cwd}/data/copa/en_test.csv
+    split: train
+  preprocessing:
+    method: # get methods of _target_ object
+      map:
+        function:
+          column_names:
+            context: context
+            question: question
+            choices:
+              - "choice1"
+              - "choice2"

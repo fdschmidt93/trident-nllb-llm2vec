@@ -1,0 +1,32 @@
+dataset:
+  _convert_: all
+  _target_: datasets.load.load_dataset
+  path: ${hydra:runtime.cwd}/datasets/americas_nlp.py
+  name: all-es
+  split: val
+preprocessing:
+  method:
+    map:
+      batched: true
+      function:
+        _target_: src.mt_llm.processing.preprocess_for_translation
+        _partial_: true
+        tokenizer:
+          _target_: src.mt_llm.translation.get_translation_training_tokenizer
+          src_lang: eng_Latn
+        tokenize_kwargs:
+          max_length: ${run.max_length}
+          truncation: true
+      # fn_kwargs:
+dataloader:
+  _target_: torch.utils.data.dataloader.DataLoader
+  collate_fn:
+    _target_: src.mt_llm.processing.CollatorForNLLBTranslation
+    tokenizer:
+      _target_: src.mt_llm.translation.get_translation_training_tokenizer
+      src_lang: eng_Latn
+    max_length: ${run.max_length}
+  batch_size: ${run.train_batch_size} # copied into all train, val, test
+  pin_memory: true # copied into all train, val, test
+  shuffle: true # will be copied in to val and test
+  num_workers: 0

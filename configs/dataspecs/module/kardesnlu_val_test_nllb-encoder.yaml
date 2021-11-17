@@ -1,0 +1,56 @@
+defaults:
+  - kardesnlu_val_test_llm2vec
+
+kardesnlu_az/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: azj_Latn
+kardesnlu_kk/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: kaz_Cyrl
+kardesnlu_ky/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: kir_Cyrl
+kardesnlu_ug/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        # GPT4 says for uyghur cyrillic script kazakh is closest
+        src_lang: kaz_Cyrl
+kardesnlu_uz/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: uzn_Latn
+
+kardesnlu_az/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: azj_Latn
+kardesnlu_kk/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: kaz_Cyrl
+kardesnlu_ky/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: kir_Cyrl
+kardesnlu_ug/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        # GPT4 says for uyghur cyrillic script kazakh is closest
+        src_lang: kaz_Cyrl
+kardesnlu_uz/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: uzn_Latn

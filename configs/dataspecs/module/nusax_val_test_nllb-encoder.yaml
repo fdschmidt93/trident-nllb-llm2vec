@@ -1,0 +1,123 @@
+defaults:
+  - nusax_val_test_llm2vec
+
+nusax_eng/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn 
+nusax_ace/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ace_Latn 
+nusax_ban/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ban_Latn 
+nusax_bug/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bug_Latn 
+nusax_ind/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 
+nusax_jav/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: jav_Latn 
+nusax_mad/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 
+nusax_min/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: min_Latn 
+nusax_bjn/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bjn_Latn 
+nusax_nij/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 
+nusax_sun/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: sun_Latn 
+nusax_bbc/validation:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 
+nusax_eng/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: eng_Latn 
+nusax_ace/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ace_Latn 
+nusax_ban/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ban_Latn 
+nusax_bug/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bug_Latn 
+nusax_ind/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 
+nusax_jav/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: jav_Latn 
+nusax_mad/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn
+nusax_min/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: min_Latn 
+nusax_bjn/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: bjn_Latn 
+nusax_nij/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: nij_Latn 
+nusax_sun/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: sun_Latn 
+nusax_bbc/test:
+  dataloader:
+    collate_fn:
+      nllb_tokenizer:
+        src_lang: ind_Latn 

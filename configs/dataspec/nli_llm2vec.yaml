@@ -1,0 +1,12 @@
+defaults:
+  - llm2vec
+  - evaluation: text_classification
+  # toggle in module-specific configuration
+  - optional module@_here_: ${module}
+
+dataloader:
+  collate_fn:
+    columns:
+      text: premise
+      text_pair: hypothesis
+      label: label

@@ -1,0 +1,25 @@
+defaults:
+  - belebele_val_test_en_llm2vec
+
+eng_Latn/validation:
+  preprocessing:
+    method:
+      map:
+        function:
+          tokenizer:
+            src_lang: eng_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: eng_Latn
+eng_Latn/test:
+  preprocessing:
+    method:
+      map:
+        function:
+          tokenizer:
+            src_lang: eng_Latn
+  dataloader:
+    collate_fn:
+      tokenizer:
+        src_lang: eng_Latn

@@ -1,0 +1,11 @@
+_target_: torch.utils.data.dataloader.DataLoader
+collate_fn:
+  _target_: transformers.data.data_collator.DataCollatorWithPadding
+  tokenizer:
+    _target_: transformers.AutoTokenizer.from_pretrained
+    pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+  max_length: 128
+batch_size: 32 # copied into all train, val, test
+pin_memory: true # copied into all train, val, test
+shuffle: false # will be copied in to val and test
+num_workers: 4
