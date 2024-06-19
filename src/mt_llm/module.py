@@ -159,6 +159,111 @@ class DistillationModule(TridentModule):
         return mse_loss
 
 
+class SpanDistillationModule(DistillationModule):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
+        from transformers import AutoTokenizer
+
+        self.llm_tokenizer = AutoTokenizer.from_pretrained(
+            "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp", padding_side="right"
+        )
+        self.nllb_tokenizer = AutoTokenizer.from_pretrained(
+            "facebook/nllb-200-distilled-600M"
+        )
+
+    def training_step(  # type: ignore
+        self, batch: dict[str, torch.Tensor], batch_idx: int = 0
+    ) -> torch.Tensor:
+        # original model input
+        self.model.llama.disable_adapter_layers()
+        with torch.inference_mode():
+            # through Llama 3 w/o LoRA
+            # potentially task fine-tuned
+            # base_outputs.last_hidden_state is (N, L, D)
+            llm_outputs = self.model.llama(
+                input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]
+            )
+
+            # self.model.nllb is encoder of NLLB
+            nllb_embeds_MKd = self.model.nllb(
+                input_ids=batch["nllb_input_ids"],
+                attention_mask=batch["nllb_attention_mask"],
+            ).last_hidden_state  # (M, L, d)
+        # up-projection to llama dimensionality
+        # nllb_embeds_MKd ->  nllb_embeds_NKD
+        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd)
+
+        self.model.llama.enable_adapter_layers()
+        nllb_llama_outputs = self.model.llama(
+            inputs_embeds=nllb_embeds_MKD, attention_mask=batch["nllb_attention_mask"]
+        )
+        # sequence-level loss
+        nllb_seq_embeds = self.pooling_fn(
+            nllb_llama_outputs.last_hidden_state,
+            attention_mask=batch["nllb_attention_mask"],
+        )
+        llm_seq_embeds = self.pooling_fn(
+            llm_outputs.last_hidden_state, attention_mask=batch["attention_mask"]
+        )
+        seq_mse_loss = F.mse_loss(nllb_seq_embeds, llm_seq_embeds)
+        self.log("train/seq_mse", seq_mse_loss)
+        
+        # span-level loss
+        llm_N, llm_L = batch["input_ids"].shape
+        nllb_N, nllb_L = batch["nllb_input_ids"].shape
+        nllb_embeds = F.embedding_bag(
+            weight=nllb_llama_outputs.last_hidden_state.view(nllb_N * nllb_L, -1),
+            input=batch["nllb_bag_ids"],
+            # the first BOS token is essentially ignored
+            padding_idx=0,
+        )
+        llm_embeds = F.embedding_bag(
+            weight=llm_outputs.last_hidden_state.view(llm_N * llm_L, -1),
+            input=batch["bag_ids"],
+            # the first BOS token is essentially ignored
+            padding_idx=0,
+        )
+
+        span_mse_loss = F.mse_loss(nllb_embeds, llm_embeds)
+        self.log("train/span_mse", span_mse_loss)
+        with torch.no_grad():
+            self.log(
+                "train/seq_abs_diff_norm",
+                (
+                    llm_seq_embeds.norm(p=2, dim=-1).mean()
+                    - nllb_seq_embeds.norm(p=2, dim=-1).mean()
+                ).abs(),
+            )
+            self.log(
+                "train/seq_cos_sim",
+                F.cosine_similarity(llm_seq_embeds, nllb_seq_embeds).mean(),
+            )
+            self.log(
+                "train/seq_fvu",
+                fvu(x=nllb_seq_embeds, x_hat=llm_seq_embeds, mse_loss=seq_mse_loss),
+            )
+            self.log(
+                "train/span_abs_diff_norm",
+                (
+                    llm_embeds.norm(p=2, dim=-1).mean()
+                    - nllb_embeds.norm(p=2, dim=-1).mean()
+                ).abs(),
+            )
+            self.log(
+                "train/span_cos_sim",
+                F.cosine_similarity(llm_embeds, nllb_embeds).mean(),
+            )
+            self.log(
+                "train/span_fvu",
+                fvu(x=nllb_embeds, x_hat=llm_embeds, mse_loss=span_mse_loss),
+            )
+        # for now we set 1:2 loss ratio, TBD
+        mse_loss = 0.333 * seq_mse_loss + 0.667 * span_mse_loss
+        self.log("train/mse", mse_loss)
+        return mse_loss
+
+
 class BaseAutoModule(TridentModule):
     def __init__(
         self,

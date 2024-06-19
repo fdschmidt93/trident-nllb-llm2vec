@@ -1,0 +1,67 @@
+# @package _global_
+
+defaults:
+  - default_llm2vec
+  - /dataspec@datamodule.train.train: fineweb_alignment
+  - override /module: nllb-gpt2
+
+run:
+  task: nllb-llm2vec-adaptation
+  pretrained_model_name_or_path: "openai-community/gpt2-medium"
+  base_model: "openai-community/gpt2-medium"
+  seed: 42
+  train_batch_size: 16
+  val_test_batch_size: 4
+  max_length: 512
+  ckpt_interval: 0.1
+
+trainer:
+  deterministic: false
+  precision: "bf16-mixed"
+  max_steps: 10000
+  devices: 1
+  accumulate_grad_batches: 16
+  num_sanity_val_steps: 0
+  limit_val_batches: 0
+  limit_test_batches: 0
+
+module:
+  _target_: src.mt_llm.module.SpanDistillationModule
+  # distillation_strategy: last
+  optimizer:
+    lr: 5e-4
+  scheduler:
+    num_warmup_steps: 0.01
+
+logger:
+  wandb:
+    name: "model=${run.base_model}_max-steps=${trainer.max_steps}_bs=${_log_vars.train_batch_size}_grad_accum=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    tags:
+      - "bs=${_log_vars.train_batch_size}"
+      - "grad_accum=${trainer.accumulate_grad_batches}"
+      - "lr=${module.optimizer.lr}"
+      - "scheduler=${module.scheduler.num_warmup_steps}"
+    entity: wuenlp
+    project: ${run.task}
+
+callbacks:
+  learning_rate:
+    _target_: lightning.pytorch.callbacks.LearningRateMonitor
+  model_checkpoint_on_epoch:
+    _target_: lightning.pytorch.callbacks.ModelCheckpoint
+    monitor: null # name of the logged metric which determines when model is improving
+    every_n_epochs: null
+    every_n_train_steps:
+      _target_: builtins.int
+      _args_:
+        - _target_: builtins.float.__mul__
+          _args_:
+            - ${run.ckpt_interval}
+            - ${trainer.max_steps}
+    verbose: false
+    save_top_k: -1 # -1 -> all models are saved
+    filename: "step={step}"
+    save_last: false # additionaly always save model from last epoch
+    dirpath: "${hydra:runtime.output_dir}/checkpoints/"
+    save_weights_only: true
+    auto_insert_metric_name: false

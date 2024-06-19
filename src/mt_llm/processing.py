@@ -1,8 +1,12 @@
+from typing import cast
 import torch
 from datasets.arrow_dataset import Dataset
 from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import Dataset as TorchDataset
 from transformers.tokenization_utils_fast import BatchEncoding, PreTrainedTokenizerFast
+
+
+PADDING_CONST = -999_999
 
 
 class DataCollatorForSequenceClassification:
@@ -13,8 +17,6 @@ class DataCollatorForSequenceClassification:
         columns: dict[str, str],
         nllb_tokenizer: None | PreTrainedTokenizerFast = None,
         nllb_tokenizer_kwargs: dict = {},
-        # Llama eos token, otherwise doesn't get added
-        # llm_eos_token: str = "<|end_of_text|>",
         llm_eos_token: str = "",
         *args,
         **kwargs,
@@ -390,3 +392,201 @@ def preprocess_multiple_choice(
     out["labels"] = list(map(lambda x: int(x) - 1, examples[columns["label"]]))
     out["spans"] = spans
     return out
+
+
+def preprocess_alignment(
+    examples: dict[str, list[str]],
+    source_tokenizer: PreTrainedTokenizerFast,
+    target_tokenizer: PreTrainedTokenizerFast,
+    text_column: str = "text",
+    tokenize_kwargs: dict = {
+        "max_length": 512,
+        "truncation": True,
+    },
+):
+    inputs: list[str] = examples[text_column]
+    source_batch = cast(BatchEncoding, source_tokenizer(inputs, **tokenize_kwargs))
+    target_batch = cast(BatchEncoding, target_tokenizer(inputs, **tokenize_kwargs))
+
+    batch_source_token_spans = []
+    batch_target_token_spans = []
+    batch_source_tokens = []
+    batch_target_tokens = []
+    batch_source_masks = []
+    batch_target_masks = []
+    out = {}
+    for i in range(len(inputs)):
+        # collect word to chars
+        # end is exclusive!
+        word_to_char_spans = []
+        j = 0
+        # catch HF bug, raises TypeError when sequence is finished
+        while True:
+            try:
+                word_span = source_batch.word_to_chars(i, j)
+                word_to_char_spans.append((word_span.start, word_span.end - 1))
+                j += 1
+            except TypeError as _:
+                # only then we correctly caught TypeError sinces sequence is exhausted
+                assert source_batch.word_to_tokens(i, j) is None
+                break
+        # collect chars to tokens
+        # TODO: what if they don't cover the same words
+        source_token_spans = []
+        target_token_spans = []
+        for span_ in word_to_char_spans:
+            start, end_ = span_
+            start_source_token = source_batch.char_to_token(i, start)
+            end_source_token = source_batch.char_to_token(i, end_)
+            start_target_token = target_batch.char_to_token(i, start)
+            end_target_token = target_batch.char_to_token(i, end_)
+            # ensure both are found
+            if (
+                start_source_token
+                and end_source_token
+                and start_target_token
+                and end_target_token
+            ):
+                source_token_spans.append(
+                    torch.LongTensor(range(start_source_token, end_source_token + 1))
+                )
+                target_token_spans.append(
+                    torch.LongTensor(range(start_target_token, end_target_token + 1))
+                )
+        batch_source_token_spans.append(
+            pad_sequence(
+                source_token_spans, batch_first=True, padding_value=PADDING_CONST
+            )
+        )
+        batch_target_token_spans.append(
+            pad_sequence(
+                target_token_spans, batch_first=True, padding_value=PADDING_CONST
+            )
+        )
+        batch_source_tokens.append(source_batch[i].tokens)
+        batch_target_tokens.append(target_batch[i].tokens)
+    out["input_ids"] = source_batch["input_ids"]
+    out["attention_mask"] = source_batch["attention_mask"]
+    out["spans"] = batch_source_token_spans
+    out["tokens"] = batch_source_tokens
+    out["nllb_input_ids"] = target_batch["input_ids"]
+    out["nllb_attention_mask"] = target_batch["attention_mask"]
+    out["nllb_spans"] = batch_target_token_spans
+    out["nllb_tokens"] = batch_target_tokens
+    return out
+
+
+class DataCollatorForTokenAlignedDistillation:
+    def __init__(
+        self,
+        llm_tokenizer,
+        nllb_tokenizer,
+        tokenize_kwargs: dict = {
+            "max_length": 512,
+            "padding": "max_length",
+            "return_tensors": "pt",
+        },
+        only_overlapping_tokens: bool = True,
+        *args,
+        **kwargs,
+    ) -> None:
+        self.llm_tokenizer = llm_tokenizer
+        self.nllb_tokenizer = nllb_tokenizer
+        self.tokenize_kwargs = tokenize_kwargs
+        if getattr(self.llm_tokenizer, "pad_token_id") is None:
+            self.llm_tokenizer.pad_token_id = self.llm_tokenizer.eos_token_id
+        self.only_overlapping_tokens = only_overlapping_tokens
+
+    @staticmethod
+    def stack_and_pad_tensors(
+        tensor_list: list[torch.Tensor],
+        L: None | int = None,
+        fill_value: int = PADDING_CONST,
+    ) -> torch.Tensor:
+        # Determine the maximum dimensions K and L
+        tensor_list = [
+            tensor if tensor.ndim == 2 else tensor.unsqueeze(1)
+            for tensor in tensor_list
+        ]
+        K = max(tensor.shape[0] for tensor in tensor_list)
+        if L is None:
+            L = max(tensor.shape[1] for tensor in tensor_list)
+
+        # Number of tensors
+        N = len(tensor_list)
+
+        # Create the padded tensor with shape (N, K, L)
+        padded_tensor = torch.full((N, K, L), fill_value=fill_value)
+
+        # Copy each tensor into the appropriate slice of the padded tensor
+        for i, tensor in enumerate(tensor_list):
+            k, l_ = tensor.size()
+            padded_tensor[i, :k, :l_] = tensor
+
+        return padded_tensor
+
+    def __call__(self, examples: list[dict], *args, **kwds) -> dict:
+        llm_inputs = [
+            {
+                "input_ids": example["input_ids"],
+                "attention_mask": example["attention_mask"],
+            }
+            for example in examples
+        ]
+        nllb_inputs = [
+            {
+                "input_ids": example["nllb_input_ids"],
+                "attention_mask": example["nllb_attention_mask"],
+            }
+            for example in examples
+        ]
+
+        llm_batch = self.llm_tokenizer.pad(llm_inputs, **self.tokenize_kwargs)
+        nllb_batch = self.nllb_tokenizer.pad(nllb_inputs, **self.tokenize_kwargs)
+
+        llm_N, llm_L = llm_batch["input_ids"].shape
+        nllb_N, nllb_L = nllb_batch["input_ids"].shape
+        # we want to use embedding bag for which we will have to reshape (N, L, D) tensors to (N * L, D)
+        # we then aggregate the spans in the (N * L, D) with torch.nn.EmbeddingBag for which we need the adjusted indices
+        llm_offsets = torch.arange(0, llm_N * llm_L, llm_L)
+        nllb_offsets = torch.arange(0, nllb_N * nllb_L, nllb_L)
+        nllb_mask = self.stack_and_pad_tensors(
+            # [torch.LongTensor(example["nllb_span_mask"]) for example in examples]
+            [torch.LongTensor(example["nllb_spans"]) for example in examples]
+        )
+        # non relevant indices are first set to -100_000
+        # we set everything irrelevant to 0, because for EmbeddingBag
+        # all indices have to be relevant
+        # we abuse the fact that every sequence is prepended by a BOS token
+        # i.e., the first embedding in the eventual (N, L, D) embeddings will be an irrelevant BOS token
+        nllb_mask = nllb_mask + nllb_offsets[:, None, None]
+        nllb_mask = torch.where(nllb_mask <= 0, 0, nllb_mask)
+        nllb_mask = nllb_mask.view(-1, nllb_mask.shape[-1])
+        nllb_mask = nllb_mask[nllb_mask.sum(1) > 0]
+
+        llm_mask = self.stack_and_pad_tensors(
+            # [torch.LongTensor(example["span_mask"]) for example in examples]
+            [torch.LongTensor(example["spans"]) for example in examples]
+        )
+        llm_mask = llm_mask + llm_offsets[:, None, None]
+        llm_mask = torch.where(llm_mask <= 0, 0, llm_mask)
+        llm_mask = llm_mask.view(-1, llm_mask.shape[-1])
+        llm_mask = llm_mask[llm_mask.sum(1) > 0]
+
+        # don't average potentially noisy spans just overlapping tokens
+        # overlapping tokens typically make up of 60-80% of tokens
+        # between NLLB and Llama 3 tokenizers
+        if self.only_overlapping_tokens:
+            nllb_direct = (nllb_mask > 0).sum(1) == 1
+            llm_direct = (llm_mask > 0).sum(1) == 1
+            direct_mask = torch.logical_and(nllb_direct, llm_direct)
+            nllb_mask = nllb_mask[direct_mask, :]
+            nllb_mask = nllb_mask[:, :1]
+            llm_mask = llm_mask[direct_mask, :]
+            llm_mask = llm_mask[:, :1]
+
+        for k, v in nllb_batch.items():
+            llm_batch[f"nllb_{k}"] = v
+        llm_batch["bag_ids"] = llm_mask  # .swapaxes(1, 2)
+        llm_batch["nllb_bag_ids"] = nllb_mask  # .swapaxes(1, 2)
+        return llm_batch
