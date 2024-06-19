@@ -30,4 +30,4 @@ dependencies:
     - seqeval
     - ruff-lsp
     # path to trident
-    - -e ../trident/
+    - -e ./trident/
