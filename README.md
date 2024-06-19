@@ -17,6 +17,12 @@ cd ./trident-nllb-llm2vec/
 conda env create -f environment.yaml
 ```
 
+If you want to run NLLB-GPT-2 adaptation, you additionally will have to install [flash-attention](https://github.com/Dao-AILab/flash-attention/) as, to the best of our knowledge, `environment.yaml` files do not support the required flag.
+
+```sh
+pip install flash-attn --no-build-isolation
+```
+
 ### Initial setup of LLM2Vec
 
 On a machine with a Nvidia-GPU, run
