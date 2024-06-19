@@ -7,12 +7,11 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - pytorch=2.2
+  - pytorch=2.3.1
   - pytorch-cuda=12.1
   - cudatoolkit-dev
   - transformers
-  - lightning=2.2
-  - wandb
+  - lightning=2.3
   - hydra-core
   - hydra-colorlog
 
@@ -26,8 +25,11 @@ dependencies:
   - ruff
 
   - pip:
+    # conda-forge doesn't have recent enough
+    # wandb for numpy 2.0
+    - wandb
     - peft
     - seqeval
     - ruff-lsp
     # path to trident
-    - -e ./trident/
+    - -e ./deps/trident/
