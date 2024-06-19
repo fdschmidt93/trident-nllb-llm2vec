@@ -12,7 +12,7 @@ You can install required pinned dependencies with the below command.
 
 For now, [miniconda](https://github.com/conda-forge/miniforge) is the recommended tool to manage dependencies for this project.
 ```bash
-git clone https://github.com/fdschmidt93/trident-nllb-llm2vec.git
+git clone --recurse-submodules https://github.com/fdschmidt93/trident-nllb-llm2vec.git
 cd ./trident-nllb-llm2vec/
 conda env create -f environment.yaml
 ```

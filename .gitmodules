@@ -1,0 +1,3 @@
+[submodule "deps/trident"]
+	path = deps/trident
+	url = git@github.com:fdschmidt93/trident.git
