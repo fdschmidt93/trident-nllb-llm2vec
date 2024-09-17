@@ -498,6 +498,25 @@ class DataCollatorForTokenAlignedDistillation:
         self.only_overlapping_tokens = only_overlapping_tokens
 
     @staticmethod
+    def get_input_offsets(
+        attention_mask: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        # Find the indices of non-padded tokens in flattened hidden_states
+        input_indices = attention_mask.view(-1).nonzero(as_tuple=False).squeeze()
+
+        # Compute the offsets: for each sequence, where it starts in the flattened input
+        non_padded_lengths = attention_mask.sum(
+            dim=1
+        )  # Count non-padded tokens per sequence
+        offsets = torch.cat(
+            [
+                torch.tensor([0], device=attention_mask.device),
+                non_padded_lengths.cumsum(dim=0)[:-1],
+            ]
+        )
+        return input_indices, offsets
+
+    @staticmethod
     def stack_and_pad_tensors(
         tensor_list: list[torch.Tensor],
         L: None | int = None,
@@ -589,4 +608,11 @@ class DataCollatorForTokenAlignedDistillation:
             llm_batch[f"nllb_{k}"] = v
         llm_batch["bag_ids"] = llm_mask  # .swapaxes(1, 2)
         llm_batch["nllb_bag_ids"] = nllb_mask  # .swapaxes(1, 2)
+
+        llm_batch["seq_bag_ids"], llm_batch["seq_bag_offsets"] = self.get_input_offsets(
+            llm_batch["attention_mask"]
+        )
+        llm_batch["nllb_seq_bag_ids"], llm_batch["nllb_seq_bag_offsets"] = self.get_input_offsets(
+            llm_batch["nllb_attention_mask"]
+        )
         return llm_batch

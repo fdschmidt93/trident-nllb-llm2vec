@@ -172,6 +172,30 @@ class SpanDistillationModule(DistillationModule):
             "facebook/nllb-200-distilled-600M"
         )
 
+    @staticmethod
+    def mean_embedding(
+        hidden_states: torch.Tensor,
+        input: torch.Tensor,
+        offsets: torch.Tensor,
+        *args,
+        **kwargs,
+    ):
+        """
+        Compute the mean of non-padded embeddings using `embedding_bag`,
+        properly handling padding with offsets.
+        """
+        # Flatten hidden_states to 2D: shape (batch_size * seq_len, embedding_dim)
+        _, _, embed_dim = hidden_states.shape
+        token_embeds = hidden_states.view(-1, embed_dim)
+
+        # Use embedding_bag with mode 'mean' and appropriate padding index
+        return F.embedding_bag(
+            input=input,  # Indices of non-padded tokens in flattened form
+            weight=token_embeds,  # The flattened hidden states as embedding matrix
+            offsets=offsets,  # Offsets specifying start of each sequence
+            mode="mean",  # Aggregation mode
+        )
+
     def training_step(  # type: ignore
         self, batch: dict[str, torch.Tensor], batch_idx: int = 0
     ) -> torch.Tensor:
@@ -199,16 +223,19 @@ class SpanDistillationModule(DistillationModule):
             inputs_embeds=nllb_embeds_MKD, attention_mask=batch["nllb_attention_mask"]
         )
         # sequence-level loss
-        nllb_seq_embeds = self.pooling_fn(
-            nllb_llama_outputs.last_hidden_state,
-            attention_mask=batch["nllb_attention_mask"],
+        nllb_seq_embeds = self.mean_embedding(
+            hidden_states=nllb_llama_outputs.last_hidden_state,
+            input=batch["nllb_seq_bag_ids"],
+            offsets=batch["nllb_seq_bag_offsets"],
         )
-        llm_seq_embeds = self.pooling_fn(
-            llm_outputs.last_hidden_state, attention_mask=batch["attention_mask"]
+        llm_seq_embeds = self.mean_embedding(
+            hidden_states=llm_outputs.last_hidden_state,
+            input=batch["seq_bag_ids"],
+            offsets=batch["seq_bag_offsets"],
         )
         seq_mse_loss = F.mse_loss(nllb_seq_embeds, llm_seq_embeds)
         self.log("train/seq_mse", seq_mse_loss)
-        
+
         # span-level loss
         llm_N, llm_L = batch["input_ids"].shape
         nllb_N, nllb_L = batch["nllb_input_ids"].shape
@@ -285,6 +312,11 @@ class BaseAutoModule(TridentModule):
             self.batch_prefix = "nllb_"
             if isinstance(nllb_ckpt, str):
                 ckpt = torch.load(nllb_ckpt, map_location="cuda:0")["state_dict"]
+                ckpt = {
+                    k: v
+                    for k, v in ckpt.items()
+                    if "quant" not in k and "absmax" not in k
+                }
                 self.load_state_dict(ckpt, strict=True)
                 log.info(f"Successfully restored {nllb_ckpt.split('/')[-1]} checkpoint")
             else:
