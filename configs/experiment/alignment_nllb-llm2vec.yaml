@@ -8,7 +8,7 @@ defaults:
 
 run:
   task: nllb-llm2vec-adaptation
-  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec-llama3-1/
   base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
   seed: 42
   train_batch_size: 2
@@ -25,6 +25,7 @@ trainer:
   num_sanity_val_steps: 0
   limit_val_batches: 0
   limit_test_batches: 0
+  use_distributed_sampler: false
 
 module:
   _target_: src.mt_llm.module.SpanDistillationModule

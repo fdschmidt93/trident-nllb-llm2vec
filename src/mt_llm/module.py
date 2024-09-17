@@ -259,7 +259,7 @@ class SpanDistillationModule(DistillationModule):
                 fvu(x=nllb_embeds, x_hat=llm_embeds, mse_loss=span_mse_loss),
             )
         # for now we set 1:2 loss ratio, TBD
-        mse_loss = 0.333 * seq_mse_loss + 0.667 * span_mse_loss
+        mse_loss = 0.5 * seq_mse_loss + 0.5 * span_mse_loss
         self.log("train/mse", mse_loss)
         return mse_loss
 

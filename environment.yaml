@@ -7,11 +7,11 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - pytorch=2.3.1
+  - pytorch=2.4.1
   - pytorch-cuda=12.1
   - cudatoolkit-dev
   - transformers
-  - lightning=2.3
+  - lightning=2.4
   - hydra-core
   - hydra-colorlog
 

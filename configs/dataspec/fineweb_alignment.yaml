@@ -50,6 +50,7 @@ dataloader:
       max_length: 512
       return_attention_mask: True
       return_tensors: pt
+    only_overlapping_tokens: True
   batch_size: ${run.train_batch_size} # copied into all train, val, test
   pin_memory: true # copied into all train, val, test
   shuffle: true # will be copied in to val and test
