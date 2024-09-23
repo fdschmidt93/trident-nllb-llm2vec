@@ -3,29 +3,37 @@
 defaults:
   - /dataspecs@datamodule.train: nusax_train_llm2vec
   - /dataspecs@datamodule.val:
-      - nusax_val_test_en
+      # - nusax_val_test_en
+      - nusax_val_test
   - /dataspecs/module@datamodule.val:
-      - nusax_val_test_en_nllb-llm2vec
+      # - nusax_val_test_en_nllb-llm2vec
+      - nusax_val_test_nllb-llm2vec
   - default_llm2vec
   - override /module: nllb-llm2vec
 
 run:
   task: nusax_llm2vec_train
-  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/nllb-llm2vec/
+  # pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/nllb-llm2vec/
+  # pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec-llama3-1/
+
   base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
   seed: 42
-  train_batch_size: 16
+  train_batch_size: 4
   val_test_batch_size: 16
   max_length: 256
 
 trainer:
   num_sanity_val_steps: 0
   max_epochs: 20
-  accumulate_grad_batches: 2
+  accumulate_grad_batches: 8
   check_val_every_n_epoch: 2
   enable_checkpointing: false
 
 module:
+  # nllb_ckpt: /hdd/fdschmidt/trident-nllb-llm2vec/logs/runs/2024-06-23/11-08-11/checkpoints/step=1200.ckpt
+  # nllb_ckpt: /hdd/fdschmidt/trident-nllb-llm2vec/logs/runs/2024-06-23/16-12-09/checkpoints/step=7000.ckpt
+  # nllb_ckpt: /hdd/fdschmidt/trident-nllb-llm2vec/logs/runs/2024-06-23/16-12-09/checkpoints/step=7000.ckpt
+  nllb_ckpt: /hdd/fdschmidt/trident-nllb-llm2vec/logs/runs/2024-09-17/23-01-51/checkpoints/step=10000.ckpt
   _target_: src.mt_llm.module.AutoModuleForSequenceClassification
   save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
   num_labels: 3
@@ -35,6 +43,9 @@ module:
     num_warmup_steps: 0.1
 
 logger:
+  csv:
+    _target_: lightning.pytorch.loggers.CSVLogger
+    save_dir: ${hydra:runtime.output_dir}
   wandb:
     name: "model=NLLB-${run.base_model}_epochs=${trainer.max_epochs}_batch-size=${_log_vars.train_batch_size}_accumulate-grad-batches=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
     tags:

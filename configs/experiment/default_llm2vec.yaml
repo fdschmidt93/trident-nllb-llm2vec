@@ -15,7 +15,7 @@ run:
   val_test_batch_size: ???
 
 trainer:
-  deterministic: true
+  deterministic: False
   devices: 1
   inference_mode: false
   limit_test_batches: 0

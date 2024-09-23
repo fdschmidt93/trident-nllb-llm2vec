@@ -216,7 +216,7 @@ class SpanDistillationModule(DistillationModule):
             ).last_hidden_state  # (M, L, d)
         # up-projection to llama dimensionality
         # nllb_embeds_MKd ->  nllb_embeds_NKD
-        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd)
+        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd.clone().detach())
 
         self.model.llama.enable_adapter_layers()
         nllb_llama_outputs = self.model.llama(
@@ -229,7 +229,7 @@ class SpanDistillationModule(DistillationModule):
             offsets=batch["nllb_seq_bag_offsets"],
         )
         llm_seq_embeds = self.mean_embedding(
-            hidden_states=llm_outputs.last_hidden_state,
+            hidden_states=llm_outputs.last_hidden_state.clone().detach(),
             input=batch["seq_bag_ids"],
             offsets=batch["seq_bag_offsets"],
         )

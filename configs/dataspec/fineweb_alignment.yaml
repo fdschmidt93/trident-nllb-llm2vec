@@ -4,7 +4,7 @@ dataset:
   _convert_: all
   path: parquet
   split: train
-  data_files: ${hydra:runtime.cwd}/data/datasets/fineweb/sample/10BT/*.parquet
+  data_files: ${hydra:runtime.cwd}/data/datasets/fineweb/sample/10BT/000_00000.parquet
   num_proc: 16
 
 preprocessing:
@@ -12,6 +12,8 @@ preprocessing:
     map:
       batched: true
       num_proc: 32
+      # cache_file_name: ${hydra:runtime.cwd}/cache/fw.arrow
+      # fingerprint: fineweb
       function:
         _target_: src.mt_llm.processing.preprocess_alignment
         _partial_: True
@@ -46,7 +48,7 @@ dataloader:
       src_lang: eng_Latn
       padding_side: right
     tokenize_kwargs:
-      padding: True
+      padding: "max_length"
       max_length: 512
       return_attention_mask: True
       return_tensors: pt
