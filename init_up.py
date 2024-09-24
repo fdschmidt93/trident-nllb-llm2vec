@@ -81,20 +81,20 @@ with tqdm(total=N, desc="Collecting tokens", unit="token") as pbar:
                     attention_mask=batch["nllb_attention_mask"],
                 ).last_hidden_state
 
-            # Reshape embeddings for F.embedding_bag and move to CPU
-            nllb_N, nllb_L = batch["nllb_input_ids"].shape
-            llm_N, llm_L = batch["input_ids"].shape
+                # Reshape embeddings for F.embedding_bag and move to CPU
+                nllb_N, nllb_L = batch["nllb_input_ids"].shape
+                llm_N, llm_L = batch["input_ids"].shape
 
-            nllb_embeds = F.embedding_bag(
-                weight=nllb_embeds.view(nllb_N * nllb_L, -1).float(),
-                input=batch["nllb_bag_ids"],
-                padding_idx=0,
-            ).cpu()
-            llm_embeds = F.embedding_bag(
-                weight=llm_embeds.view(llm_N * llm_L, -1).float(),
-                input=batch["bag_ids"],
-                padding_idx=0,
-            ).cpu()
+                nllb_embeds = F.embedding_bag(
+                    weight=nllb_embeds.view(nllb_N * nllb_L, -1).float(),
+                    input=batch["nllb_bag_ids"],
+                    padding_idx=0,
+                ).cpu()
+                llm_embeds = F.embedding_bag(
+                    weight=llm_embeds.view(llm_N * llm_L, -1).float(),
+                    input=batch["bag_ids"],
+                    padding_idx=0,
+                ).cpu()
 
         llm_embeds_accum.append(llm_embeds)
         nllb_embeds_accum.append(nllb_embeds)
@@ -150,22 +150,22 @@ with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             attention_mask=batch["nllb_attention_mask"],
         ).last_hidden_state
 
-    # Reshape embeddings for F.embedding_bag and move to CPU
-    nllb_N, nllb_L = batch["nllb_input_ids"].shape
-    llm_N, llm_L = batch["input_ids"].shape
+        # Reshape embeddings for F.embedding_bag and move to CPU
+        nllb_N, nllb_L = batch["nllb_input_ids"].shape
+        llm_N, llm_L = batch["input_ids"].shape
 
-    nllb_embeds = F.embedding_bag(
-        weight=nllb_embeds.view(nllb_N * nllb_L, -1).float(),
-        input=batch["nllb_bag_ids"],
-        padding_idx=0,
-    )
-    llm_embeds = F.embedding_bag(
-        weight=llm_embeds.view(llm_N * llm_L, -1).float(),
-        input=batch["bag_ids"],
-        padding_idx=0,
-    )
-    loss = F.mse_loss(up_proj(nllb_embeds), llm_embeds)
-    fvu_ = fvu(llm_embeds, loss)
+        nllb_embeds = F.embedding_bag(
+            weight=nllb_embeds.view(nllb_N * nllb_L, -1).float(),
+            input=batch["nllb_bag_ids"],
+            padding_idx=0,
+        )
+        llm_embeds = F.embedding_bag(
+            weight=llm_embeds.view(llm_N * llm_L, -1).float(),
+            input=batch["bag_ids"],
+            padding_idx=0,
+        )
+        loss = F.mse_loss(up_proj(nllb_embeds), llm_embeds)
+        fvu_ = fvu(llm_embeds, loss)
 
 # Save the up_proj state dict
 output_path = "./data/model/up_proj.pth"
