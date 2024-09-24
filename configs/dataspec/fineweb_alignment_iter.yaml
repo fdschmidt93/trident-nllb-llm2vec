@@ -6,32 +6,8 @@ dataset:
   name: default
   split: train
   streaming: true
-  # path: parquet
-  # split: train
-  # data_files: ${hydra:runtime.cwd}/data/datasets/fineweb/sample/10BT/000_00000.parquet
-  # num_proc: 16
 
 preprocessing:
-  # method:
-  #   map:
-  #     batched: true
-  #     num_proc: 32
-  #     # cache_file_name: ${hydra:runtime.cwd}/cache/fw.arrow
-  #     # fingerprint: fineweb
-  #     function:
-  #       _target_: src.mt_llm.processing.preprocess_alignment
-  #       _partial_: True
-  #       source_tokenizer:
-  #         _target_: transformers.AutoTokenizer.from_pretrained
-  #         pretrained_model_name_or_path: ${run.base_model}
-  #       target_tokenizer:
-  #         _target_: transformers.AutoTokenizer.from_pretrained
-  #         pretrained_model_name_or_path: ${module.model.nllb.pretrained_model_name_or_path}
-  #         src_lang: eng_Latn
-  #       tokenize_kwargs:
-  #         truncation: True
-  #         max_length: 512
-  #         return_attention_mask: True
   apply:
     split_if_multi_gpu:
       _target_: src.mt_llm.utils.split_by_node_if_multi_gpu

@@ -4,11 +4,10 @@ import math
 from src.tasks.text_classification.evaluation import get_preds
 
 
-def fvu(x: torch.Tensor, x_hat: torch.Tensor, mse_loss: torch.Tensor):
+def fvu(x: torch.Tensor,mse_loss: torch.Tensor):
     """Fraction of Variance Unexplained"""
     d_model = x.shape[-1]
     x = x.view(-1, d_model)
-    x_hat = x_hat.view(-1, d_model)
 
     # compute variance of the original activations
     variance = (x - x.mean(dim=0)).pow(2).mean()

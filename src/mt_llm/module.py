@@ -54,6 +54,7 @@ class NLLBLlamaEncoder(nn.Module):
         self,
         llama: LlamaModel | PeftModelForFeatureExtraction,
         nllb: M2M100Model,
+        up_proj_state_dict: Optional[str] = None,
         pooling_strategy: str = "mean",
         *args,
         **kwargs,
@@ -61,12 +62,20 @@ class NLLBLlamaEncoder(nn.Module):
         super().__init__(*args, **kwargs)
         self.llama = llama
         self.nllb: M2M100Encoder = nllb.encoder
-        self.up_proj = nn.Linear(nllb.config.hidden_size, llama.config.hidden_size)
+        self.up_proj = nn.Linear(
+            nllb.config.hidden_size, llama.config.hidden_size, bias=False
+        )
+        if up_proj_state_dict is not None:
+            sd = torch.load(up_proj_state_dict, map_location="cpu")
+            self.up_proj.load_state_dict(sd, strict=True)
+            log.info("Loaded up-projection successfully")
         self.pooling_strategy = pooling_strategy
         self.pooling_fn = getattr(pooling, self.pooling_strategy)
 
         for p in self.nllb.parameters():
             p.requires_grad = False
+        # import pudb
+        # pu.db
 
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor):
         with torch.inference_mode():
@@ -94,11 +103,13 @@ class DistillationModule(TridentModule):
     ) -> None:
         # logs all configs to self.hyperparams
         super().__init__(*args, **kwargs)
-        self.pooling_strategy = pooling_strategy
-        self.pooling_fn = getattr(pooling, self.pooling_strategy)
+
+    def configure_model(self) -> None:
+        super().configure_model()
+        self.pooling_fn = getattr(pooling, self.hparams.pooling_strategy)
         assert (
             self.pooling_fn is not None
-        ), "`self.pooling_strategy` must be one of mean, eos, cls"
+        ), "`pooling_strategy` must be one of mean, eos, cls"
 
     def forward(self, batch: dict):
         # use constructed model during validation
@@ -151,9 +162,7 @@ class DistillationModule(TridentModule):
         )
         mse_loss = F.mse_loss(nllb_hidden_states, llama_hidden_states)
         with torch.no_grad():
-            fvu_loss = fvu(
-                x=nllb_hidden_states, x_hat=llama_hidden_states, mse_loss=mse_loss
-            )
+            fvu_loss = fvu(x=llama_hidden_states, mse_loss=mse_loss)
         self.log("train/mse", mse_loss)
         self.log("train/fvu", fvu_loss)
         return mse_loss
@@ -171,6 +180,20 @@ class SpanDistillationModule(DistillationModule):
         self.nllb_tokenizer = AutoTokenizer.from_pretrained(
             "facebook/nllb-200-distilled-600M"
         )
+
+    def configure_optimizers(self):
+        from hydra.utils import instantiate
+
+        """Prepares optimizer and scheduler."""
+        parameters = {
+            "params": list(p for p in self.parameters() if p.requires_grad),
+            "weight_decay": self.hparams.optimizer.weight_decay,
+        }
+        optimizer = instantiate(self.hparams.optimizer, parameters)
+        if scheduler_cfg := getattr(self.hparams, "scheduler"):
+            scheduler = self.configure_scheduler(optimizer, scheduler_cfg)
+            return [optimizer], [scheduler]
+        return [optimizer]
 
     @staticmethod
     def mean_embedding(
@@ -268,7 +291,7 @@ class SpanDistillationModule(DistillationModule):
             )
             self.log(
                 "train/seq_fvu",
-                fvu(x=nllb_seq_embeds, x_hat=llm_seq_embeds, mse_loss=seq_mse_loss),
+                fvu(x=llm_seq_embeds, mse_loss=seq_mse_loss),
             )
             self.log(
                 "train/span_abs_diff_norm",
@@ -283,7 +306,7 @@ class SpanDistillationModule(DistillationModule):
             )
             self.log(
                 "train/span_fvu",
-                fvu(x=nllb_embeds, x_hat=llm_embeds, mse_loss=span_mse_loss),
+                fvu(x=llm_embeds, mse_loss=span_mse_loss),
             )
         # for now we set 1:2 loss ratio, TBD
         mse_loss = 0.5 * seq_mse_loss + 0.5 * span_mse_loss

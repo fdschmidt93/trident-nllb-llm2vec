@@ -11,7 +11,7 @@ run:
   pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec-llama3-1/
   base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
   seed: 42
-  train_batch_size: 2
+  train_batch_size: 4
   val_test_batch_size: 4
   max_length: 512
   ckpt_interval: 0.1
@@ -21,7 +21,7 @@ trainer:
   precision: "bf16-mixed"
   max_steps: 10000
   devices: 2
-  accumulate_grad_batches: 32
+  accumulate_grad_batches: 4
   num_sanity_val_steps: 0
   limit_val_batches: 0
   limit_test_batches: 0
@@ -67,5 +67,5 @@ callbacks:
     filename: "step={step}"
     save_last: false # additionaly always save model from last epoch
     dirpath: "${hydra:runtime.output_dir}/checkpoints/"
-    save_weights_only: true
+    save_weights_only: false
     auto_insert_metric_name: false
