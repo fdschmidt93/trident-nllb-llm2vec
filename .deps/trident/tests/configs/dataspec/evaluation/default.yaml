@@ -1,0 +1,27 @@
+prepare:
+  batch:
+    _partial_: true
+    _target_: tests.helpers.functions.extend_batch
+  outputs:
+    _partial_: true
+    _target_: tests.helpers.functions.extend_outputs
+  step_outputs:
+    _partial_: true
+    _target_: tests.helpers.functions.test_step_outputs
+
+step_outputs:
+  outputs:
+    - preds
+    - set_one_from_prepare_outputs
+  batch:
+    - labels
+    - set_one_from_prepare_batch
+metrics:
+  mse_loss:
+    metric:
+      _partial_: true
+      _target_: torch.nn.functional.mse_loss
+    compute_on: "epoch_end"
+    kwargs: 
+      input: "outputs.preds"
+      target: "outputs.labels"

@@ -1,0 +1,25 @@
+# @package _global_
+
+defaults:
+  - default
+    # hierarchically build datamodule.dataset configuration
+    # training on wikiann with train split of ${lang} (default: en)
+  - /dataspecs@datamodule.train:
+      - wikiann_train
+    # validating and testing on wikiann & masakhaner
+  - /dataspecs@datamodule.val:
+      - wikiann_val_test
+      - masakhaner_val_test
+  - /dataspecs@datamodule.test:
+      - wikiann_val_test
+      - masakhaner_val_test
+  - override /module: token_classification
+
+run:
+  lang: en # determines on which wikiann-train-$lang split the model to train
+  task: ner
+
+module:
+  model:
+    pretrained_model_name_or_path: xlm-roberta-base
+    num_labels: 7

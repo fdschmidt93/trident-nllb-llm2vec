@@ -1,0 +1,9 @@
+defaults:
+  - /dataspec@mnli: nli
+  - override /dataspec/dataloader@mnli.dataloader: train
+
+mnli:
+  dataset:
+    path: glue
+    name: mnli
+    split: train

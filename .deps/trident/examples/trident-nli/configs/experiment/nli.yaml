@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train:
+    - mnli_train
+  - /dataspecs@datamodule.val:
+    - xnli_val_test
+    - indicxnli_val_test
+    - amnli_val_test
+  - override /module: text_classification
+
+run:
+  task: nli
+
+module:
+  model:
+    pretrained_model_name_or_path: "xlm-roberta-base"
+    num_labels: 3

@@ -1,0 +1,31 @@
+name: trident-xtreme # or your name
+channels:
+  # pytorch and nvidia need to superseed
+  # conda-forge for cuda pytorch
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.1
+  - pytorch-cuda=12.1
+  - transformers
+  - lightning=2.1
+  - wandb
+  - hydra-core
+  - hydra-colorlog
+
+  # development dependencies
+  - ipython
+  - pytest
+  - debugpy
+  - pudb
+  - pyright
+  - pip
+  - ruff
+
+  - pip:
+    - seqeval
+    - ruff-lsp
+    # path to trident
+    - -e ../trident/

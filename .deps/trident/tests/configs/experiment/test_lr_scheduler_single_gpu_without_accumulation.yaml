@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - /dataspec@datamodule.train: single_train
+  - /dataspec@datamodule.val: single_val_test
+
+run:
+  optimized_metric: "single_val_test/val/mse_loss"
+
+trainer: 
+  max_epochs: 10
+  limit_val_batches: 0
+  limit_test_batches: 0
+  accumulate_grad_batches: 1
+
+module:
+  monitor_lr_rate: true

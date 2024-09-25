@@ -1,0 +1,22 @@
+defaults:
+  - default@off_by_one
+  - default@off_by_two
+
+off_by_one:
+  dataset:
+    X:
+      to_: 5
+    y:
+      _args_:
+        - _target_: torch.arange
+          end: 5
+
+off_by_two:
+  dataset:
+    X:
+      from_: 5
+    y:
+      _args_:
+        - _target_: torch.arange
+          start: 8
+          end: 13

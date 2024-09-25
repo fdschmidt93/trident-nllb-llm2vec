@@ -1,0 +1,16 @@
+step_outputs:
+  outputs: "logits"
+  batch: "labels"
+
+metrics:
+  f1:
+    metric:
+      _partial_: true
+      _target_: src.tasks.token_classification.evaluation.compute_metrics
+      # gets the keys of label2id in preprocessing on dataset level
+      # 1st dot is for keys on same level, after that onto parent nodes
+      label_list: ${oc.dict.keys:.....preprocessing.method.map.function.label2id}
+    compute_on: "epoch_end"
+    kwargs:
+      logits: "outputs.logits"
+      labels: "outputs.labels"

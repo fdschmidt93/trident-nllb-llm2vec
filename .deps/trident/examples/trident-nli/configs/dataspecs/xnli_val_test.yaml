@@ -1,0 +1,182 @@
+defaults:
+  - /dataspec/nli@validation_xnli_en
+  - /dataspec/nli@validation_xnli_es
+  - /dataspec/nli@validation_xnli_de
+  - /dataspec/nli@validation_xnli_fr
+  - /dataspec/nli@validation_xnli_el
+  - /dataspec/nli@validation_xnli_bg
+  - /dataspec/nli@validation_xnli_ru
+  - /dataspec/nli@validation_xnli_tr
+  - /dataspec/nli@validation_xnli_ar
+  - /dataspec/nli@validation_xnli_vi
+  - /dataspec/nli@validation_xnli_th
+  - /dataspec/nli@validation_xnli_zh
+  - /dataspec/nli@validation_xnli_hi
+  - /dataspec/nli@validation_xnli_sw
+  - /dataspec/nli@validation_xnli_ur
+  - /dataspec/nli@test_xnli_en
+  - /dataspec/nli@test_xnli_es
+  - /dataspec/nli@test_xnli_de
+  - /dataspec/nli@test_xnli_fr
+  - /dataspec/nli@test_xnli_el
+  - /dataspec/nli@test_xnli_bg
+  - /dataspec/nli@test_xnli_ru
+  - /dataspec/nli@test_xnli_tr
+  - /dataspec/nli@test_xnli_ar
+  - /dataspec/nli@test_xnli_vi
+  - /dataspec/nli@test_xnli_th
+  - /dataspec/nli@test_xnli_zh
+  - /dataspec/nli@test_xnli_hi
+  - /dataspec/nli@test_xnli_sw
+  - /dataspec/nli@test_xnli_ur
+
+validation_xnli_en:
+  dataset:
+    path: xnli
+    name: en
+    split: validation
+validation_xnli_es:
+  dataset:
+    path: xnli
+    name: es
+    split: validation
+validation_xnli_de:
+  dataset:
+    path: xnli
+    name: de
+    split: validation
+validation_xnli_fr:
+  dataset:
+    path: xnli
+    name: fr
+    split: validation
+validation_xnli_el:
+  dataset:
+    path: xnli
+    name: el
+    split: validation
+validation_xnli_bg:
+  dataset:
+    path: xnli
+    name: bg
+    split: validation
+validation_xnli_ru:
+  dataset:
+    path: xnli
+    name: ru
+    split: validation
+validation_xnli_tr:
+  dataset:
+    path: xnli
+    name: tr
+    split: validation
+validation_xnli_ar:
+  dataset:
+    path: xnli
+    name: ar
+    split: validation
+validation_xnli_vi:
+  dataset:
+    path: xnli
+    name: vi
+    split: validation
+validation_xnli_th:
+  dataset:
+    path: xnli
+    name: th
+    split: validation
+validation_xnli_zh:
+  dataset:
+    path: xnli
+    name: zh
+    split: validation
+validation_xnli_hi:
+  dataset:
+    path: xnli
+    name: hi
+    split: validation
+validation_xnli_sw:
+  dataset:
+    path: xnli
+    name: sw
+    split: validation
+validation_xnli_ur:
+  dataset:
+    path: xnli
+    name: ur
+    split: validation
+test_xnli_en:
+  dataset:
+    path: xnli
+    name: en
+    split: test
+test_xnli_es:
+  dataset:
+    path: xnli
+    name: es
+    split: test
+test_xnli_de:
+  dataset:
+    path: xnli
+    name: de
+    split: test
+test_xnli_fr:
+  dataset:
+    path: xnli
+    name: fr
+    split: test
+test_xnli_el:
+  dataset:
+    path: xnli
+    name: el
+    split: test
+test_xnli_bg:
+  dataset:
+    path: xnli
+    name: bg
+    split: test
+test_xnli_ru:
+  dataset:
+    path: xnli
+    name: ru
+    split: test
+test_xnli_tr:
+  dataset:
+    path: xnli
+    name: tr
+    split: test
+test_xnli_ar:
+  dataset:
+    path: xnli
+    name: ar
+    split: test
+test_xnli_vi:
+  dataset:
+    path: xnli
+    name: vi
+    split: test
+test_xnli_th:
+  dataset:
+    path: xnli
+    name: th
+    split: test
+test_xnli_zh:
+  dataset:
+    path: xnli
+    name: zh
+    split: test
+test_xnli_hi:
+  dataset:
+    path: xnli
+    name: hi
+    split: test
+test_xnli_sw:
+  dataset:
+    path: xnli
+    name: sw
+    split: test
+test_xnli_ur:
+  dataset:
+    path: xnli
+    name: ur
+    split: test

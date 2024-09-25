@@ -1,0 +1,11 @@
+name: sphinx
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - sphinx
+  - ca-certificates
+  - openssl
+  - furo
+  - certifi
+  - sphinx-autodoc-typehints

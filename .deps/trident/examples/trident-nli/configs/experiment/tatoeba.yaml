@@ -1,0 +1,22 @@
+# @package _global_
+
+# to execute this experiment run:
+# python run.py experiment=mnli
+
+defaults:
+  - override /trainer: default.yaml # choose trainer from 'configs/trainer/'
+  - override /module: aligned_retrieval.yaml
+  - override /datamodule: tatoeba.yaml
+  - override /callbacks: null
+  - override /logger: wandb.yaml
+
+run:
+  seed: 42
+
+module:
+  model:
+    _target_: transformers.AutoModelForTokenClassification.from_pretrained
+    pretrained_model_name_or_path: "xlm-roberta-base"
+    num_labels: 7
+  module:
+    weights_from_checkpoint:

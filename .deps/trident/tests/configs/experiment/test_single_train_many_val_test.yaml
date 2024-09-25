@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /dataspec@datamodule.train: single_train
+  - /dataspec@datamodule.val: many_val_test
+
+run:
+  optimized_metric: "off_by_one/val/mse_loss"

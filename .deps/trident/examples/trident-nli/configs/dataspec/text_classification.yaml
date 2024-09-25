@@ -1,0 +1,26 @@
+defaults:
+  - default
+  - evaluation: text_classification
+
+preprocessing:
+  method:
+    map:
+      function:
+        _target_: src.tasks.text_classification.processing.preprocess_fn
+        _partial_: true
+        column_names: ???
+        tokenizer:
+          _partial_: true
+          _target_: transformers.tokenization_utils_base.PreTrainedTokenizerBase.__call__
+          self:
+              _target_: transformers.AutoTokenizer.from_pretrained
+              pretrained_model_name_or_path: ${module.model.pretrained_model_name_or_path}
+          padding: false
+          truncation: true
+          max_length: 128
+    # unify output format of MNLI and XNLI
+    set_format:
+      columns:
+        - "input_ids"
+        - "attention_mask"
+        - "label"

@@ -1,0 +1,7 @@
+defaults:
+# interleaved with setup so instantiated later (recursive false)
+- default
+
+model:
+  _target_: transformers.AutoModelForTokenClassification.from_pretrained
+  num_labels: ???

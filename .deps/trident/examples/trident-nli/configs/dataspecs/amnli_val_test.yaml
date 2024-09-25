@@ -1,0 +1,122 @@
+defaults:
+  - /dataspec/nli@validation_amnli_aym
+  - /dataspec/nli@validation_amnli_bzd
+  - /dataspec/nli@validation_amnli_cni
+  - /dataspec/nli@validation_amnli_gn
+  - /dataspec/nli@validation_amnli_hch
+  - /dataspec/nli@validation_amnli_nah
+  - /dataspec/nli@validation_amnli_oto
+  - /dataspec/nli@validation_amnli_quy
+  - /dataspec/nli@validation_amnli_shp
+  - /dataspec/nli@validation_amnli_tar
+  - /dataspec/nli@test_amnli_aym
+  - /dataspec/nli@test_amnli_bzd
+  - /dataspec/nli@test_amnli_cni
+  - /dataspec/nli@test_amnli_gn
+  - /dataspec/nli@test_amnli_hch
+  - /dataspec/nli@test_amnli_nah
+  - /dataspec/nli@test_amnli_oto
+  - /dataspec/nli@test_amnli_quy
+  - /dataspec/nli@test_amnli_shp
+  - /dataspec/nli@test_amnli_tar
+
+validation_amnli_aym:
+  dataset:
+    path: americas_nli
+    name: aym
+    split: validation
+validation_amnli_bzd:
+  dataset:
+    path: americas_nli
+    name: bzd
+    split: validation
+validation_amnli_cni:
+  dataset:
+    path: americas_nli
+    name: cni
+    split: validation
+validation_amnli_gn:
+  dataset:
+    path: americas_nli
+    name: gn
+    split: validation
+validation_amnli_hch:
+  dataset:
+    path: americas_nli
+    name: hch
+    split: validation
+validation_amnli_nah:
+  dataset:
+    path: americas_nli
+    name: nah
+    split: validation
+validation_amnli_oto:
+  dataset:
+    path: americas_nli
+    name: oto
+    split: validation
+validation_amnli_quy:
+  dataset:
+    path: americas_nli
+    name: quy
+    split: validation
+validation_amnli_shp:
+  dataset:
+    path: americas_nli
+    name: shp
+    split: validation
+validation_amnli_tar:
+  dataset:
+    path: americas_nli
+    name: tar
+    split: validation
+test_amnli_aym:
+  dataset:
+    path: americas_nli
+    name: aym
+    split: test
+test_amnli_bzd:
+  dataset:
+    path: americas_nli
+    name: bzd
+    split: test
+test_amnli_cni:
+  dataset:
+    path: americas_nli
+    name: cni
+    split: test
+test_amnli_gn:
+  dataset:
+    path: americas_nli
+    name: gn
+    split: test
+test_amnli_hch:
+  dataset:
+    path: americas_nli
+    name: hch
+    split: test
+test_amnli_nah:
+  dataset:
+    path: americas_nli
+    name: nah
+    split: test
+test_amnli_oto:
+  dataset:
+    path: americas_nli
+    name: oto
+    split: test
+test_amnli_quy:
+  dataset:
+    path: americas_nli
+    name: quy
+    split: test
+test_amnli_shp:
+  dataset:
+    path: americas_nli
+    name: shp
+    split: test
+test_amnli_tar:
+  dataset:
+    path: americas_nli
+    name: tar
+    split: test

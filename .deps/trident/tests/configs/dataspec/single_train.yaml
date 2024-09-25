@@ -1,0 +1,16 @@
+defaults:
+  - default@single_train
+
+single_train:
+  dataset:
+    X:
+      # a bit convoluted to cast arange to float in hydra config
+      _target_: torch.eye
+      _args_:
+        - 10
+    y:
+      # a bit convoluted to cast arange to float in hydra config
+      _args_:
+        - _target_: torch.arange
+          start: 1
+          end: 11

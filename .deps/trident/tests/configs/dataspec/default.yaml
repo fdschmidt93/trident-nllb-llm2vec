@@ -1,0 +1,11 @@
+defaults:
+  - dataloader: default
+  - evaluation: default
+
+dataset:
+  _target_: tests.helpers.data.IdentityDataset
+  X:
+    _target_: tests.helpers.data.get_val_data
+  y:
+    # a bit convoluted to cast arange to float in hydra config
+    _target_: torch.Tensor.float

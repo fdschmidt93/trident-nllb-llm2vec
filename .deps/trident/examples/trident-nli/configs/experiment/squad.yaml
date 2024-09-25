@@ -1,0 +1,15 @@
+# @package _global_
+
+# to execute this experiment run:
+# python run.py experiment=mnli
+
+defaults:
+  - override /trainer: default.yaml # choose trainer from 'configs/trainer/'
+  - override /module: question_answering.yaml
+  - override /callbacks: null
+
+trainer:
+  num_sanity_val_steps: 0
+
+run:
+  seed: 42

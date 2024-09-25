@@ -1,0 +1,30 @@
+defaults:
+  - default@first_half
+  - default@second_half
+
+first_half:
+  dataset:
+    X:
+      _target_: tests.helpers.data.get_val_data
+      to_: 5
+    y:
+      # a bit convoluted to cast arange to float in hydra config
+      _target_: torch.Tensor.float
+      _args_:
+        - _target_: torch.arange
+          start: 1
+          end: 6
+second_half:
+  misc:
+    remove_unused_columns: true
+  dataset:
+    X:
+      _target_: tests.helpers.data.get_val_data
+      from_: 5
+    y:
+      # a bit convoluted to cast arange to float in hydra config
+      _target_: torch.Tensor.float
+      _args_:
+        - _target_: torch.arange
+          start: 6
+          end: 11

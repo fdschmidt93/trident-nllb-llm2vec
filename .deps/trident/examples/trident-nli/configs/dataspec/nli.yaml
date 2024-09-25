@@ -1,0 +1,10 @@
+defaults:
+  - text_classification
+
+preprocessing:
+  method:
+    map:
+      function:
+        column_names:
+          text: premise
+          text_pair: hypothesis

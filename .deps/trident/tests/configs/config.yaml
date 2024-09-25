@@ -1,0 +1,34 @@
+defaults:
+  - experiment: null
+  - callbacks: null
+  - override hydra/job_logging: disabled
+
+print_config: False
+
+run:
+  seed: 42
+  optimized_metric: ???
+
+trainer:
+  _target_: lightning.Trainer
+  max_epochs: 10
+  accelerator: cpu
+  enable_checkpointing: false
+  accumulate_grad_batches: 1
+
+module:
+  _target_: tests.helpers.modules.ToyModule
+  _recursive_: false
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 9
+  scheduler:
+    _target_: transformers.optimization.get_linear_schedule_with_warmup
+    _recursive_: false
+    num_warmup_steps: 0.1
+  model:
+    _target_: tests.helpers.modules.get_module
+
+datamodule:
+  _target_: trident.TridentDataModule
+  _recursive_: false

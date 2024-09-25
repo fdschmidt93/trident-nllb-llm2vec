@@ -1,0 +1,7 @@
+_target_: torch.utils.data.dataloader.DataLoader
+collate_fn:
+  _target_: tests.helpers.data.collate_fn
+  _partial_: true
+batch_size: 10
+num_workers: 0
+pin_memory: true

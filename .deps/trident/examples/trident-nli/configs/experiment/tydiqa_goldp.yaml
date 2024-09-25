@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - default
+  - /dataspecs@datamodule.train:
+    - tydiqa_goldp_train
+  - /dataspecs@datamodule.val:
+    - tydiqa_goldp_val_test
+  - /dataspecs@datamodule.test:
+    - tydiqa_goldp_val_test
+  - override /module: question_answering.yaml
+
+run:
+  task: tydiqa_goldp
+  seed: 42
+
+trainer:
+  num_sanity_val_steps: 0
+
+module:
+  model:
+    pretrained_model_name_or_path: "xlm-roberta-base"
