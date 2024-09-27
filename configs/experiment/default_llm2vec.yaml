@@ -5,11 +5,17 @@ defaults:
   - /trainer: default
   - override /logger: wandb
 
+hydra:
+  job:
+    env_set:
+      CUDA_HOME: ${oc.env:CONDA_PREFIX}
+      CC: ${oc.env:CONDA_PREFIX}/bin/gcc
+
 run:
   seed: 42
   task: ???
   pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec/
-  base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
+  # base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
   max_length: ???
   train_batch_size: ???
   val_test_batch_size: ???

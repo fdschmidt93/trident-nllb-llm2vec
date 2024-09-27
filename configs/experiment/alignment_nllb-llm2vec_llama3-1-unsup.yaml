@@ -8,13 +8,16 @@ defaults:
 
 run:
   task: nllb-llm2vec-adaptation
-  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec-sup/
+  pretrained_model_name_or_path: ${hydra:runtime.cwd}/data/model/llm2vec_llama3-1_unsupervised/
   base_model: "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
-  seed: 42
+  seed: ${rnd:1,1000000}
   train_batch_size: 4
   val_test_batch_size: 4
   max_length: 512
-  ckpt_interval: 0.05
+  ckpt_interval: 0.1
+  ckpt_path:
+    _target_: src.mt_llm.utils.get_highest_step_file
+    directory: ${hydra:runtime.output_dir}/checkpoints/
 
 trainer:
   deterministic: false
@@ -26,20 +29,23 @@ trainer:
   limit_val_batches: 0
   limit_test_batches: 0
   use_distributed_sampler: false
+  # default_root_dir: ${hydra:runtime.output_dir}
+  # plugins:
+  #   _target_: lightning.pytorch.plugins.environments.SLURMEnvironment
 
 module:
   _target_: src.mt_llm.module.SpanDistillationModule
-  # distillation_strategy: last
   optimizer:
     lr: 5e-4
   scheduler:
     num_warmup_steps: 0.01
   nllb_ckpt: null
-
+  model:
+    up_proj_state_dict: ${hydra:runtime.cwd}/data/model/up-proj_llm2vec_llama3-1.pth
 
 logger:
   wandb:
-    name: "model=${run.base_model}_max-steps=${trainer.max_steps}_bs=${_log_vars.train_batch_size}_grad_accum=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
+    name: "model=llama3-1-unsupervised_max-steps=${trainer.max_steps}_bs=${_log_vars.train_batch_size}_grad_accum=${trainer.accumulate_grad_batches}_lr=${module.optimizer.lr}_scheduler=${module.scheduler.num_warmup_steps}_seed=${run.seed}"
     tags:
       - "bs=${_log_vars.train_batch_size}"
       - "grad_accum=${trainer.accumulate_grad_batches}"

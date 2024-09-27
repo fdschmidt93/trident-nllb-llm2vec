@@ -49,7 +49,9 @@ class TridentModule(OptimizerMixin, EvalMixin):
     ):
         super().__init__()
         # super().__init__() calls LightningModule.save_hyperparameters() in `EvalMixin.__init__`
-        if initialize_model:
+
+    def configure_model(self):
+        if self.hparams.initialize_model:
             self.model = hydra.utils.instantiate(self.hparams.model)
 
     def forward(self, batch: dict) -> dict:

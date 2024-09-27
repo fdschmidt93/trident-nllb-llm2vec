@@ -1,0 +1,13 @@
+N: 1024
+batch_size: 32
+embedding_size: 4096
+nllb_hidden_size: 1024
+device: "cuda:0"
+llm_base_model: McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp
+llm_weights: "${hydra:runtime.cwd}/data/model/llm2vec_llama3_unsupervised/"
+nllb_model_name_or_path: "facebook/nllb-200-distilled-600M"
+dataset_name: "HuggingFaceFW/fineweb"
+dataset_config_name: "default"
+dataset_split: "train"
+max_length: 512
+output_path: "${hydra:runtime.cwd}/data/model/up-proj_llm2vec_llama3.pth"

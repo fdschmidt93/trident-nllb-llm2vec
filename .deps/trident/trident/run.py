@@ -19,6 +19,20 @@ from trident.utils.runner import log_hyperparameters
 
 log = get_logger(__name__)
 
+random_num = None
+
+
+def random_number(min_val: int, max_val: int) -> int:
+    import random
+
+    global random_num
+    if random_num is None:
+        random_num = random.randint(min_val, max_val)
+    return random_num
+
+
+OmegaConf.register_new_resolver("rnd", random_number)
+
 
 def instantiate_objects(cfg: DictConfig, key: str) -> List[Union[Callback, Logger]]:
     objects = []
@@ -65,11 +79,15 @@ def run(cfg: DictConfig) -> Optional[torch.Tensor]:
 
     log_hyperparameters(cfg, module, trainer)
 
+    ckpt_path = OmegaConf.select(cfg, "run.ckpt_path", default=None)
+    if isinstance(ckpt_path, DictConfig):
+        ckpt_path = hydra.utils.instantiate(ckpt_path)
+
     if cfg.trainer.get("limit_train_batches", 1.0) > 0:
         trainer.fit(
             model=module,
             datamodule=datamodule,
-            ckpt_path=OmegaConf.select(cfg, "run.ckpt_path"),
+            ckpt_path=ckpt_path,
         )
 
     score = None

@@ -8,12 +8,15 @@ channels:
 dependencies:
   - python=3.10
   - pytorch=2.4.1
-  - pytorch-cuda=12.1
-  - cudatoolkit-dev
+  - pytorch-cuda=12.4
+  - cuda
   - transformers
   - lightning=2.4
   - hydra-core
   - hydra-colorlog
+  # for deepspeed
+  - gcc
+  - cxx-compiler
 
   # development dependencies
   - ipython
@@ -25,11 +28,11 @@ dependencies:
   - ruff
 
   - pip:
-    # conda-forge doesn't have recent enough
-    # wandb for numpy 2.0
     - wandb
-    - peft
+    - peft==0.13.0
+    - bitsandbytes==0.44.0
+    - deepspeed==0.15.1
     - seqeval
     - ruff-lsp
     # path to trident
-    - -e ./deps/trident/
+    - -e ./.deps/trident/

@@ -2,36 +2,32 @@ dataset:
   _target_: datasets.load.load_dataset
 
   _convert_: all
-  path: HuggingFaceFW/fineweb
-  name: default
+  path: parquet
   split: train
-  streaming: true
-  # path: parquet
-  # split: train
-  # data_files: ${hydra:runtime.cwd}/data/datasets/fineweb/sample/10BT/000_00000.parquet
-  # num_proc: 16
+  data_files: ${hydra:runtime.cwd}/data/datasets/fineweb/sample/10BT/000_00000.parquet
+  num_proc: 16
 
 preprocessing:
-  # method:
-  #   map:
-  #     batched: true
-  #     num_proc: 32
-  #     # cache_file_name: ${hydra:runtime.cwd}/cache/fw.arrow
-  #     # fingerprint: fineweb
-  #     function:
-  #       _target_: src.mt_llm.processing.preprocess_alignment
-  #       _partial_: True
-  #       source_tokenizer:
-  #         _target_: transformers.AutoTokenizer.from_pretrained
-  #         pretrained_model_name_or_path: ${run.base_model}
-  #       target_tokenizer:
-  #         _target_: transformers.AutoTokenizer.from_pretrained
-  #         pretrained_model_name_or_path: ${module.model.nllb.pretrained_model_name_or_path}
-  #         src_lang: eng_Latn
-  #       tokenize_kwargs:
-  #         truncation: True
-  #         max_length: 512
-  #         return_attention_mask: True
+  method:
+    map:
+      batched: true
+      num_proc: 32
+      # cache_file_name: ${hydra:runtime.cwd}/cache/fw.arrow
+      # fingerprint: fineweb
+      function:
+        _target_: src.mt_llm.processing.preprocess_alignment
+        _partial_: True
+        source_tokenizer:
+          _target_: transformers.AutoTokenizer.from_pretrained
+          pretrained_model_name_or_path: ${run.base_model}
+        target_tokenizer:
+          _target_: transformers.AutoTokenizer.from_pretrained
+          pretrained_model_name_or_path: ${module.model.nllb.pretrained_model_name_or_path}
+          src_lang: eng_Latn
+        tokenize_kwargs:
+          truncation: True
+          max_length: 512
+          return_attention_mask: True
   apply:
     split_if_multi_gpu:
       _target_: src.mt_llm.utils.split_by_node_if_multi_gpu
@@ -63,4 +59,4 @@ dataloader:
   batch_size: ${run.train_batch_size} # copied into all train, val, test
   pin_memory: true # copied into all train, val, test
   shuffle: false # will be copied in to val and test
-  num_workers: 4
+  num_workers: 8

@@ -618,6 +618,67 @@ class DataCollatorForTokenAlignedDistillation:
         return llm_batch
 
 
+class IterableDataCollatorForDistillation:
+    def __init__(
+        self,
+        llm_tokenizer,
+        nllb_tokenizer,
+        tokenize_kwargs: dict = {
+            "max_length": 512,
+            "padding": "max_length",
+            "return_tensors": "pt",
+        },
+        *args,
+        **kwargs,
+    ) -> None:
+        self.llm_tokenizer = llm_tokenizer
+        self.nllb_tokenizer = nllb_tokenizer
+        self.tokenize_kwargs = tokenize_kwargs
+        if getattr(self.llm_tokenizer, "pad_token_id") is None:
+            self.llm_tokenizer.pad_token_id = self.llm_tokenizer.eos_token_id
+
+    @staticmethod
+    def get_input_offsets(
+        attention_mask: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        # Find the indices of non-padded tokens in flattened hidden_states
+        input_indices = attention_mask.view(-1).nonzero(as_tuple=False).squeeze()
+
+        # Compute the offsets: for each sequence, where it starts in the flattened input
+        non_padded_lengths = attention_mask.sum(
+            dim=1
+        )  # Count non-padded tokens per sequence
+        offsets = torch.cat(
+            [
+                torch.tensor([0], device=attention_mask.device),
+                non_padded_lengths.cumsum(dim=0)[:-1],
+            ]
+        )
+        return input_indices, offsets
+
+    def __call__(self, examples: list[dict], *args, **kwds) -> dict:
+        inputs: list[str] = [line["text"] for line in examples]
+        source_batch = cast(
+            BatchEncoding, self.llm_tokenizer(inputs, **self.tokenize_kwargs)
+        )
+        target_batch = cast(
+            BatchEncoding, self.nllb_tokenizer(inputs, **self.tokenize_kwargs)
+        )
+        out = {}
+        out["input_ids"] = source_batch["input_ids"]
+        out["attention_mask"] = source_batch["attention_mask"]
+        out["nllb_input_ids"] = target_batch["input_ids"]
+        out["nllb_attention_mask"] = target_batch["attention_mask"]
+
+        out["seq_bag_ids"], out["seq_bag_offsets"] = self.get_input_offsets(
+            out["attention_mask"]
+        )
+        out["nllb_seq_bag_ids"], out["nllb_seq_bag_offsets"] = self.get_input_offsets(
+            out["nllb_attention_mask"]
+        )
+        return out
+
+
 class IterableDataCollatorForTokenAlignedDistillation:
     def __init__(
         self,

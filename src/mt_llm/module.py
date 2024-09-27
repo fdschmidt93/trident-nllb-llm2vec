@@ -97,19 +97,68 @@ class NLLBLlamaEncoder(nn.Module):
 class DistillationModule(TridentModule):
     def __init__(
         self,
-        pooling_strategy: str = "mean",
         *args,
         **kwargs,
     ) -> None:
         # logs all configs to self.hyperparams
         super().__init__(*args, **kwargs)
 
-    def configure_model(self) -> None:
-        super().configure_model()
-        self.pooling_fn = getattr(pooling, self.hparams.pooling_strategy)
-        assert (
-            self.pooling_fn is not None
-        ), "`pooling_strategy` must be one of mean, eos, cls"
+    @staticmethod
+    def mean_embedding(
+        hidden_states: torch.Tensor,
+        input: torch.Tensor,
+        offsets: torch.Tensor,
+        *args,
+        **kwargs,
+    ):
+        """
+        Compute the mean of non-padded embeddings using `embedding_bag`,
+        properly handling padding with offsets.
+        """
+        # Flatten hidden_states to 2D: shape (batch_size * seq_len, embedding_dim)
+        _, _, embed_dim = hidden_states.shape
+        token_embeds = hidden_states.view(-1, embed_dim)
+
+        # Use embedding_bag with mode 'mean' and appropriate padding index
+        return F.embedding_bag(
+            input=input,  # Indices of non-padded tokens in flattened form
+            weight=token_embeds,  # The flattened hidden states as embedding matrix
+            offsets=offsets,  # Offsets specifying start of each sequence
+            mode="mean",  # Aggregation mode
+        )
+
+    def on_save_checkpoint(self, checkpoint: dict) -> None:
+        checkpoint["state_dict"] = {
+            k: v
+            for k, v in checkpoint["state_dict"].items()
+            if any(x in k for x in ("up_proj", "lora_A", "lora_B"))
+        }
+        return super().on_save_checkpoint(checkpoint)
+
+    def on_load_checkpoint(self, checkpoint: dict) -> None:
+        for name, weight in self.state_dict().items():
+            if not any(x in name for x in ("up_proj", "lora_A", "lora_B")):
+                checkpoint["state_dict"][name] = weight
+        return super().on_load_checkpoint(checkpoint)
+
+    def configure_optimizers(self):
+        from hydra.utils import instantiate
+
+        """Prepares optimizer and scheduler."""
+        if self.hparams.optimizer._target_ == "deepspeed.ops.adam.DeepSpeedCPUAdam":
+            parameters = list(p for p in self.parameters() if p.requires_grad)
+        else:
+            parameters = [
+                {
+                    "params": list(p for p in self.parameters() if p.requires_grad),
+                    "weight_decay": self.hparams.optimizer.weight_decay,
+                }
+            ]
+        optimizer = instantiate(self.hparams.optimizer, parameters)
+        if scheduler_cfg := getattr(self.hparams, "scheduler"):
+            scheduler = self.configure_scheduler(optimizer, scheduler_cfg)
+            return [optimizer], [scheduler]
+        return [optimizer]
 
     def forward(self, batch: dict):
         # use constructed model during validation
@@ -145,79 +194,43 @@ class DistillationModule(TridentModule):
             ).last_hidden_state  # (M, L, d)
         # up-projection to llama dimensionality
         # nllb_embeds_MKd ->  nllb_embeds_NKD
-        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd)
+        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd.clone())
 
         self.model.llama.enable_adapter_layers()
         nllb_llama_outputs = self.model.llama(
             inputs_embeds=nllb_embeds_MKD, attention_mask=batch["nllb_attention_mask"]
         )
-
-        nllb_hidden_states = self.pooling_fn(
-            nllb_llama_outputs.last_hidden_state,
-            attention_mask=batch["nllb_attention_mask"],
+        # sequence-level loss
+        nllb_seq_embeds = self.mean_embedding(
+            hidden_states=nllb_llama_outputs.last_hidden_state,
+            input=batch["nllb_seq_bag_ids"],
+            offsets=batch["nllb_seq_bag_offsets"],
         )
-        # CLS, EOS, Mean pooling
-        llama_hidden_states = self.pooling_fn(
-            llama_outputs.last_hidden_state, attention_mask=batch["attention_mask"]
+        llm_seq_embeds = self.mean_embedding(
+            hidden_states=llama_outputs.last_hidden_state.clone().detach(),
+            input=batch["seq_bag_ids"],
+            offsets=batch["seq_bag_offsets"],
         )
-        mse_loss = F.mse_loss(nllb_hidden_states, llama_hidden_states)
-        with torch.no_grad():
-            fvu_loss = fvu(x=llama_hidden_states, mse_loss=mse_loss)
+        mse_loss = F.mse_loss(nllb_seq_embeds, llm_seq_embeds)
         self.log("train/mse", mse_loss)
-        self.log("train/fvu", fvu_loss)
+        with torch.no_grad():
+            self.log("train/fvu", fvu(x=llm_seq_embeds, mse_loss=mse_loss))
+            self.log(
+                "train/seq_cos_sim",
+                F.cosine_similarity(llm_seq_embeds, nllb_seq_embeds).mean(),
+            )
+            self.log(
+                "train/seq_abs_diff_norm",
+                (llm_seq_embeds.norm(p=2, dim=-1) - nllb_seq_embeds.norm(p=2, dim=-1))
+                .abs()
+                .mean(),
+            )
         return mse_loss
 
 
 class SpanDistillationModule(DistillationModule):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-
-        from transformers import AutoTokenizer
-
-        self.llm_tokenizer = AutoTokenizer.from_pretrained(
-            "McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp", padding_side="right"
-        )
-        self.nllb_tokenizer = AutoTokenizer.from_pretrained(
-            "facebook/nllb-200-distilled-600M"
-        )
-
-    def configure_optimizers(self):
-        from hydra.utils import instantiate
-
-        """Prepares optimizer and scheduler."""
-        parameters = {
-            "params": list(p for p in self.parameters() if p.requires_grad),
-            "weight_decay": self.hparams.optimizer.weight_decay,
-        }
-        optimizer = instantiate(self.hparams.optimizer, parameters)
-        if scheduler_cfg := getattr(self.hparams, "scheduler"):
-            scheduler = self.configure_scheduler(optimizer, scheduler_cfg)
-            return [optimizer], [scheduler]
-        return [optimizer]
-
-    @staticmethod
-    def mean_embedding(
-        hidden_states: torch.Tensor,
-        input: torch.Tensor,
-        offsets: torch.Tensor,
-        *args,
-        **kwargs,
-    ):
-        """
-        Compute the mean of non-padded embeddings using `embedding_bag`,
-        properly handling padding with offsets.
-        """
-        # Flatten hidden_states to 2D: shape (batch_size * seq_len, embedding_dim)
-        _, _, embed_dim = hidden_states.shape
-        token_embeds = hidden_states.view(-1, embed_dim)
-
-        # Use embedding_bag with mode 'mean' and appropriate padding index
-        return F.embedding_bag(
-            input=input,  # Indices of non-padded tokens in flattened form
-            weight=token_embeds,  # The flattened hidden states as embedding matrix
-            offsets=offsets,  # Offsets specifying start of each sequence
-            mode="mean",  # Aggregation mode
-        )
 
     def training_step(  # type: ignore
         self, batch: dict[str, torch.Tensor], batch_idx: int = 0
@@ -239,7 +252,7 @@ class SpanDistillationModule(DistillationModule):
             ).last_hidden_state  # (M, L, d)
         # up-projection to llama dimensionality
         # nllb_embeds_MKd ->  nllb_embeds_NKD
-        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd.clone().detach())
+        nllb_embeds_MKD = self.model.up_proj(nllb_embeds_MKd.clone())
 
         self.model.llama.enable_adapter_layers()
         nllb_llama_outputs = self.model.llama(

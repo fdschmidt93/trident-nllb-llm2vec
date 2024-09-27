@@ -3,7 +3,7 @@
 defaults:
   - default
   - default_llm2vec
-  - /dataspec@datamodule.train.train: fineweb
+  - /dataspec@datamodule.train.train: fineweb_adaptation_iter
   - override /module: nllb-llm2vec
 
 run:
@@ -30,7 +30,7 @@ module:
   _target_: src.mt_llm.module.DistillationModule
   distillation_strategy: last
   optimizer:
-    lr: 2e-4
+    lr: 5e-4
   scheduler:
     num_warmup_steps: 0.01
 
