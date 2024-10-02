@@ -63,6 +63,32 @@ class DataCollatorForSequenceClassification:
         return llm_batch
 
 
+class DataCollatorForSequenceClassification2:
+    def __init__(
+        self,
+        columns: dict[str, str],
+        nllb_tokenizer: PreTrainedTokenizerFast,
+        nllb_tokenizer_kwargs: dict = {},
+        *args,
+        **kwargs,
+    ) -> None:
+        self.nllb_tokenizer = nllb_tokenizer
+        self.nllb_tokenizer_kwargs = nllb_tokenizer_kwargs
+        self.columns = columns
+
+    def __call__(self, inputs) -> BatchEncoding:
+        text: list[str] = [line[self.columns["text"]] for line in inputs]
+        text_pair: None | list[str] = None
+        if "text_pair" in self.columns:
+            text_pair = [line[self.columns["text_pair"]] for line in inputs]
+        nllb_batch = self.nllb_tokenizer(text, text_pair, **self.nllb_tokenizer_kwargs)
+
+        if "label" in self.columns:
+            labels = torch.LongTensor([line[self.columns["label"]] for line in inputs])
+            nllb_batch["labels"] = labels
+        return nllb_batch
+
+
 class DataCollatorForAdaptation:
     def __init__(
         self,

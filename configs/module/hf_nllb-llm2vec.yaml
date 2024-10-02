@@ -1,0 +1,19 @@
+defaults:
+  - default
+
+model:
+  _target_: transformers.AutoModelForSequenceClassification.from_pretrained
+  pretrained_model_name_or_path: fdschmidt93/NLLBLLM2Vec
+  trust_remote_code: true
+  # save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
+  num_labels: 3
+  torch_dtype:
+    _target_: src.mt_llm.utils.get_torch_dtype
+    type_: bfloat16
+scheduler:
+  num_warmup_steps: 0.1
+optimizer:
+  fused: True
+  lr: 1e-4
+  # # _target_: bitsandbytes.optim.AdamW8bit
+  # _target_: deepspeed.ops.adam.DeepSpeedCPUAdam

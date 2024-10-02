@@ -122,3 +122,6 @@ def get_sighup():
     import signal
 
     return signal.SIGHUP
+
+def return_none(*args, **kwargs):
+    return None
