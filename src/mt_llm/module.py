@@ -18,6 +18,16 @@ from functools import partial
 log = get_logger(__name__)
 torch.set_float32_matmul_precision("medium")
 
+# from transformers import AutoModel
+#
+# model = AutoModel.from_pretrained(
+#     "/gpfs/bwfor/work/ws/ma_fabiasch-tx/ma_fabiasch-tx-1724169602/NLLBLLM2Vec/",
+#     torch_dtype=torch.bfloat16,
+# )
+
+# from peft.mapping import PeftModel
+# Peft
+
 
 class NLLBEncoder(nn.Module):
     def __init__(
@@ -505,3 +515,56 @@ class AutoModuleForMultipleChoiceDistillation(AutoModuleForMultipleChoice):
         loss = F.mse_loss(out["choice_embeds"], batch["choice_embeds"])
         self.log("train/mse", loss)
         return {"loss": loss}
+
+
+class HF(TridentModule):
+    def configure_model(self):
+        super().configure_model()
+
+        # self.train()
+        # for parameter in self.parameters():
+        #     parameter.requires_grad = False
+        # #
+        # self.model.nllb_encoder.eval()
+        #
+        # for name, parameter in self.named_parameters():
+        #     if any(k in name for k in ("lora_A", "lora_B")):
+        #         parameter.requires_grad = True
+        #         log.info(f"Set grad for {name}")
+        # self.model = self.model.to("cuda:0")
+        # import pudb
+        # pu.db
+        # self.model.merge_and_unload()
+        from peft.tuners.lora.config import LoraConfig
+
+        lora_config = LoraConfig(
+            r=16,
+            lora_alpha=32,
+            target_modules="all-linear",
+            lora_dropout=0.0,
+            task_type="FEATURE_EXTRACTION",
+            bias="none",
+        )
+        from peft.mapping import get_peft_model
+
+        self.model.llm2vec = get_peft_model(self.model.llm2vec, lora_config)
+        for n, p in self.model.named_parameters():
+            if any(k in n for k in ("lora_A", "lora_B")):
+                p.requires_grad = True
+            else:
+                p.requires_grad = False
+
+        self.score = nn.Linear(
+            self.model.config.llm2vec_config.hidden_size, 3, bias=False
+        )
+        # self.model.score.requires_grad = True
+        # log.info(f"Set grad for score")
+
+    def forward(self, batch):
+        outputs = self.model(
+            input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]
+        )
+        logits = self.score(outputs.pooler_output)
+        loss = F.cross_entropy(logits, batch["labels"])
+        self.log("train/loss", loss)
+        return {"logits": logits, "loss": loss}

@@ -1,12 +1,15 @@
 defaults:
   - default
 
+_target_: src.mt_llm.module.HF
 model:
-  _target_: transformers.AutoModelForSequenceClassification.from_pretrained
-  pretrained_model_name_or_path: fdschmidt93/NLLBLLM2Vec
+  # _target_: transformers.AutoModelForSequenceClassification.from_pretrained
+  _target_: transformers.AutoModel.from_pretrained
+  # pretrained_model_name_or_path: fdschmidt93/NLLBLLM2Vec
+  pretrained_model_name_or_path: /gpfs/bwfor/work/ws/ma_fabiasch-tx/ma_fabiasch-tx-1724169602/NLLBLLM2Vec/
   trust_remote_code: true
   # save_checkpoint_on_validation_dir: "${hydra:runtime.output_dir}/checkpoints/"
-  num_labels: 3
+  # num_labels: 3
   torch_dtype:
     _target_: src.mt_llm.utils.get_torch_dtype
     type_: bfloat16
